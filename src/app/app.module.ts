@@ -11,6 +11,7 @@ import { SurveyQuestionControllerComponent } from './survey-question-controller/
 import { ChoosingClientPageComponent } from './choosing-client-page/choosing-client-page.component';
 import {MatListModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes: Routes = [
     {path: 'home', component: HomeComponent},
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
     {path: 'data-management', component: DataManagementComponent},
     {path: 'survey-question-controller', component: SurveyQuestionControllerComponent},
     {path: 'choosing-client', component: ChoosingClientPageComponent},
+    {path: 'register', component: RegisterComponent},
     {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
         ContentComponent,
         DataManagementComponent,
         SurveyQuestionControllerComponent,
-        ChoosingClientPageComponent
+        ChoosingClientPageComponent,
+        RegisterComponent
     ],
     imports: [
         BrowserModule,
