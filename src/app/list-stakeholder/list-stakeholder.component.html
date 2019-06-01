@@ -1,0 +1,96 @@
+<!-- Show form content -->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-sitemap"></i>
+        Organization
+    </div>
+    <div class="card-body">
+        <div class="container">
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="country">Country: </label>
+                            <select class="custom-select" id="country" [ngModel]="selectedCountry"
+                                    (ngModelChange)="selectCountry($event)" name="selCountry">
+                                <option disabled selected [ngValue]="null">Please select a country</option>
+                                <option [ngValue]="item.key"
+                                        *ngFor="let item of countries|keyvalue">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="organization">Organization: </label>
+                            <select class="custom-select form-group" id="organization" [(ngModel)]="organization"
+                                    (change)="selectedOrganization()" name="organization">
+                                <option disabled selected [ngValue]="null">Please select an organization</option>
+                                <option *ngFor="let organization of organizations"
+                                        [ngValue]="organization">{{organization.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="division">Division: </label>
+                            <select class="custom-select form-group" id="division" [(ngModel)]="division"
+                                    (change)="selectedDivision()" name="division">
+                                <option disabled selected [ngValue]="null">Please select an division</option>
+                                <option *ngFor="let division of divisions"
+                                        [ngValue]="division">{{division.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="unit">Name of Business Unit: </label>
+                            <select class="custom-select" id="unit" [(ngModel)]="businessUnit" name="businessUnit"
+                                    (change)="selectedUnit()">
+                                <option disabled selected [ngValue]="null">Please select a business unit</option>
+                                <option *ngFor="let unit of businessUnits" [ngValue]="unit">{{unit.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div [hidden]="businessUnit == null">
+        <div class="card-header">
+            <i class="fa fa-address-card"></i>
+            List Stakeholders
+        </div>
+        <div class="card-body">
+            <div id="table" class="table">
+                <span class="table-add float-right mb-3 mr-2"><button type= "button" name="addStakeholder" class="fas fa-user-plus" (click)="addNewStakeholder()"></button></span>
+                <span class="table-add float-right mb-3 mr-2"><button type="button" class="fas fa-file-import" (change)="importStakeholder($event)"></button></span>
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                    <tr>
+                        <th class="text-center">ID</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Phone</th>
+                        <th class="text-center">Gender</th>
+                        <th class="text-center">Group</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                    <tr *ngFor="let stakeholder of stakeholders">
+                        <td class="pt-3-half">{{stakeholder.id}}</td>
+                        <td class="pt-3-half">{{stakeholder.name}}</td>
+                        <td class="pt-3-half">{{stakeholder.email}}</td>
+                        <td class="pt-3-half">{{stakeholder.phone}}</td>
+                        <td class="pt-3-half">{{stakeholder.gender}}</td>
+                        <td class="pt-3-half">{{stakeholder.group.name}}</td>
+                        <td>
+                            <button type="button" class="fas fa-edit" (click)="edit(stakeholder)"></button>
+                            <button type="button" class="fas fa-trash" (click)="delete(stakeholder)"></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

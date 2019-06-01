@@ -1,4 +1,4 @@
-export class Survey {
+export class GroupStakeholder {
     id: number;
     name: string;
 

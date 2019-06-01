@@ -1,0 +1,47 @@
+<div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">
+                <fa-icon [icon]="faTachometerAlt"></fa-icon>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+               aria-expanded="false" id="dropdownStakeholder">Stakeholder</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownStakeholder">
+                <a class="dropdown-item" (click)="sideBarClicked(checkType.ListStakeholer)">Update</a>
+                <a class="dropdown-item" (click)="sideBarClicked(checkType.SendSurvey)">Send Survey</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" (click)="sideBarClicked(checkType.ShowChart)">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Charts</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="tables.html">
+                <fa-icon class="fas fa-fw fa-table"></fa-icon>
+                <span>Tables</span></a>
+        </li>
+    </ul>
+    <div id="content-wrapper">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Overview</li>
+            </ol>
+            <app-list-stakeholder *ngIf="contentOfView==checkType.ListStakeholer"></app-list-stakeholder>
+            <app-send-survey *ngIf="contentOfView==checkType.SendSurvey"></app-send-survey>
+            <app-chart-page *ngIf="contentOfView==checkType.ShowChart"></app-chart-page>
+        </div>
+    </div>
+
+</div>

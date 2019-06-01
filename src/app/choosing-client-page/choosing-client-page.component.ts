@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import { Survey} from '../Model/survey';
-import {GroupStakeholder} from '../Model/group-stakeholder';
+import { Survey} from '../model/survey';
+import {GroupStakeholder} from '../model/group-stakeholder';
 import {Router} from '@angular/router';
 
 @Component({
@@ -18,9 +18,9 @@ export class ChoosingClientPageComponent implements OnInit {
     constructor(private router: Router) {}
 
     ngOnInit() {
-        this.surveys = [new Survey(1, 'Survey 1'),
-            new Survey(1, 'Survey 2'),
-            new Survey(1, 'Survey 3')];
+        this.surveys = [new Survey(1, 'Survey 1', 'Sample'),
+            new Survey(1, 'Survey 2', 'Sample'),
+            new Survey(1, 'Survey 3', 'Sample')];
         this.stakeholders = [
             new GroupStakeholder(1, 'Community'),
             new GroupStakeholder(2, 'Government'),

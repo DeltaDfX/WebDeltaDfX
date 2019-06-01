@@ -1,0 +1,85 @@
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-sitemap"></i>
+    Send survey
+  </div>
+  <div class="card-body">
+    <div class="container">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Group Stakeholder</th>
+          <th>Select</th>
+          <th>Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let group of groupStakeholder">
+            <td>{{group.id}}</td>
+            <td>{{group.name}}</td>
+            <td><input type="checkbox"></td>
+            <td><button type="button" class="fas fa-edit" (click)="selectStakeholders(group)"></button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <label for="survey">Select survey: </label>
+        <select class="custom-select form-group" id="survey" [(ngModel)]="survey"
+                name="survey">
+          <option disabled selected [ngValue]="null">Please select an survey</option>
+          <option *ngFor="let survey of surveys"
+                  [ngValue]="survey">{{survey.name}}</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-primary pull-right" (click)="nextToSurveySelection()">Next</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="container">
+
+    </div>
+  </div>
+  <!-- The Modal -->
+  <div class="modal modal-wide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" [style.display]="showModal ? 'block':'none'">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Group Stakeholder</h4>
+          <button type="button" class="close" data-dismiss="modal" (click) = "hide()">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <table class="table table-bordered table-responsive-md table-striped text-center">
+            <tr>
+              <th class="text-center">ID</th>
+              <th class="text-center">Name</th>
+              <th class="text-center">Email</th>
+              <th class="text-center">Group</th>
+              <th class="text-center">Select</th>
+              <th class="text-center">Edit</th>
+            </tr>
+            <tr *ngFor="let stakeholder of stakeholders">
+              <td class="pt-3-half">{{stakeholder.id}}</td>
+              <td class="pt-3-half">{{stakeholder.name}}</td>
+              <td class="pt-3-half">{{stakeholder.email}}</td>
+              <td class="pt-3-half">{{stakeholder.group.name}}</td>
+              <td>
+                <input type="checkbox" [defaultChecked]="true">
+              </td>
+              <td>
+                <button type="button" class="fas fa-edit" (click)="edit(stakeholder)"></button>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click) = "hide()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
