@@ -15,11 +15,14 @@
         </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let group of groupStakeholder">
+          <tr *ngFor="let group of groups">
             <td>{{group.id}}</td>
             <td>{{group.name}}</td>
-            <td><input type="checkbox"></td>
-            <td><button type="button" class="fas fa-edit" (click)="selectStakeholders(group)"></button></td>
+            <td><input type="checkbox" name="selectGroup" [defaultChecked]="group.isChecked"
+                       value="{{group.isChecked}}" [(ngModel)]="group.isChecked" (change)="toggleVisibility(group, $event)"></td>
+            <td>
+              <button type="button" class="fas fa-edit" (click)="selectStakeholders(group)"></button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -32,7 +35,7 @@
                   [ngValue]="survey">{{survey.name}}</option>
         </select>
       </div>
-      <button type="button" class="btn btn-primary pull-right" (click)="nextToSurveySelection()">Next</button>
+      <button type="button" class="btn btn-primary pull-right" (click)="sendSurvey()">Next</button>
     </div>
   </div>
   <div class="card-body">
@@ -41,7 +44,8 @@
     </div>
   </div>
   <!-- The Modal -->
-  <div class="modal modal-wide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" [style.display]="showModal ? 'block':'none'">
+  <div class="modal modal-wide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+       [style.display]="showModal ? 'block':'none'">
     <div class="modal-dialog modal-dialog-scrollable modal-lg">
       <div class="modal-content">
         <!-- Modal Header -->
@@ -66,7 +70,8 @@
               <td class="pt-3-half">{{stakeholder.email}}</td>
               <td class="pt-3-half">{{stakeholder.group.name}}</td>
               <td>
-                <input type="checkbox" [defaultChecked]="true">
+                <input type="checkbox" [checked]="stakeholder.isSelected" value="{{stakeholder.isSelected}}"
+                       [(ngModel)]="stakeholder.isSelected">
               </td>
               <td>
                 <button type="button" class="fas fa-edit" (click)="edit(stakeholder)"></button>

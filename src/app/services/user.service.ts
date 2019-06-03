@@ -4,6 +4,7 @@ import {ConstantService} from '../constant/constant-service';
 import {catchError, map} from 'rxjs/operators';
 import {Observable, of, throwError} from 'rxjs';
 import {Router} from '@angular/router';
+import {Stakeholder} from '../model/stakeholder';
 
 @Injectable({
     providedIn: 'root'
@@ -17,18 +18,19 @@ export class UserService {
     }
 
     public getAuthentication(email: string, password: string): any {
-        this.http.post<Observable<boolean>>(this.constantService.USER_AUTHENTICATION, {
+        this.http.post<Observable<Stakeholder>>(this.constantService.USER_AUTHENTICATION, {
             email,
             password
         }).pipe(
             catchError(this.handleError)
-        ).subscribe(isValid => {
-            if (isValid) {
+        ).subscribe( stakeholder => {
+            if (stakeholder != null) {
                 sessionStorage.setItem(
                     'token',
                     btoa(email + ':' + password)
                 );
-                this.router.navigate(['content']);
+                localStorage.setItem('currentUser', JSON.stringify(stakeholder));
+                this.router.navigate(['management']);
                 return true;
             } else {
                 return false;

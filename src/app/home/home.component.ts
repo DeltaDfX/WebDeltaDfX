@@ -38,7 +38,6 @@ export class HomeComponent implements OnInit {
         } else if (!this.userService.getAuthentication(data.email, data.password)) {
             this.loginError = 'The email/password is not correct';
         }
-        // this.router.navigate(['content']);
     }
 
     open() {

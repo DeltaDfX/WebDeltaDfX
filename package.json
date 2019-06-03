@@ -37,6 +37,7 @@
     "font-awesome": "^4.7.0",
     "fsevents": "^2.0.6",
     "i18n-iso-countries": "^4.0.0",
+    "icheck": "^1.0.2",
     "jquery": "^3.4.1",
     "ngx-i18n-country-select": "^2.0.2",
     "node": "^12.2.0",

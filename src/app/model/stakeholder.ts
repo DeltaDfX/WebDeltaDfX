@@ -7,6 +7,7 @@ export class Stakeholder {
     phone: string;
     gender: string;
     group: GroupStakeholder;
+    isSelected: boolean;
 
     constructor(id: number, name: string, email: string, phone: string, gender: string, group: GroupStakeholder) {
         this.id = id;
@@ -15,5 +16,6 @@ export class Stakeholder {
         this.phone = phone;
         this.gender = gender;
         this.group = group;
+        this.isSelected = true;
     }
 }

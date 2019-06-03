@@ -3,12 +3,6 @@ import {HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class ConstantService {
-    HTTPOPTION = {
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            Authorization: 'Basic ' + btoa('user:123456')
-        })
-    };
     API_ENDPOINT: string;
     USER: string;
     USER_AUTHENTICATION: string;
@@ -22,6 +16,8 @@ export class ConstantService {
     DELETE_STAKEHOLDER: string;
     GET_STAKEHOLDERSBYGROUP: string;
     GET_SURVEYS: string;
+    SEND_SURVEY: string;
+    GET_FULLGROUPSTAKEHOLDERS: string;
 
     // Contructor
     constructor() {
@@ -38,5 +34,7 @@ export class ConstantService {
         this.DELETE_STAKEHOLDER = this.API_ENDPOINT + 'api/delete-stakeholder';
         this.GET_STAKEHOLDERSBYGROUP = this.API_ENDPOINT + 'api/stakeholdersByGroup?group=';
         this.GET_SURVEYS = this.API_ENDPOINT + 'api/surveys';
+        this.SEND_SURVEY = this.API_ENDPOINT + 'api/send-survey';
+        this.GET_FULLGROUPSTAKEHOLDERS = this.API_ENDPOINT + 'api/getFullGroupStakeholder';
     }
 }
