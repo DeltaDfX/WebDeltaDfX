@@ -29,6 +29,8 @@ import {SendSurveyComponent} from './send-survey/send-survey.component';
 import {MyInterceptor} from './my-interceptor';
 import {MatDialogModule} from '@angular/material';
 import {ErrorDialogService} from './HandleServiceError/error-dialog.service';
+import { SurveyPageComponent } from './survey-page/survey-page.component';
+import { OverviewPageComponent } from './overview-page/overview-page.component';
 
 export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
     return () => service.use(['en']);
@@ -43,6 +45,7 @@ const appRoutes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'management', component: ManagementPageComponent},
     {path: 'management/list-stakeholder', component: ListStakeholderComponent},
+    {path: 'survey/:token', component: SurveyPageComponent},
     {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
@@ -62,7 +65,9 @@ const appRoutes: Routes = [
         ChartPageComponent,
         ModalConfirmComponent,
         StakeholderFormComponent,
-        SendSurveyComponent
+        SendSurveyComponent,
+        SurveyPageComponent,
+        OverviewPageComponent
     ],
     imports: [
         BrowserModule,
@@ -84,6 +89,9 @@ const appRoutes: Routes = [
         AngularFontAwesomeModule,
         I18nCountrySelectModule.forRoot(),
         MatDialogModule,
+        RouterModule.forRoot(appRoutes, {
+            scrollPositionRestoration: 'enabled'
+        })
     ],
     providers: [
         ConstantService,

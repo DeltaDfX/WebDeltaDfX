@@ -5,7 +5,7 @@ import {ListStakeholderComponent} from '../list-stakeholder/list-stakeholder.com
 export enum ContentOfView {
   ListStakeholer,
   SendSurvey,
-  ShowChart
+  Overview
 }
 
 @Component({

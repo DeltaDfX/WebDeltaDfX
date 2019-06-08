@@ -80,7 +80,7 @@ export class StakeholderService {
     }
 
     getSurveys(): Observable<Survey[]> {
-        return this.http.get<Survey[]>(`${this.constantService.GET_SURVEYS}`).pipe(
+        return this.http.get<Survey[]>(`${this.constantService.GET_LIST_SURVEYS}`).pipe(
             tap(_ => console.log(`fetched list surveys`)),
             catchError(this.handleError<Survey[]>(`get list surveys`))
         );

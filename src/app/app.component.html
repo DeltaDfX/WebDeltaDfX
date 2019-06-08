@@ -1,26 +1,28 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark sticky-top">
-    <a class="navbar-brand" href="../index.html" aria-label="Space">
-        <img class="logoBrand u-header__navbar-brand-default" src="assets/Swin_logo.png" alt="Logo">
-    </a>
-    <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav ml-auto nav navbar-l">
-            <li class="nav-item">
-                <a routerLink="home" class="nav-link" routerLinkActive="active">Home</a>
-            </li>
-            <li class="nav-item">
-                <a routerLink="content" class="nav-link" routerLinkActive="active">Content</a>
-            </li>
-            <li class="nav-item">
-                <a routerLink="management" class="nav-link" routerLinkActive="active">Management</a>
-            </li>
-            <li class="nav-item">
-                <a routerLink="home" class="nav-link" routerLinkActive="active">Contact</a>
-            </li>
-            <li class="nav-item">
-                <a routerLink="home" class="nav-link" routerLinkActive="active">About</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<div class="content-wrapper">
+    <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top" *ngIf="nav.visible">
+        <a class="navbar-brand" href="../index.html" aria-label="Space">
+            <img class="logoBrand u-header__navbar-brand-default" src="assets/Swin_logo.png" alt="Logo">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ml-auto nav navbar-l">
+                <li class="nav-item">
+                    <a routerLink="home" class="nav-link" routerLinkActive="active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="content" class="nav-link" routerLinkActive="active">Content</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="management" class="nav-link" routerLinkActive="active">Management</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="home" class="nav-link" routerLinkActive="active">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="home" class="nav-link" routerLinkActive="active">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
 <router-outlet></router-outlet>
 

@@ -9,6 +9,7 @@ import {SurveyStakeholder} from '../model/survey-stakeholder';
 import {Stakeholder} from '../model/stakeholder';
 import {forEach} from '@angular/router/src/utils/collection';
 import {Receiver, SendSurveyObject} from '../JsonModel/send-survey-object';
+import {SurveyDetails} from '../model/survey-details';
 
 @Injectable({
   providedIn: 'root'
@@ -31,9 +32,32 @@ export class SurveyService {
     });
     const sender: Stakeholder = JSON.parse(localStorage.getItem('currentUser'));
     const objectToSend = new SendSurveyObject(sender.id, survey.id, receiversJSON);
-    return this.http.post<boolean>(this.constantService.SEND_SURVEY, objectToSend).pipe(
+    return this.http.post<boolean>(this.constantService.SEND_SURVEY_MAIL, objectToSend).pipe(
         tap(_ => console.log(`Send survey to list stakeholders`)),
         catchError(this.handleError<boolean>(`Post list stakeholders to send email`))
+    );
+  }
+
+  getSurvey(surveyID: number, companyName: string): Observable<SurveyDetails> {
+    const json = {
+      surveyID,
+      companyName
+    };
+    return this.http.post<SurveyDetails>(this.constantService.GET_SURVEY, json).pipe(
+        tap(_ => console.log(`Get survey`)),
+        catchError(this.handleError<SurveyDetails>(`Get survey`))
+    );
+  }
+
+  sendSurveyResult(surveyDetails: SurveyDetails, receiver: number): Observable<boolean> {
+    const json = {
+      surveyID: surveyDetails.id,
+      receiver,
+      issues: surveyDetails.issues
+    };
+    return this.http.post<boolean>(this.constantService.SEND_SURVEY, json).pipe(
+        tap(_ => console.log(`Send survey`)),
+        catchError(this.handleError<boolean>(`Send survey`))
     );
   }
 

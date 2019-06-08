@@ -4,6 +4,7 @@ import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {RegisterComponent} from '../register/register.component';
 import {UserService} from '../services/user.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {NavbarService} from '../services/navbar.service';
 
 @Component({
     selector: 'app-home',
@@ -22,11 +23,12 @@ export class HomeComponent implements OnInit {
                 private router: Router,
                 private modalService: NgbModal,
                 private userService: UserService,
-                private formBuilder: FormBuilder) {
+                private formBuilder: FormBuilder, private nav: NavbarService) {
         this.loginForm = formBuilder.group({
             email: new FormControl('', [Validators.required, Validators.email]),
             password: new FormControl('', Validators.required)
         });
+        nav.show();
     }
 
     ngOnInit() {

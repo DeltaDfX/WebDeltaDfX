@@ -13,15 +13,12 @@
             <div class="dropdown-menu" aria-labelledby="dropdownStakeholder">
                 <a class="dropdown-item" (click)="sideBarClicked(checkType.ListStakeholer)">Update</a>
                 <a class="dropdown-item" (click)="sideBarClicked(checkType.SendSurvey)">Send Survey</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" (click)="sideBarClicked(checkType.ShowChart)">
+            <a class="nav-link" (click)="sideBarClicked(checkType.Overview)">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Charts</span></a>
+                <span>Overview</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="tables.html">
@@ -40,7 +37,7 @@
             </ol>
             <app-list-stakeholder *ngIf="contentOfView==checkType.ListStakeholer"></app-list-stakeholder>
             <app-send-survey *ngIf="contentOfView==checkType.SendSurvey"></app-send-survey>
-            <app-chart-page *ngIf="contentOfView==checkType.ShowChart"></app-chart-page>
+            <app-chart-page *ngIf="contentOfView==checkType.Overview"></app-chart-page>
         </div>
     </div>
 

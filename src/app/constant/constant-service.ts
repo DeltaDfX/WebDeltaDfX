@@ -15,13 +15,16 @@ export class ConstantService {
     ADD_STAKEHOLDERS: string;
     DELETE_STAKEHOLDER: string;
     GET_STAKEHOLDERSBYGROUP: string;
-    GET_SURVEYS: string;
-    SEND_SURVEY: string;
+    GET_LIST_SURVEYS: string;
+    GET_SURVEY: string;
+    SEND_SURVEY_MAIL: string;
     GET_FULLGROUPSTAKEHOLDERS: string;
+    SEND_SURVEY: string;
 
     // Contructor
     constructor() {
-        this.API_ENDPOINT = 'http://localhost:8081/'
+        // this.API_ENDPOINT = 'http://localhost:8081/'
+        this.API_ENDPOINT = 'https://customer-survey-restapi.herokuapp.com/'
         this.USER = 'users';
         this.USER_AUTHENTICATION = this.API_ENDPOINT + 'login';
         this.GET_ORGANIZATIONS = this.API_ENDPOINT + 'api/organizations?country=';
@@ -33,8 +36,10 @@ export class ConstantService {
         this.ADD_STAKEHOLDERS = this.API_ENDPOINT + 'api/add-stakeholders';
         this.DELETE_STAKEHOLDER = this.API_ENDPOINT + 'api/delete-stakeholder';
         this.GET_STAKEHOLDERSBYGROUP = this.API_ENDPOINT + 'api/stakeholdersByGroup?group=';
-        this.GET_SURVEYS = this.API_ENDPOINT + 'api/surveys';
-        this.SEND_SURVEY = this.API_ENDPOINT + 'api/send-survey';
+        this.GET_LIST_SURVEYS = this.API_ENDPOINT + 'api/surveys';
+        this.SEND_SURVEY_MAIL = this.API_ENDPOINT + 'api/send-survey-mail';
         this.GET_FULLGROUPSTAKEHOLDERS = this.API_ENDPOINT + 'api/getFullGroupStakeholder';
+        this.GET_SURVEY = this.API_ENDPOINT + 'api/getSurvey';
+        this.SEND_SURVEY = this.API_ENDPOINT + 'api/sendSurvey';
     }
 }
