@@ -10,7 +10,7 @@ import {NavbarService} from './services/navbar.service';
 export class AppComponent implements OnInit {
   title = 'Home page';
 
-  constructor(private router: Router, private nav: NavbarService) {}
+  constructor(private router: Router, public nav: NavbarService) {}
 
   ngOnInit(): void {
   }
