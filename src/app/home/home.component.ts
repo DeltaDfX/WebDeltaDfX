@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
                 private modalService: NgbModal,
                 private userService: UserService,
                 private formBuilder: FormBuilder, private nav: NavbarService) {
+        if (sessionStorage.getItem('token') == null) {this.router.navigate(['login']); }
         this.loginForm = formBuilder.group({
             email: new FormControl('', [Validators.required, Validators.email]),
             password: new FormControl('', Validators.required)

@@ -14,4 +14,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+    userLogout() {
+        sessionStorage.removeItem('token');
+        this.router.navigate(['login']);
+    }
 }

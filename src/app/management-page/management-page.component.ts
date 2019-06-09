@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faTachometerAlt, faAddressCard, faUserPlus} from '@fortawesome/free-solid-svg-icons';
 import {ListStakeholderComponent} from '../list-stakeholder/list-stakeholder.component';
+import {NavbarService} from '../services/navbar.service';
+import {Router} from '@angular/router';
 
 export enum ContentOfView {
   ListStakeholer,
@@ -17,7 +19,10 @@ export class ManagementPageComponent implements OnInit {
   faTachometerAlt = faTachometerAlt;
   contentOfView;
   checkType = ContentOfView;
-  constructor() { }
+  constructor(private nav: NavbarService, private router: Router) {
+    if (sessionStorage.getItem('token') == null) {this.router.navigate(['login']); }
+    nav.show();
+  }
 
   ngOnInit() {
   }

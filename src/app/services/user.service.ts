@@ -17,26 +17,13 @@ export class UserService {
                 private router: Router) {
     }
 
-    public getAuthentication(email: string, password: string): any {
-        this.http.post<Observable<Stakeholder>>(this.constantService.USER_AUTHENTICATION, {
+    public getAuthentication(email: string, password: string): Observable<Stakeholder> {
+        return this.http.post<Stakeholder>(this.constantService.USER_AUTHENTICATION, {
             email,
             password
         }).pipe(
             catchError(this.handleError)
-        ).subscribe( stakeholder => {
-            if (stakeholder != null) {
-                sessionStorage.setItem(
-                    'token',
-                    btoa(email + ':' + password)
-                );
-                localStorage.setItem('currentUser', JSON.stringify(stakeholder));
-                this.router.navigate(['management']);
-                return true;
-            } else {
-                return false;
-                // alert('Authentication failed.');
-            }
-        });
+        );
     }
 
     private handleError<T>(error: HttpErrorResponse) {
