@@ -1,0 +1,31 @@
+<div class="wrapper fadeInDown">
+        <div id="formContent">
+            <h1> LOGIN </h1>
+            <form [formGroup]="loginForm" (ngSubmit)="loginOnClick(loginForm.value)">
+                <div class="alert alert-primary" role="alert" *ngIf="loginError != null">
+                    {{loginError}}
+                </div>
+                <div class="form-row">
+                    <input type="email" class="form-control fadeIn second" formControlName="email" aria-describedby="emailHelp"
+                           placeholder="Enter your email">
+                    <small id="emailHelp" class="form-text text-muted fadeIn second">name@example.com</small>
+                </div>
+                <div class="form-row">
+                    <input type="password" class="form-control fadeIn second" placeholder="Password" id="password"
+                           formControlName="password" required></div>
+                <div class="form-check fadeIn third">
+                    <div class="row align-items-center">
+                        <div class="col-auto mr-auto form-check">
+                            <input type="checkbox" class="form-check-input" id="remember_check" formControlName="remember" [checked]="isRemember" [(ngModel)]="isRemember">
+                            <label class="form-check-label" for="remember_check">Remember</label>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-link" type="button" (click)="openRegister()">Register</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success btn-sm fadeIn fourth">Login</button>
+            </form>
+        </div>
+    </div>
+
