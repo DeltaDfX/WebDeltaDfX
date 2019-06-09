@@ -70,6 +70,7 @@
   transform: none !important;
   left: calc(90px + 0.5rem) !important;
   margin: 0;
+  opacity: 1;
 }
 
 .sidebar .nav-item .dropdown-menu.dropup {
@@ -166,16 +167,4 @@
   font-variant: normal;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
-}
-
-.login::before {
-  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f007";
-}
-
-.tps::before {
-  font-family: "Font Awesome 5 Free"; font-weight: 400; content: "\f1ea";
-}
-
-.twitter::before {
-  font-family: "Font Awesome 5 Brands"; content: "\f099";
 }

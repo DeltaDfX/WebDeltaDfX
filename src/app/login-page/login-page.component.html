@@ -1,31 +1,32 @@
 <div class="wrapper fadeInDown">
         <div id="formContent">
             <h1> LOGIN </h1>
-            <form [formGroup]="loginForm" (ngSubmit)="loginOnClick(loginForm.value)">
-                <div class="alert alert-primary" role="alert" *ngIf="loginError != null">
-                    {{loginError}}
-                </div>
+            <form #loginForm="ngForm" name="form" (ngSubmit)="loginOnClick()" novalidate autocomplete="off">
                 <div class="form-row">
-                    <input type="email" class="form-control fadeIn second" formControlName="email" aria-describedby="emailHelp"
-                           placeholder="Enter your email">
-                    <small id="emailHelp" class="form-text text-muted fadeIn second">name@example.com</small>
+                    <input type="email" class="form-control fadeIn second" [(ngModel)]="email" #emailInput = "ngModel"
+                           placeholder="Enter your email" mdbInput mdbValidate name="email" [value]="email" required>
+                    <mdb-error *ngIf="emailInput.invalid && emailInput.dirty && loginForm.submitted">Input invalid</mdb-error>
                 </div>
+                <br>
                 <div class="form-row">
                     <input type="password" class="form-control fadeIn second" placeholder="Password" id="password"
-                           formControlName="password" required></div>
+                           [(ngModel)]="password" [ngModelOptions]="{standalone: true}" [value]="password" required></div>
                 <div class="form-check fadeIn third">
                     <div class="row align-items-center">
                         <div class="col-auto mr-auto form-check">
-                            <input type="checkbox" class="form-check-input" id="remember_check" formControlName="remember" [checked]="isRemember" [(ngModel)]="isRemember">
+                            <input type="checkbox" class="form-check-input" id="remember_check" [(ngModel)]="isRemember" [ngModelOptions]="{standalone: true}">
                             <label class="form-check-label" for="remember_check">Remember</label>
                         </div>
                         <div class="col-auto">
-                            <button class="btn btn-link" type="button" (click)="openRegister()">Register</button>
+                            <button class="btn btn-link text-capitalize text-primary link-color" type="button" (click)="openRegister()">Register</button>
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success btn-sm fadeIn fourth">Login</button>
+                <button type="submit" class="btn btn-success btn-sm fadeIn fourth" [disabled]="loginForm.invalid">Login</button>
             </form>
+            <div class="alert alert-primary" role="alert" *ngIf="loginError != null">
+                {{loginError}}
+            </div>
         </div>
     </div>
 

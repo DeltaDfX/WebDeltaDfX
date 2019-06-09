@@ -20,7 +20,7 @@ export class ManagementPageComponent implements OnInit {
   contentOfView;
   checkType = ContentOfView;
   constructor(private nav: NavbarService, private router: Router) {
-    if (sessionStorage.getItem('token') == null) {this.router.navigate(['login']); }
+    if (localStorage.getItem('currentUser') == null) {this.router.navigate(['login']); }
     nav.show();
   }
 

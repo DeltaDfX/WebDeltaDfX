@@ -18,7 +18,6 @@ import {DropdownModule, InputsModule, InputUtilitiesModule} from 'angular-bootst
 import {AddNewEmployeeComponent} from './add-new-employee/add-new-employee.component';
 import {ManagementPageComponent} from './management-page/management-page.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {ListStakeholderComponent} from './list-stakeholder/list-stakeholder.component';
 import {I18nCountrySelectModule, I18nCountrySelectService} from 'ngx-i18n-country-select';
@@ -32,6 +31,7 @@ import {ErrorDialogService} from './HandleServiceError/error-dialog.service';
 import { SurveyPageComponent } from './survey-page/survey-page.component';
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import {LoginPageComponent} from './login-page/login-page.component';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
 export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
     return () => service.use(['en']);
@@ -94,7 +94,8 @@ const appRoutes: Routes = [
         MatDialogModule,
         RouterModule.forRoot(appRoutes, {
             scrollPositionRestoration: 'enabled'
-        })
+        }),
+        MDBBootstrapModule.forRoot()
     ],
     providers: [
         ConstantService,

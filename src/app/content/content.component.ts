@@ -10,7 +10,7 @@ import {NavbarService} from '../services/navbar.service';
 export class ContentComponent implements OnInit {
 
   constructor(private router: Router, private nav: NavbarService) {
-    if (sessionStorage.getItem('token') == null) {this.router.navigate(['login']); }
+    if (localStorage.getItem('currentUser') == null) {this.router.navigate(['login']); }
     nav.show();
   }
 
