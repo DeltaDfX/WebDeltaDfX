@@ -20,6 +20,7 @@ export class ConstantService {
     SEND_SURVEY_MAIL: string;
     GET_FULLGROUPSTAKEHOLDERS: string;
     SEND_SURVEY: string;
+    GET_LIST_ISSUE_BYGROUP: string;
 
     // Contructor
     constructor() {
@@ -41,5 +42,6 @@ export class ConstantService {
         this.GET_FULLGROUPSTAKEHOLDERS = this.API_ENDPOINT + 'api/getFullGroupStakeholder';
         this.GET_SURVEY = this.API_ENDPOINT + 'api/getSurvey';
         this.SEND_SURVEY = this.API_ENDPOINT + 'api/sendSurvey';
+        this.GET_LIST_ISSUE_BYGROUP = this.API_ENDPOINT + 'api/getIssuesGroup?';
     }
 }

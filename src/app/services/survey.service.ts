@@ -10,6 +10,7 @@ import {Stakeholder} from '../model/stakeholder';
 import {forEach} from '@angular/router/src/utils/collection';
 import {Receiver, SendSurveyObject} from '../JsonModel/send-survey-object';
 import {SurveyDetails} from '../model/survey-details';
+import {GroupStakeholderIssues} from '../JsonModel/group-stakeholder-issues';
 
 @Injectable({
   providedIn: 'root'
@@ -71,4 +72,11 @@ export class SurveyService {
       return of(result as T);
     };
   }
+
+    getIssue(groupIDs: number[]): Observable<GroupStakeholderIssues[]> {
+      return this.http.get<GroupStakeholderIssues[]>(this.constantService.GET_LIST_ISSUE_BYGROUP + `groupID=${groupIDs}`).pipe(
+          tap(_ => console.log(`Send survey`)),
+          catchError(this.handleError<GroupStakeholderIssues[]>(`Send survey`))
+      );
+    }
 }
