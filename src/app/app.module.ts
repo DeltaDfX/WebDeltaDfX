@@ -33,6 +33,7 @@ import { OverviewPageComponent } from './overview-page/overview-page.component';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
+
 export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
     return () => service.use(['en']);
 }

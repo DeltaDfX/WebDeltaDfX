@@ -10,11 +10,11 @@
     <div class="card my-3" *ngFor="let issue of surveyDetail?.issues">
         <div class="card-body">
             <h5 class="card-title">{{issue.issue}}</h5>
-            <div class="row my-5 form-row" *ngFor="let category of issue.categoryQuestion">
-                <div class="col-12">
+            <div class="row my-2 form-row border border-primary p-3" *ngFor="let category of issue.categoryQuestion">
+                <div class="col-6">
                     <p class="card-text">{{category.title}}</p>
                 </div>
-                <div class="col-12">
+                <div class="col-6 d-flex justify-content-end">
                     <div class="form-check form-check-inline d-inline-block" *ngFor="let item of [].constructor(10); let i = index" (click)="clickedRatingCategory(category, i+1)">
                         <label class="form-check-label align-bottom d-block" >{{i+1}}</label>
                         <input class="form-check-input" type="radio" name="ratingLevel_{{category.id}}" id="{{category.id}}" autocomplete="off" >
