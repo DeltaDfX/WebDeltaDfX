@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {SurveyService} from '../services/survey.service';
 import {JSGroupStakeholder} from '../JsonModel/jsgroup-stakeholder';
 import {StakeholderService} from '../services/stakeholder.service';
-import {Chart} from 'chart.js';
 import {TopBottomIssues} from '../JsonModel/top-bottom-issues';
 import {GroupStakeholder} from '../model/group-stakeholder';
 
