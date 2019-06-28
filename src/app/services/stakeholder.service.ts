@@ -26,8 +26,8 @@ export class StakeholderService {
         );
     }
 
-    getBusinessUnits(organizationID: number, divisionID: number): Observable<BusinessUnit[]> {
-        return this.http.get<BusinessUnit[]>(`${this.constantService.GET_BUSINESSUNITS}organizationID=${organizationID}&divisionID=${divisionID}`)
+    getBusinessUnitsBy(organizationID: number, divisionID: number): Observable<BusinessUnit[]> {
+        return this.http.get<BusinessUnit[]>(`${this.constantService.GET_BUSINESSUNITS_BY}organizationID=${organizationID}&divisionID=${divisionID}`)
             .pipe(
                 tap(_ => console.log(`fetched business unit with organization id ${organizationID} & division id ${divisionID}`)),
                 catchError(this.handleError<BusinessUnit[]>(`get list business organization id ${organizationID} & division id ${divisionID}`))
@@ -90,6 +90,13 @@ export class StakeholderService {
         return this.http.get<JSGroupStakeholder[]>(this.constantService.GET_FULLGROUPSTAKEHOLDERS).pipe(
             tap(_ => console.log(`fetched detail group stakeholder`)),
             catchError(this.handleError<JSGroupStakeholder[]>(`get list detail group stakeholder`))
+        );
+    }
+
+    getListBussinessUnits(): Observable<BusinessUnit[]> {
+        return this.http.get<BusinessUnit[]>(this.constantService.GET_BUSINESSUNITS).pipe(
+            tap(_ => console.log('fetched list business unit')),
+            catchError(this.handleError<BusinessUnit[]>('get list business unit'))
         );
     }
 

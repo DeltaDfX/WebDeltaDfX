@@ -32,7 +32,13 @@ import { SurveyPageComponent } from './survey-page/survey-page.component';
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
-
+import {NgxSpinnerModule} from 'ngx-spinner';
+import {MatCheckboxModule} from '@angular/material';
+import { RadarChartComponent } from './chart-type/radar-chart/radar-chart.component';
+import { HorizontalBarChartComponent } from './chart-type/horizontal-bar-chart/horizontal-bar-chart.component';
+import { PieChartComponent } from './chart-type/pie-chart/pie-chart.component';
+import {Utilities} from './utilities/utilities';
+import { ModalInfoComponent } from './modal-info/modal-info.component';
 
 export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
     return () => service.use(['en']);
@@ -71,7 +77,11 @@ const appRoutes: Routes = [
         SendSurveyComponent,
         SurveyPageComponent,
         OverviewPageComponent,
-        LoginPageComponent
+        LoginPageComponent,
+        RadarChartComponent,
+        HorizontalBarChartComponent,
+        PieChartComponent,
+        ModalInfoComponent
     ],
     imports: [
         BrowserModule,
@@ -96,7 +106,9 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes, {
             scrollPositionRestoration: 'enabled'
         }),
-        MDBBootstrapModule.forRoot()
+        MDBBootstrapModule.forRoot(),
+        NgxSpinnerModule,
+        MatCheckboxModule
     ],
     providers: [
         ConstantService,
@@ -113,10 +125,11 @@ const appRoutes: Routes = [
             useClass: MyInterceptor,
             multi: true
         },
-        ErrorDialogService
+        ErrorDialogService,
+        Utilities
     ],
     bootstrap: [AppComponent],
-    entryComponents: [StakeholderFormComponent]
+    entryComponents: [StakeholderFormComponent, ModalInfoComponent]
 })
 export class AppModule {
 }

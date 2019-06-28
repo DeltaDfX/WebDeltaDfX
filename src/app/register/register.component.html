@@ -1,62 +1,68 @@
 <div class="row">
     <div class="signup-form">
-        <form action="/examples/actions/confirmation.php" method="post">
+        <form (ngSubmit)="submitSignup($event)" #signupForm="ngForm">
             <h2>Register</h2>
             <p class="hint-text">Create your account. It's free and only takes a minute.</p>
             <div class="form-group">
                 <div class="row">
                     <div class="col-xs-3 col-md-6"><input type="text" class="form-control" name="first_name"
-                                                          placeholder="First Name" required="required"></div>
+                                                          placeholder="First Name" required="required" [(ngModel)]="firstName"></div>
                     <div class="col-xs-3 col-md-6"><input type="text" class="form-control" name="last_name"
-                                                          placeholder="Last Name" required="required"></div>
+                                                          placeholder="Last Name" required="required" [(ngModel)]="lastName"></div>
                 </div>
             </div>
             <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+                <input type="email" class="form-control" name="email" placeholder="Email" required="required" [(ngModel)]="email" #emailField="ngModel" email>
+                <div class="mat-error" *ngIf="!emailField.valid && (emailField.touched || emailField.dirty)">
+                    <small>Invalid Email</small>
+                </div>
             </div>
             <div class="form-group">
-                <input type="phone" class="form-control" name="phone" placeholder="Phone" required="required">
+                <input type="phone" class="form-control" name="phone" placeholder="Phone"
+                       required="required" pattern="(^1300\d{6}$)|(^1800|1900|1902\d{6}$)|(^0[2|3|7|8]{1}[0-9]{8}$)|(^13\d{4}$)|(^04\d{2,3}\d{6}$)" #phoneField="ngModel" [(ngModel)]="phone">
+                <div class="mat-error" *ngIf="!phoneField.valid && (phoneField.touched || phoneField.dirty)">
+                    <small>Invalid phone</small>
+                </div>
             </div>
             <div class="form-group form-check-inline">
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="gender">Male
+                        <input type="radio" class="form-check-input" name="gender" value="Male" [(ngModel)]="gender">Male
                     </label>
                 </div>
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="gender">Female
+                        <input type="radio" class="form-check-input" name="gender" value="Female" [(ngModel)]="gender">Female
                     </label>
                 </div>
             </div>
             <div class="form-group">
-                <div class="row">
-                    <label class="ml-3">Company:</label>
-                    <div class="dropdown ml-2">
-                        <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                            Select company
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Link 1</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
-                        </div>
-                    </div>
-                </div>
+                    <label for="company">Company:</label>
+                    <select id="company" class="custom-select" [(ngModel)]="company" name="company">
+                        <option disabled selected [ngValue]="null">Select a company</option>
+                        <option *ngFor="let unit of companies" [ngValue]="unit">{{unit.name}}</option>
+                    </select>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+                <label for="group">Group:</label>
+                <select id="group" class="custom-select" [(ngModel)]="group" name="company">
+                    <option disabled selected [ngValue]="null">Select a group</option>
+                    <option *ngFor="let group of groups" [ngValue]="group">{{group.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Password" required="required" [(ngModel)]="password">
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password"
-                       required="required">
+                       required="required" [(ngModel)]="passwordConfirm">
             </div>
             <div class="form-group">
-                <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms
+                <label class="checkbox-inline"><input type="checkbox" required="required" [(ngModel)]="isCheckPolicy" name="policy"> I accept the <a href="#">Terms
                     of Use</a> &amp; <a href="#">Privacy Policy</a></label>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="signupForm.form.invalid">Register Now</button>
             </div>
         </form>
     </div>

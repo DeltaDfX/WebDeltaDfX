@@ -5,6 +5,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {UserService} from '../services/user.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {NavbarService} from '../services/navbar.service';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
     selector: 'app-login-page',
@@ -22,7 +23,8 @@ export class LoginPageComponent implements OnInit {
                 private router: Router,
                 private modalService: NgbModal,
                 private userService: UserService,
-                private formBuilder: FormBuilder, private nav: NavbarService) {
+                private formBuilder: FormBuilder, private nav: NavbarService,
+                private spinner: NgxSpinnerService) {
         nav.hide();
         if (sessionStorage.getItem('token') != null) {
             this.router.navigate(['home']);
@@ -33,7 +35,9 @@ export class LoginPageComponent implements OnInit {
     }
 
     loginOnClick() {
+        this.spinner.show();
         this.userService.getAuthentication(this.email, this.password).subscribe(stakeholder => {
+            this.spinner.hide();
             if (stakeholder != null) {
                 sessionStorage.clear();
                 localStorage.clear();

@@ -26,6 +26,12 @@ export class UserService {
         );
     }
 
+    public createNewMember(data: any): Observable<boolean> {
+        return this.http.post<boolean>(this.constantService.SIGN_UP, data).pipe(
+            catchError(this.handleError)
+        );
+    }
+
     private handleError<T>(error: HttpErrorResponse) {
         if (error.error instanceof ErrorEvent) {
             // A client-side or network error occurred. Handle it accordingly.

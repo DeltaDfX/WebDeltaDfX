@@ -8,6 +8,7 @@ import {Survey} from '../model/survey';
 import {SurveyService} from '../services/survey.service';
 import {JSGroupStakeholder} from '../JsonModel/jsgroup-stakeholder';
 import {forEach} from '@angular/router/src/utils/collection';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-send-survey',
@@ -23,8 +24,9 @@ export class SendSurveyComponent implements OnInit {
   surveys: Survey[] = [];
   selectedGroup: GroupStakeholder[] = [];
   groups: JSGroupStakeholder[] = [];
+  checkAll = false;
 
-  constructor(private stakeholderService: StakeholderService, private modalService: NgbModal, private surveyServiec: SurveyService) { }
+  constructor(private stakeholderService: StakeholderService, private modalService: NgbModal, private surveyServiec: SurveyService, private spinner: NgxSpinnerService){ }
 
   ngOnInit() {
     this.stakeholderService.getGroupStakeholdersAndStakeholders().subscribe( data => {
@@ -58,6 +60,7 @@ export class SendSurveyComponent implements OnInit {
   }
 
   sendSurvey() {
+    this.spinner.show();
     const stakeholders: Stakeholder[] = [];
     this.groups.filter( group => {
       return group.isChecked === true;
@@ -70,10 +73,18 @@ export class SendSurveyComponent implements OnInit {
       } else {
         alert('Sending Service has been failured');
       }
+      this.spinner.hide();
     });
   }
 
   toggleVisibility(group: JSGroupStakeholder) {
       group.stakeholders.forEach( stakeholder => stakeholder.isSelected = group.isChecked);
+  }
+
+  selectedAll() {
+    this.groups.forEach( group => {
+      group.isChecked = this.checkAll;
+      group.stakeholders.forEach( stakeholder => stakeholder.isSelected = this.checkAll);
+    });
   }
 }

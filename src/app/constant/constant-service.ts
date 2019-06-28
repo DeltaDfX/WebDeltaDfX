@@ -8,6 +8,7 @@ export class ConstantService {
     USER_AUTHENTICATION: string;
     GET_ORGANIZATIONS: string;
     GET_BUSINESSUNITS: string;
+    GET_BUSINESSUNITS_BY: string;
     GET_STAKEHOLDERS: string;
     GET_GROUPSTAKEHOLDER: string;
     UPDATE_STAKEHOLDER: string;
@@ -20,16 +21,18 @@ export class ConstantService {
     SEND_SURVEY_MAIL: string;
     GET_FULLGROUPSTAKEHOLDERS: string;
     SEND_SURVEY: string;
-    GET_LIST_ISSUE_BYGROUP: string;
-
+    GET_LIST_ISSUE_TOPBOTTOM: string;
+    GET_ISSUES_BY_GROUP: string;
+    GET_ISSUES: string;
+    SIGN_UP: string;
     // Contructor
     constructor() {
-        // this.API_ENDPOINT = 'http://localhost:8081/'
+        //this.API_ENDPOINT = 'http://localhost:8081/'
         this.API_ENDPOINT = 'https://customer-survey-restapi.herokuapp.com/'
         this.USER = 'users';
         this.USER_AUTHENTICATION = this.API_ENDPOINT + 'login';
         this.GET_ORGANIZATIONS = this.API_ENDPOINT + 'api/organizations?country=';
-        this.GET_BUSINESSUNITS = this.API_ENDPOINT + 'api/units?';
+        this.GET_BUSINESSUNITS_BY = this.API_ENDPOINT + 'api/units?';
         this.GET_STAKEHOLDERS = this.API_ENDPOINT + 'api/stakeholders?unitID=';
         this.UPDATE_STAKEHOLDER = this.API_ENDPOINT + 'api/update-stakeholder';
         this.GET_GROUPSTAKEHOLDER = this.API_ENDPOINT + 'api/group-stakeholders';
@@ -42,6 +45,10 @@ export class ConstantService {
         this.GET_FULLGROUPSTAKEHOLDERS = this.API_ENDPOINT + 'api/getFullGroupStakeholder';
         this.GET_SURVEY = this.API_ENDPOINT + 'api/getSurvey';
         this.SEND_SURVEY = this.API_ENDPOINT + 'api/sendSurvey';
-        this.GET_LIST_ISSUE_BYGROUP = this.API_ENDPOINT + 'api/getIssuesGroup?';
+        this.GET_LIST_ISSUE_TOPBOTTOM = this.API_ENDPOINT + 'api/getIssuesGroup?';
+        this.GET_ISSUES_BY_GROUP = this.API_ENDPOINT + 'api/getReportByGroups?';
+        this.GET_ISSUES = this.API_ENDPOINT + 'api/getIssues?';
+        this.GET_BUSINESSUNITS = this.API_ENDPOINT + 'api/allUnits';
+        this.SIGN_UP = this.API_ENDPOINT + 'signup';
     }
 }

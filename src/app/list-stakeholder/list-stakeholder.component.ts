@@ -82,7 +82,7 @@ export class ListStakeholderComponent implements OnInit {
         this.businessUnits = [];
         this.businessUnit = null;
         console.log('Division: ' + this.division);
-        this.stakeholderService.getBusinessUnits(this.organization.id, this.division.id).subscribe(response => {
+        this.stakeholderService.getBusinessUnitsBy(this.organization.id, this.division.id).subscribe(response => {
             response.forEach((businessUnit: BusinessUnit) => {
                 this.businessUnits.push(businessUnit);
             });

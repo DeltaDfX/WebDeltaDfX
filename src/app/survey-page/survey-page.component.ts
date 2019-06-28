@@ -10,6 +10,7 @@ import {group} from '@angular/animations';
 import {Issue} from '../model/issue';
 import {count} from 'rxjs/operators';
 import {removeSummaryDuplicates} from '@angular/compiler';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
     selector: 'app-survey-page',
@@ -28,7 +29,8 @@ export class SurveyPageComponent implements OnInit {
     receiverID: number;
     finished = false;
 
-    constructor(private nav: NavbarService, private route: ActivatedRoute, private surveyService: SurveyService) {}
+    constructor(private nav: NavbarService, private route: ActivatedRoute, private surveyService: SurveyService,
+                private spinner: NgxSpinnerService) {}
 
     ngOnInit() {
         this.nav.hide();
@@ -36,6 +38,7 @@ export class SurveyPageComponent implements OnInit {
         this.decodeURLBase64();
         this.disableNextButton = true;
         this.disableSubmitButton = true;
+        this.spinner.show();
     }
 
     decodeURLBase64() {

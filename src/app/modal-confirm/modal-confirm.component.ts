@@ -6,7 +6,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modal-confirm.component.scss'],
   template: `
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-title">Profile deletion</h4>
+      <h4 class="modal-title" id="modal-title">{{title}}</h4>
       <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -33,4 +33,6 @@ export class ModalConfirmComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
 }

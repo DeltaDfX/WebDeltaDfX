@@ -1,0 +1,21 @@
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-chart-area"></i>
+    Pie chart
+  </div>
+  <div class="card-body flex-center">
+    <div style="display: block; height: 400px" class="col-9 chart-container" *ngIf="chartDataset.length > 0">
+      <canvas mdbChart
+              [chartType]="chartType"
+              [datasets]="chartDataset"
+              [labels]="chartLabels"
+              [colors]="chartColors"
+              [options]="chartOptions"
+              [legend]="true"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)" height="100">
+      </canvas>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Pie chart</div>
+</div>

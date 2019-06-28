@@ -2,10 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Stakeholder} from '../model/stakeholder';
 import {FormControl, FormGroup} from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {compareLogSummaries} from '@angular/core/src/render3/styling/class_and_style_bindings';
 import {StakeholderService} from '../services/stakeholder.service';
 import {GroupStakeholder} from '../model/group-stakeholder';
-import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 @Component({
   selector: 'app-stakeholder-form',

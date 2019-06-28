@@ -1,0 +1,42 @@
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-chart-area"></i>
+    Top 10 Issues
+  </div>
+  <div class="card-body flex-center">
+    <div style="display: block" class="col-9 chart-container" *ngIf="chartDatasetsTop10.length > 0">
+      <canvas mdbChart
+              [chartType]="chartType"
+              [datasets]="chartDatasetsTop10"
+              [labels]="chartLabelsTop"
+              [colors]="chartBarColors"
+              [options]="chartOptions"
+              [legend]="false"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Top 10 issues</div>
+</div>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-chart-area"></i>
+    Bottom 10 Issues
+  </div>
+  <div class="card-body flex-center">
+    <div style="display: block" class="col-9 chart-container" *ngIf="chartDatasetsBottom10.length > 0">
+      <canvas mdbChart
+              [chartType]="chartType"
+              [datasets]="chartDatasetsBottom10"
+              [labels]="chartLabelsBottom"
+              [colors]="chartBarColors"
+              [options]="chartOptions"
+              [legend]="false"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Bottom 10 issues</div>
+</div>

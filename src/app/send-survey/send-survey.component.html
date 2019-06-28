@@ -10,7 +10,8 @@
         <tr>
           <th>#</th>
           <th>Group Stakeholder</th>
-          <th>Select</th>
+          <th><input type="checkbox" class="align-middle"
+                           [(ngModel)]="checkAll" (change)="selectedAll()"> Select All</th>
           <th>Edit</th>
         </tr>
         </thead>
@@ -88,3 +89,10 @@
     </div>
   </div>
 </div>
+<ngx-spinner
+        bdColor="rgba(51,51,51,0.8)"
+        size="medium"
+        color="#fff"
+        type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Sending...</p>
+</ngx-spinner>
