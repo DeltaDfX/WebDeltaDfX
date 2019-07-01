@@ -17,8 +17,8 @@ export class ChartPageComponent implements OnInit {
     groups: JSGroupStakeholder[] = [];
     selectedGroup: GroupStakeholder[] = [];
     isApplied = false;
-    chartType = '';
-    quantity = 0;
+    chartType = null;
+    quantity = null;
     messageAlert = '';
 
     constructor(private surveyService: SurveyService, private stakeholderService: StakeholderService,

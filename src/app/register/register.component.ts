@@ -3,7 +3,7 @@ import {BusinessUnit} from '../model/business-unit';
 import {StakeholderService} from '../services/stakeholder.service';
 import {GroupStakeholder} from '../model/group-stakeholder';
 import {UserService} from '../services/user.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {StakeholderFormComponent} from '../stakeholder-form/stakeholder-form.component';
 import {ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
 import {ModalInfoComponent} from '../modal-info/modal-info.component';
@@ -27,7 +27,8 @@ export class RegisterComponent implements OnInit {
   group: GroupStakeholder = null;
   groups: GroupStakeholder[];
   
-  constructor(private stakeholderService: StakeholderService, private userService: UserService, private modalService: NgbModal) { }
+  constructor(private stakeholderService: StakeholderService, private userService: UserService, private modalService: NgbModal,
+              public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
     this.stakeholderService.getListBussinessUnits().subscribe( data => this.companies = data);
@@ -57,6 +58,9 @@ export class RegisterComponent implements OnInit {
         const modalRef = this.modalService.open(ModalInfoComponent, { centered: true });
         modalRef.componentInstance.title = `Hi! ${this.firstName} ${this.lastName}`;
         modalRef.componentInstance.message = 'Your account has been created. You can use the email to login now.';
+        modalRef.result.then( () => {
+          this.activeModal.close();
+        });
       }
     });
     console.log(data);

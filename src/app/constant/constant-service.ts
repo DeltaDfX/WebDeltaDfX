@@ -27,7 +27,7 @@ export class ConstantService {
     SIGN_UP: string;
     // Contructor
     constructor() {
-        //this.API_ENDPOINT = 'http://localhost:8081/'
+        // this.API_ENDPOINT = 'http://localhost:8081/'
         this.API_ENDPOINT = 'https://customer-survey-restapi.herokuapp.com/'
         this.USER = 'users';
         this.USER_AUTHENTICATION = this.API_ENDPOINT + 'login';
