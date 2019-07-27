@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpEventType, HttpHeaders} from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {Organization} from '../model/organization';
@@ -26,12 +26,12 @@ export class StakeholderService {
         );
     }
 
-    getBusinessUnitsBy(organizationID: number, divisionID: number): Observable<BusinessUnit[]> {
-        return this.http.get<BusinessUnit[]>(`${this.constantService.GET_BUSINESSUNITS_BY}organizationID=${organizationID}&divisionID=${divisionID}`)
-            .pipe(
-                tap(_ => console.log(`fetched business unit with organization id ${organizationID} & division id ${divisionID}`)),
-                catchError(this.handleError<BusinessUnit[]>(`get list business organization id ${organizationID} & division id ${divisionID}`))
-            );
+    getBusinessUnitsBy(organizationID: number, industryID: number): Observable<BusinessUnit[]> {
+        return this.http.get<BusinessUnit[]>
+        (`${this.constantService.GET_BUSINESSUNITS_BY}organizationID=${organizationID}&industryID=${industryID}`).pipe(
+            tap(_ => console.log(`fetched business unit with organization id ${organizationID} & industry id ${industryID}`)),
+            catchError(this.handleError<BusinessUnit[]>(`get list business organization id ${organizationID} & industry id ${industryID}`))
+        );
     }
 
     getStakeholders(businessUnitID: number): Observable<Stakeholder[]> {
@@ -100,7 +100,7 @@ export class StakeholderService {
         );
     }
 
-    private handleError<T>(operation = 'operation', result?: T){
+    private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
             // TODO: send the error to remote logging infrastructure
             console.error(error); // log to console instead
@@ -109,5 +109,33 @@ export class StakeholderService {
             // Let the app keep running by returning an empty result.
             return of(result as T);
         };
+    }
+
+    downloadTemplateStakeholder(): Observable<Blob> {
+        return this.http.get(this.constantService.DOWNLOAD_TEMPLATE_STAKEHOLDER_EXCEL, { responseType: 'blob'}).pipe(
+            tap(_ => console.log('Download file stakeholder template')),
+            catchError(this.handleError<Blob>('Download file stakeholder template'))
+        );
+    }
+
+    importfileStakeholder(data: any): Observable<any> {
+        return this.http.post<any>(this.constantService.UPLOAD_STAKEHOLDERLIST, data, {reportProgress: true, observe: 'events'}).pipe(
+            tap(_ => console.log('Import list stakeholder')),
+            catchError(this.handleError<any>('Upload file has been not successful yet')),
+            map((event) => {
+
+                    switch (event.type) {
+
+                        case HttpEventType.UploadProgress:
+                            const progress = Math.round(100 * event.loaded / event.total);
+                            return { status: 'progress', message: progress };
+
+                        case HttpEventType.Response:
+                            return event.body;
+                        default:
+                            return `Unhandled event: ${event.type}`;
+                    }
+                })
+            );
     }
 }

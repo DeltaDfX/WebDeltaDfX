@@ -20,13 +20,14 @@ export class MyInterceptor implements HttpInterceptor {
         next: HttpHandler
     ): Observable<HttpEvent<any>> {
         console.log('intercepted request ... ');
+        if (!request.headers.has('Content-Type')) {
+            // request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
+        }
         request = request.clone({
             setHeaders: {
-                'Content-Type' : 'application/json; charset=utf-8',
-                'Accept' : 'application/json',
-                'Authorization' : `Basic ${btoa('user:123456')}`
-            }
-        });
+                Accept: 'application/json',
+                Authorization: `Basic ${btoa('user:123456')}`
+            }});
 
         return next.handle(request).pipe(
             map((event: HttpEvent<any>) => {

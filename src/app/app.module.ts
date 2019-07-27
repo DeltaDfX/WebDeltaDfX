@@ -5,7 +5,6 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {ContentComponent} from './content/content.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {DataManagementComponent} from './data-management/data-management.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {SurveyQuestionControllerComponent} from './survey-question-controller/survey-question-controller.component';
 import {ChoosingClientPageComponent} from './choosing-client-page/choosing-client-page.component';
@@ -39,6 +38,11 @@ import { HorizontalBarChartComponent } from './chart-type/horizontal-bar-chart/h
 import { PieChartComponent } from './chart-type/pie-chart/pie-chart.component';
 import {Utilities} from './utilities/utilities';
 import { ModalInfoComponent } from './modal-info/modal-info.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
+import { MaterialIssueAnalysisComponent } from './material-issue-analysis/material-issue-analysis.component';
+import {GoogleChartsModule} from 'angular-google-charts';
+import { LocationAndIndustryComponent } from './location-and-industry/location-and-industry.component';
+import { StackedColumnComponent } from './stacked-column/stacked-column.component';
 
 export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
     return () => service.use(['en']);
@@ -46,8 +50,8 @@ export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
 
 const appRoutes: Routes = [
     {path: 'home', component: HomeComponent},
+    {path: 'material-issue-analysis', component: MaterialIssueAnalysisComponent},
     {path: 'content', component: ContentComponent},
-    {path: 'data-management', component: DataManagementComponent},
     {path: 'survey-question-controller', component: SurveyQuestionControllerComponent},
     {path: 'choosing-client', component: ChoosingClientPageComponent},
     {path: 'register', component: RegisterComponent},
@@ -64,7 +68,6 @@ const appRoutes: Routes = [
         AppComponent,
         HomeComponent,
         ContentComponent,
-        DataManagementComponent,
         SurveyQuestionControllerComponent,
         ChoosingClientPageComponent,
         RegisterComponent,
@@ -81,7 +84,11 @@ const appRoutes: Routes = [
         RadarChartComponent,
         HorizontalBarChartComponent,
         PieChartComponent,
-        ModalInfoComponent
+        ModalInfoComponent,
+        UploadFileComponent,
+        MaterialIssueAnalysisComponent,
+        LocationAndIndustryComponent,
+        StackedColumnComponent
     ],
     imports: [
         BrowserModule,
@@ -108,7 +115,8 @@ const appRoutes: Routes = [
         }),
         MDBBootstrapModule.forRoot(),
         NgxSpinnerModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        GoogleChartsModule.forRoot('AIzaSyDuvOqC_Kgn1q6NpSE3_XJWhXB1futphHo'),
     ],
     providers: [
         ConstantService,
@@ -129,7 +137,7 @@ const appRoutes: Routes = [
         Utilities
     ],
     bootstrap: [AppComponent],
-    entryComponents: [StakeholderFormComponent, ModalInfoComponent]
+    entryComponents: [StakeholderFormComponent, ModalInfoComponent, UploadFileComponent]
 })
 export class AppModule {
 }

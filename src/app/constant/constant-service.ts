@@ -25,10 +25,12 @@ export class ConstantService {
     GET_ISSUES_BY_GROUP: string;
     GET_ISSUES: string;
     SIGN_UP: string;
+    UPLOAD_STAKEHOLDERLIST: string;
+    DOWNLOAD_TEMPLATE_STAKEHOLDER_EXCEL: string
     // Contructor
     constructor() {
-        // this.API_ENDPOINT = 'http://localhost:8081/'
-        this.API_ENDPOINT = 'https://customer-survey-restapi.herokuapp.com/'
+        this.API_ENDPOINT = 'http://localhost:8081/'
+        // this.API_ENDPOINT = 'https://customer-survey-restapi.herokuapp.com/'
         this.USER = 'users';
         this.USER_AUTHENTICATION = this.API_ENDPOINT + 'login';
         this.GET_ORGANIZATIONS = this.API_ENDPOINT + 'api/organizations?country=';
@@ -50,5 +52,7 @@ export class ConstantService {
         this.GET_ISSUES = this.API_ENDPOINT + 'api/getIssues?';
         this.GET_BUSINESSUNITS = this.API_ENDPOINT + 'api/allUnits';
         this.SIGN_UP = this.API_ENDPOINT + 'signup';
+        this.UPLOAD_STAKEHOLDERLIST = this.API_ENDPOINT + 'api/importStakeholders';
+        this.DOWNLOAD_TEMPLATE_STAKEHOLDER_EXCEL = this.API_ENDPOINT + 'database/template/download/stakeholders-with-business-units.xlsx';
     }
 }

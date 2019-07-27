@@ -3,12 +3,13 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {StakeholderService} from '../services/stakeholder.service';
 import {Organization} from '../model/organization';
 import * as i18nIsoCountries from 'i18n-iso-countries';
-import {Division} from '../model/division';
+import {Industry} from '../model/industry';
 import {BusinessUnit} from '../model/business-unit';
 import {Stakeholder} from '../model/stakeholder';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
 import {StakeholderFormComponent} from '../stakeholder-form/stakeholder-form.component';
+import {UploadFileComponent} from '../upload-file/upload-file.component';
 
 const MODALS = {
     deleteModalConfirm: ModalConfirmComponent
@@ -29,8 +30,8 @@ export class ListStakeholderComponent implements OnInit {
     };
     organizations: Organization[] = [];
     organization: Organization = null;
-    divisions: Division[] = [];
-    division: Division = null;
+    industries: Industry[] = [];
+    industry: Industry = null;
     businessUnit: any = null;
     businessUnits: BusinessUnit[] = [];
     stakeholders: Stakeholder[] = [];
@@ -53,10 +54,10 @@ export class ListStakeholderComponent implements OnInit {
     selectCountry(newValue) {
         this.selectedCountry = newValue;
         this.organizations = [];
-        this.divisions = [];
+        this.industries = [];
         this.businessUnits = [];
         this.organization = null;
-        this.division = null;
+        this.industries = null;
         this.businessUnit = null;
         console.log(i18nIsoCountries.getName(newValue, 'en'));
         // API GET ORGANIZATION WITH COUNTRY
@@ -70,19 +71,19 @@ export class ListStakeholderComponent implements OnInit {
 
     // GET API LIST DIVISIONS
     selectedOrganization() {
-        this.divisions = [];
+        this.industries = [];
         this.businessUnits = [];
-        this.divisions = this.organization.divisions;
-        this.division = null;
-        console.log('Organization: ' + this.division);
+        this.industries = this.organization.industries;
+        this.industry = null;
+        console.log('Organization: ' + this.industry);
     }
 
     // GET API STAKEHOLDER
-    selectedDivision() {
+    selectedIndustry() {
         this.businessUnits = [];
         this.businessUnit = null;
-        console.log('Division: ' + this.division);
-        this.stakeholderService.getBusinessUnitsBy(this.organization.id, this.division.id).subscribe(response => {
+        console.log('Industry: ' + this.industry);
+        this.stakeholderService.getBusinessUnitsBy(this.organization.id, this.industry.id).subscribe(response => {
             response.forEach((businessUnit: BusinessUnit) => {
                 this.businessUnits.push(businessUnit);
             });
@@ -138,6 +139,31 @@ export class ListStakeholderComponent implements OnInit {
         });
     }
 
-    importStakeholder(event: Event) {
+    importStakeholder() {
+        const modalRef = this.modalService.open(UploadFileComponent, { centered: true });
+        modalRef.result.then( (result: FormData) => {
+            if (result != null) {
+
+            }
+        });
+    }
+
+    downloadTemplate() {
+        this.stakeholderService.downloadTemplateStakeholder().subscribe( x => {
+            const blob = new Blob([x], {type: 'application/ms-excel'});
+            // IE doesn't allow using a blob object directly as link href
+            // instead it is necessary to use msSaveOrOpenBlob
+            if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+                window.navigator.msSaveOrOpenBlob(blob);
+                return;
+            }
+            // For other browsers:
+            // Create a link pointing to the ObjectURL containing the blob.
+            const data = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = data;
+            link.download = 'template.xlsx';
+            link.click();
+        });
     }
 }

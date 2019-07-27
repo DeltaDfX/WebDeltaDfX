@@ -51,7 +51,7 @@
         </div>
     </div>
     <div class="card-footer text-muted flex-center">
-        <button [disabled]="selectedGroup.length == 0 || selectType.value == ''" (click)="applyFilter()">Apply</button>
+        <button class="btn btn-primary" [disabled]="selectedGroup.length == 0 || selectType.value == ''" (click)="applyFilter()">Apply</button>
     </div>
 </div>
 <!-- Area chart-type Example-->

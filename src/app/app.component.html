@@ -6,20 +6,31 @@
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ml-auto nav navbar-l">
                 <li class="nav-item">
-                    <a routerLink="home" class="nav-link" routerLinkActive="active">Home</a>
-                </li>
-                <!--<li class="nav-item">
-                    <a routerLink="content" class="nav-link" routerLinkActive="active">Content</a>
-                </li>-->
-                <li class="nav-item">
-                    <a routerLink="management" class="nav-link" routerLinkActive="active">Management</a>
-                </li>
-               <!-- <li class="nav-item">
-                    <a routerLink="home" class="nav-link" routerLinkActive="active">Contact</a>
+                    <a routerLink="home" class="nav-link" routerLinkActive="active"><i class="fa fa-home"></i> Home</a>
                 </li>
                 <li class="nav-item">
-                    <a routerLink="home" class="nav-link" routerLinkActive="active">About</a>
-                </li>-->
+                    <a routerLink="material-issue-analysis" class="nav-link flex-center" routerLinkActive="active">
+                        <div class="d-flex align-items-center">
+                            <img src="../assets/icon/icon-material-issue-analysis.png"
+                                 height="18" class="mr-1">Material Issue Analysis</div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="management" class="nav-link" routerLinkActive="active">
+                        <div class="d-flex align-items-center">
+                            <img src="../assets/icon/icon-data-management.png"
+                                 height="18" class="mr-1">Data Management</div></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="reporting-portal" class="nav-link" routerLinkActive="active"><div class="d-flex align-items-center">
+                        <img src="../assets/icon/icon-reporting-portal.png"
+                             height="18" class="mr-1">Reporting Portal</div></a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="faq" class="nav-link" routerLinkActive="active"><div class="d-flex align-items-center">
+                        <img src="../assets/icon/icon-faqs.png"
+                             height="18" class="mr-1">FAQs</div></a>
+                </li>
                 <li class="nav-item ml-5">
                     <button class="btn btn-outline-light btn-sm" (click)="userLogout()">Logout</button>
                 </li>

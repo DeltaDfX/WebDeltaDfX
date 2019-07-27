@@ -51,11 +51,12 @@ export class SurveyService {
         );
     }
 
-    sendSurveyResult(surveyDetails: SurveyDetails, receiver: number): Observable<boolean> {
+    sendSurveyResult(surveyDetails: SurveyDetails, receiver: number, sender: number): Observable<boolean> {
         const json = {
             surveyID: surveyDetails.id,
             receiver,
-            issues: surveyDetails.issues
+            issues: surveyDetails.issues,
+            sender
         };
         return this.http.post<boolean>(this.constantService.SEND_SURVEY, json).pipe(
             tap(_ => console.log(`Send survey`)),

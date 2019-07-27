@@ -35,10 +35,10 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="division">Division: </label>
-                            <select class="custom-select form-group" id="division" [(ngModel)]="division"
-                                    (change)="selectedDivision()" name="division">
+                            <select class="custom-select form-group" id="division" [(ngModel)]="industry"
+                                    (change)="selectedIndustry()" name="division">
                                 <option disabled selected [ngValue]="null">Please select an division</option>
-                                <option *ngFor="let division of divisions"
+                                <option *ngFor="let division of industries"
                                         [ngValue]="division">{{division.name}}</option>
                             </select>
                         </div>
@@ -64,8 +64,9 @@
         </div>
         <div class="card-body">
             <div id="table" class="table">
-                <span class="table-add float-right mb-3 mr-2"><button type= "button" name="addStakeholder" class="fas fa-user-plus" (click)="addNewStakeholder()"></button></span>
-                <span class="table-add float-right mb-3 mr-2"><button type="button" class="fas fa-file-import" (change)="importStakeholder($event)"></button></span>
+                <span class="table-add float-right mb-3 mr-2"><button type= "button" class="btn btn-outline-primary"  name="addStakeholder" (click)="addNewStakeholder()"><i  class="fas fa-user-plus"></i></button></span>
+               <!-- <span class="table-add float-right mb-3 mr-2"><button type="button" class="btn btn-outline-primary" (click)="importStakeholder()"><i class="fas fa-file-import"> Import excel file</i></button></span>
+                <span class="table-add float-left mb-3 mr-2"><button type="button" class="btn btn-outline-primary" (click)="downloadTemplate()"><i class="fas fa-file-download"> Get Template</i></button></span>-->
                 <table class="table table-bordered table-responsive-md table-striped text-center">
                     <tr>
                         <th class="text-center">ID</th>

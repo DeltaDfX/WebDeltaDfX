@@ -27,6 +27,7 @@ export class SurveyPageComponent implements OnInit {
     disableSubmitButton: boolean;
     countItem = 0;
     receiverID: number;
+    senderID: number;
     finished = false;
 
     constructor(private nav: NavbarService, private route: ActivatedRoute, private surveyService: SurveyService,
@@ -45,6 +46,7 @@ export class SurveyPageComponent implements OnInit {
         const jsonString = atob(this.token);
         this.jsonData = JSON.parse(jsonString);
         this.receiverID = this.jsonData.receiver;
+        this.senderID = this.jsonData.sender;
         this.surveyService.getSurvey(this.jsonData.id, this.jsonData.companyName).subscribe(data => {
             this.surveyDetail = data;
             console.log(data);
@@ -104,13 +106,13 @@ export class SurveyPageComponent implements OnInit {
                 } else {
                     isValid = true;
                 }
-            })
-        })
+            });
+        });
         return isValid;
     }
 
     finishSurvey() {
-        this.surveyService.sendSurveyResult(this.surveyDetail, this.receiverID).subscribe( result => {
+        this.surveyService.sendSurveyResult(this.surveyDetail, this.receiverID, this.senderID).subscribe( result => {
             if (result) {
                 this.finished = true;
                 alert('Survey has been sent');

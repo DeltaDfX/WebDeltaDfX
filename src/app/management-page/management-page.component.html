@@ -3,8 +3,8 @@
     <ul class="sidebar navbar-nav">
         <li class="nav-item active">
             <a class="nav-link" href="index.html">
-                <fa-icon [icon]="faTachometerAlt"></fa-icon>
-                <span>Dashboard</span>
+                <i class="fa fa-database"></i>
+                <span> Data Management</span>
             </a>
         </li>
         <li class="nav-item dropdown">
@@ -21,9 +21,14 @@
                 <span>Overview</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="tables.html">
-                <fa-icon class="fas fa-fw fa-table"></fa-icon>
-                <span>Tables</span></a>
+            <a class="nav-link" (click)="sideBarClicked(checkType.Upload)">
+                <fa-icon class="fas fa-fw fa-upload"></fa-icon>
+                <span>Upload</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" (click)="downloadTemplate()">
+                <fa-icon class="fas fa-fw fa-file-download"></fa-icon>
+                <span>Download Template</span></a>
         </li>
     </ul>
     <div id="content-wrapper">
@@ -38,7 +43,7 @@
             <app-list-stakeholder *ngIf="contentOfView==checkType.ListStakeholer"></app-list-stakeholder>
             <app-send-survey *ngIf="contentOfView==checkType.SendSurvey"></app-send-survey>
             <app-chart-page *ngIf="contentOfView==checkType.Overview"></app-chart-page>
+            <app-upload-file *ngIf="contentOfView==checkType.Upload"></app-upload-file>
         </div>
     </div>
-
 </div>
