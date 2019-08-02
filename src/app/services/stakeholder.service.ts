@@ -9,6 +9,7 @@ import {Stakeholder} from '../model/stakeholder';
 import {GroupStakeholder} from '../model/group-stakeholder';
 import {Survey} from '../model/survey';
 import {JSGroupStakeholder} from '../JsonModel/jsgroup-stakeholder';
+import {CountryIndustry} from '../JsonModel/country-industry';
 
 @Injectable({
     providedIn: 'root'
@@ -137,5 +138,13 @@ export class StakeholderService {
                     }
                 })
             );
+    }
+
+    getListCountryIndustry(): Observable<CountryIndustry[]> {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser')) as Stakeholder;
+        return this.http.get<CountryIndustry[]>(this.constantService.GET_LIST_COUNTRIES_OF_ORGANIZATION + currentUser.id).pipe(
+            tap(_ => console.log('Get list country-industry-survey')),
+            catchError(this.handleError<CountryIndustry[]>('Get list country-industry-survey'))
+        );
     }
 }

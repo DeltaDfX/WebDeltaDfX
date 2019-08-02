@@ -10,6 +10,7 @@ import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalConfirmComponent} from '../modal-confirm/modal-confirm.component';
 import {StakeholderFormComponent} from '../stakeholder-form/stakeholder-form.component';
 import {UploadFileComponent} from '../upload-file/upload-file.component';
+import {CountryIndustry} from '../JsonModel/country-industry';
 
 const MODALS = {
     deleteModalConfirm: ModalConfirmComponent
@@ -132,6 +133,7 @@ export class ListStakeholderComponent implements OnInit {
         const modalRef = this.modalService.open(StakeholderFormComponent, { centered: true });
         modalRef.componentInstance.title = 'Add new stakeholder';
         modalRef.componentInstance.isUpdate = false;
+        modalRef.componentInstance.businessUnit = this.businessUnit;
         modalRef.result.then( result => {
             if (result != null) {
                 this.stakeholders.push(result);

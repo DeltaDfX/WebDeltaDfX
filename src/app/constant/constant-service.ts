@@ -27,6 +27,7 @@ export class ConstantService {
     SIGN_UP: string;
     UPLOAD_STAKEHOLDERLIST: string;
     DOWNLOAD_TEMPLATE_STAKEHOLDER_EXCEL: string
+    GET_LIST_COUNTRIES_OF_ORGANIZATION: string
     // Contructor
     constructor() {
         this.API_ENDPOINT = 'http://localhost:8081/'
@@ -54,5 +55,6 @@ export class ConstantService {
         this.SIGN_UP = this.API_ENDPOINT + 'signup';
         this.UPLOAD_STAKEHOLDERLIST = this.API_ENDPOINT + 'api/importStakeholders';
         this.DOWNLOAD_TEMPLATE_STAKEHOLDER_EXCEL = this.API_ENDPOINT + 'database/template/download/stakeholders-with-business-units.xlsx';
+        this.GET_LIST_COUNTRIES_OF_ORGANIZATION = this.API_ENDPOINT + 'api/getListIndustruofAllCountries?userID=';
     }
 }

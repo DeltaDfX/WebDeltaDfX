@@ -4,6 +4,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {StakeholderService} from '../services/stakeholder.service';
 import {GroupStakeholder} from '../model/group-stakeholder';
+import {BusinessUnit} from '../model/business-unit';
 
 @Component({
   selector: 'app-stakeholder-form',
@@ -14,6 +15,7 @@ export class StakeholderFormComponent implements OnInit {
   @Input() title;
   @Input() stakeholder: Stakeholder;
   @Input() isUpdate = true;
+  @Input() businessUnit: BusinessUnit;
 
   stakeholderForm: FormGroup;
   name: string;
@@ -55,6 +57,7 @@ export class StakeholderFormComponent implements OnInit {
         this.activeModal.close(object);
       });
     } else {
+      this.stakeholder.businessUnit = this.businessUnit;
       this.stakeholderService.insertStakeholder(this.stakeholder).subscribe(object => {
         if (object) {
           console.log(`Stakeholder ${this.stakeholder.id} is inserted now.`);
