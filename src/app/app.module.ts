@@ -118,7 +118,7 @@ const appRoutes: Routes = [
         MDBBootstrapModule.forRoot(),
         NgxSpinnerModule,
         MatCheckboxModule,
-        GoogleChartsModule.forRoot(''),
+        GoogleChartsModule.forRoot('AIzaSyCM-QDiVrfV8FSubyrhfQr1SpGaFYET3SM'),
     ],
     providers: [
         ConstantService,

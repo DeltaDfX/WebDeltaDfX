@@ -58,7 +58,6 @@ export class LocationAndIndustryComponent implements OnInit {
         this.data.push(rowData);
         x.country = countryName;
       });
-      console.log(this.data);
       this.countryIndustryList = response;
     });
     this.title = 'Location and Industry';
@@ -74,7 +73,7 @@ export class LocationAndIndustryComponent implements OnInit {
 
   onMapSelect(event) {
     const selected = this.data[event[0].row][0];
-    this.selectedCountry = this.countryIndustryList.find(x => x.country === selected);
+    this.selectedCountry = this.countryIndustryList.find(x => x.country === i18nIsoCountries.getName(selected, 'en'));
     this.setIndustryData();
   }
 
