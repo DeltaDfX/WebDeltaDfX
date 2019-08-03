@@ -43,6 +43,7 @@ import { MaterialIssueAnalysisComponent } from './material-issue-analysis/materi
 import {GoogleChartsModule} from 'angular-google-charts';
 import { LocationAndIndustryComponent } from './location-and-industry/location-and-industry.component';
 import { StackedColumnComponent } from './stacked-column/stacked-column.component';
+import { TableIssueImportanceComponent } from './table-issue-importance/table-issue-importance.component';
 
 export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
     return () => service.use(['en']);
@@ -88,7 +89,8 @@ const appRoutes: Routes = [
         UploadFileComponent,
         MaterialIssueAnalysisComponent,
         LocationAndIndustryComponent,
-        StackedColumnComponent
+        StackedColumnComponent,
+        TableIssueImportanceComponent
     ],
     imports: [
         BrowserModule,
@@ -116,7 +118,7 @@ const appRoutes: Routes = [
         MDBBootstrapModule.forRoot(),
         NgxSpinnerModule,
         MatCheckboxModule,
-        GoogleChartsModule.forRoot('AIzaSyDuvOqC_Kgn1q6NpSE3_XJWhXB1futphHo'),
+        GoogleChartsModule.forRoot(''),
     ],
     providers: [
         ConstantService,

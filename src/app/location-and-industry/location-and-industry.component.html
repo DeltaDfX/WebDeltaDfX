@@ -1,50 +1,76 @@
 <div class="card mb-3">
-    <div class="card-header">
-        <i class="fa fa-location-arrow"></i>
-        Location and Industry
+  <div class="card-header">
+    <i class="fa fa-location-arrow"></i>
+    Location and Industry
+  </div>
+  <div class="card-body">
+    <div class="row mb-3">
+      <div class="col-6">
+        <google-chart
+          [title]="title"
+          [type]="type"
+          [data]="data"
+          [options]="options"
+          [columnNames]="columnNames"
+          [height]="500" (select)="onMapSelect($event)">
+        </google-chart>
+      </div>
+      <div class="col-6 flex-center" id="drawIndustry">
+        <ng-container *ngIf="!rerender">
+          <app-stacked-column [data]="industryChartData" #stackedColumn></app-stacked-column>
+        </ng-container>
+      </div>
     </div>
-    <div class="card-body">
-        <div class="row mb-3">
-            <div class="col-6">
-                <google-chart
-                        [title]="title"
-                        [type]="type"
-                        [data]="data"
-                        [options]="options"
-                        [columnNames]="columnNames"
-                        [height]="500" (select)="onMapSelect($event)">
-                </google-chart>
-            </div>
-            <div class="col-6 flex-center" *ngIf="selectedCountry">
-                <app-stacked-column [label]="industryLabels"
-                                    [figures]="industryFigures"></app-stacked-column>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col mb-3">
-                <div></div>
-                <label for="country" class="mr-1">Countries: </label>
-                <select class="custom-select" id="country" [(ngModel)]="selectedCountry"
-                        name="selCountry" style="width:auto;" (ngModelChange)="onSelect($event)">
-                    <option disabled selected value="">Please select a country</option>
-                    <option [ngValue]="item"
-                            *ngFor="let item of countryIndustryList">{{item.country}}</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col mb-3">
-                <div></div>
-                <label for="industry" class="mr-1">Industries: </label>
-                <select class="custom-select" id="industry" [(ngModel)]="selectedIndustry"
-                        name="selIndustry" style="width:auto;" (ngModelChange)="onSelectIndustry($event)">
-                    <option disabled selected value="">Please select an industry</option>
-                    <option [ngValue]="item"
-                            *ngFor="let item of industries">{{item.name}}</option>
-                </select>
-                <!--                    <button class="btn btn-primary" [disabled]="isShowAll" (click)="showAllClicked()">Clear</button>-->
-            </div>
-        </div>
+    <div class="row">
+      <div class="col mb-3">
+        <div></div>
+        <label for="country" class="mr-1">Countries: </label>
+        <select class="custom-select" id="country" [(ngModel)]="selectedCountry"
+                name="selCountry" style="width:auto;" (ngModelChange)="onSelect($event)">
+          <option disabled selected value="">Please select a country</option>
+          <option [ngValue]="item"
+                  *ngFor="let item of countryIndustryList">{{item.country}}</option>
+        </select>
+      </div>
     </div>
+    <div class="row">
+      <div class="col mb-3">
+        <div></div>
+        <label for="industry" class="mr-1">Industries: </label>
+        <select class="custom-select" id="industry" [(ngModel)]="selectedIndustry"
+                name="selIndustry" style="width:auto;" (ngModelChange)="onSelectIndustry($event)">
+          <option disabled selected value="">Please select an industry</option>
+          <option [ngValue]="item"
+                  *ngFor="let item of industries">{{item.name}}</option>
+        </select>
+        <!--                    <button class="btn btn-primary" [disabled]="isShowAll" (click)="showAllClicked()">Clear</button>-->
+      </div>
+    </div>
+    <div class="row" *ngIf="selectedIndustry">
+      <div class="col mb-3">
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+          <thead>
+          <tr>
+            <th scope="col">Sender</th>
+            <th scope="col">Respondent</th>
+            <th scope="col">Email</th>
+            <th scope="col">Group</th>
+            <th scope="col">Country</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let surveyRespondent of respomdentSurveys">
+            <td>{{surveyRespondent.senderName}}</td>
+            <td>{{surveyRespondent.respondent.name}}</td>
+            <td>{{surveyRespondent.respondent.email}}</td>
+            <td>{{surveyRespondent.respondent.group.name}}</td>
+            <td>{{surveyRespondent.country}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
 </div>
 
