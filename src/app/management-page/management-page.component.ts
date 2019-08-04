@@ -6,10 +6,10 @@ import {Router} from '@angular/router';
 import {StakeholderService} from '../services/stakeholder.service';
 
 export enum ContentOfView {
-  ListStakeholer,
-  SendSurvey,
-  Overview,
-  Upload
+  OrganisationInfo = 'Organisation information',
+  StakeholderGroups = 'Stakeholder groups',
+  StakeholderSurvey = 'Stakeholder survey',
+  Upload = 'Upload'
 }
 
 @Component({
