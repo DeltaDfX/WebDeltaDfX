@@ -1,4 +1,4 @@
-import {Component, Injectable, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Injectable, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {SurveyService} from '../../services/survey.service';
 import {BaseChartDirective} from 'angular-bootstrap-md';
 
@@ -37,7 +37,7 @@ export class RadarChartComponent implements OnInit {
   ];
   @Input() groupIDs: any[] = [];
   @Input() quantity = 0;
-
+  @Output() issuesList = new EventEmitter();
   constructor(private surveyService: SurveyService) { }
 
   ngOnInit() {
@@ -47,22 +47,23 @@ export class RadarChartComponent implements OnInit {
   }
 
   getIssuesByGroups(groupIDs: number[]) {
-    this.surveyService.getIssuesOfGroups(groupIDs, this.quantity).subscribe( responseData => {
+    this.surveyService.getIssuesOfGroups(groupIDs, this.quantity).subscribe(responseData => {
       if (responseData != null) {
         this.chartDataset = [];
         this.chartLabels = [];
         let groups: any[];
         groups = responseData.groups;
-        groups.forEach( group => {
+        groups.forEach(group => {
           // tslint:disable-next-line:no-shadowed-variable
-          const data = group.categories.map( item => item.averageRating);
+          const data = group.categories.map(item => item.averageRating);
           this.chartDataset.push(
-              {data, label: group.groupName}
+            {data, label: group.groupName}
           );
         });
-        this.chartLabels = responseData.labels.map( label => label.toString());
+        this.chartLabels = responseData.labels.map(label => label.toString());
         console.log(this.chartLabels);
         console.log(this.chartDataset);
+        this.issuesList.emit(responseData);
       } else {
         alert('The data is not available now.');
       }

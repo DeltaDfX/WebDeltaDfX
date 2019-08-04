@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {NavbarService} from '../services/navbar.service';
 
 export enum ContentOfView {
-  LocationAndIndustry,
-  StakeholderIssues,
-  Overview,
-  Upload
+  LocationAndIndustry = 'Location And Industry',
+  StakeholderIssues = 'Stakeholder Issues',
+  MaterialIssueMatrix = 'Material Issues Matrix',
+  DataDetailsandVariables = 'Data Details and Variables'
 }
 
 @Component({

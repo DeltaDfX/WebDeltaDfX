@@ -20,6 +20,7 @@ export class ChartPageComponent implements OnInit {
     chartType = null;
     quantity = null;
     messageAlert = '';
+  listIssuesGroup;
 
     constructor(private surveyService: SurveyService, private stakeholderService: StakeholderService,
                 private radarChart: RadarChartComponent, private horizonBar: HorizontalBarChartComponent) {
@@ -65,5 +66,9 @@ export class ChartPageComponent implements OnInit {
             case 'pie':
                 break;
         }*/
+    }
+
+    returnListIssueWithGroup(data) {
+      this.listIssuesGroup = data;
     }
 }

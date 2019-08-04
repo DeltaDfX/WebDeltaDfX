@@ -34,12 +34,12 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            <label for="division">Division: </label>
-                            <select class="custom-select form-group" id="division" [(ngModel)]="industry"
-                                    (change)="selectedIndustry()" name="division">
+                            <label for="industry">Industry: </label>
+                            <select class="custom-select form-group" id="industry" [(ngModel)]="industry"
+                                    (change)="selectedIndustry()" name="industry">
                                 <option disabled selected [ngValue]="null">Please select an division</option>
-                                <option *ngFor="let division of industries"
-                                        [ngValue]="division">{{division.name}}</option>
+                                <option *ngFor="let industry of industries"
+                                        [ngValue]="industry">{{industry.name}}</option>
                             </select>
                         </div>
                     </div>

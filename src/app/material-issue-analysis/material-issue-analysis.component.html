@@ -32,9 +32,9 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
+          <a href="#">Material Issue Analysis</a>
         </li>
-        <li class="breadcrumb-item active">Overview</li>
+        <li class="breadcrumb-item active">{{contentOfView}}</li>
       </ol>
       <div [ngSwitch]="contentOfView">
         <ng-template [ngSwitchCase]="view.LocationAndIndustry">

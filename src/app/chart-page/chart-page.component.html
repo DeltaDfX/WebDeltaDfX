@@ -59,7 +59,8 @@
     <ng-template [ngSwitchCase]="'radar'">
         <app-radar-chart
                 [groupIDs]="selectedGroup"
-                [quantity]="quantity"></app-radar-chart>
+                [quantity]="quantity"
+                (issuesList)="returnListIssueWithGroup($event)"></app-radar-chart>
     </ng-template>
     <ng-template [ngSwitchCase]="'horizontalBar'">
         <app-horizontal-bar-chart [groupIDs]="selectedGroup"
@@ -69,5 +70,8 @@
         <app-pie-chart [groupIDs]="selectedGroup"
                                   [quantity]="quantity"></app-pie-chart>
     </ng-template>
+</div>
+<div *ngIf="listIssuesGroup">
+  <app-table-issue-importance [data]="listIssuesGroup"></app-table-issue-importance>
 </div>
 

@@ -1,24 +1,27 @@
 <div class="card mb-3">
   <div class="card-header">
-    <i class="fas fa-chart-area"></i>
-    Pie chart
+    <i class="fas fa-table"></i>
+    Details
   </div>
   <div class="card-body flex-center">
-    <div style="display: block; height: 400px" class="col-9 chart-container">
-      <table class="table"></table>
-      <thead>
-      <tr>
-        <th scope="col">Issue</th>
-        <th *ngFor="let group of groups">{{group.name}}</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr >
-        <td></td>
-      </tr>
-      </tbody>
+    <div style="display: block; height: auto" class="col-9 chart-container">
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <thead>
+        <tr>
+          <th scope="col">Issue</th>
+          <th *ngFor="let group of header">{{group}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let issue of issues; let i = index">
+          <td>{{issue}}</td>
+          <ng-container *ngFor="let col of colData; let j = index">
+            <td *ngIf="col.length > 0">{{col[i]}}</td>
+          </ng-container>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  <div class="card-footer small text-muted">Pie chart</div>
 </div>
 
