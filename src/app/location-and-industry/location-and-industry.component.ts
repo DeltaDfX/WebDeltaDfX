@@ -119,9 +119,4 @@ export class LocationAndIndustryComponent implements OnInit {
       this.respomdentSurveys = this.selectedIndustry.surveys;
     }
   }
-
-  mapReady() {
-    console.log('Map ready');
-    console.log(this.data);
-  }
 }
