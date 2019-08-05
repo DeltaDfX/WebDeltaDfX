@@ -40,8 +40,9 @@ export class LocationAndIndustryComponent implements OnInit {
     // Get API
     this.stakeholderService.getListCountryIndustry().subscribe((response: CountryIndustry[]) => {
       let totalRespondents = 0;
+      const temp = [];
       response.forEach(x => {
-        let countryName = ''
+        let countryName = '';
         if (x.country === '#') {
           countryName = 'Global';
           totalRespondents = x.respondents;
@@ -55,14 +56,21 @@ export class LocationAndIndustryComponent implements OnInit {
         let count = 0;
         industries.forEach(industry => count += industry.surveys.length);
         const rowData = [x.country, count / totalRespondents * 100];
-        this.data.push(rowData);
+        temp.push(rowData);
         x.country = countryName;
       });
       this.countryIndustryList = response;
+      this.data = temp;
     });
     this.title = 'Location and Industry';
     this.type = 'GeoChart';
     this.columnNames = ['Country', 'Percentage'];
+  //   this.data = [];
+  //   this.data = [
+  //     ['#', 200],
+  //   ['RU', 0],
+  //     ['AU', 400]
+  // ];
     this.setChartOptions();
   }
 
@@ -110,5 +118,10 @@ export class LocationAndIndustryComponent implements OnInit {
     if (this.selectedIndustry != null) {
       this.respomdentSurveys = this.selectedIndustry.surveys;
     }
+  }
+
+  mapReady() {
+    console.log('Map ready');
+    console.log(this.data);
   }
 }
