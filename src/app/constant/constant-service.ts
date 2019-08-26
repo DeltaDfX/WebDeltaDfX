@@ -30,8 +30,8 @@ export class ConstantService {
     GET_LIST_COUNTRIES_OF_ORGANIZATION: string
     // Contructor
     constructor() {
-        // this.API_ENDPOINT = 'http://localhost:8081/'
-        this.API_ENDPOINT = 'https://customer-survey-restapi.herokuapp.com/'
+        this.API_ENDPOINT = 'http://localhost:8081/'
+        // this.API_ENDPOINT = 'https://customer-survey-restapi.herokuapp.com/'
         this.USER = 'users';
         this.USER_AUTHENTICATION = this.API_ENDPOINT + 'login';
         this.GET_ORGANIZATIONS = this.API_ENDPOINT + 'api/organizations?country=';
