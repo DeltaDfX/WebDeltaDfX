@@ -50,7 +50,7 @@ export class SurveyPageComponent implements OnInit {
         this.surveyService.getSurvey(this.jsonData.id, this.jsonData.companyName).subscribe(data => {
             this.surveyDetail = data;
             console.log(data);
-            this.showQuestionDetails = false;
+            this.showQuestionDetails = true;
             this.surveyDetail.issues.forEach( issue => {
                 this.countItem += issue.categoryQuestion.length;
             });
