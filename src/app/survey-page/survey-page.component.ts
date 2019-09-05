@@ -53,6 +53,9 @@ export class SurveyPageComponent implements OnInit {
             this.showQuestionDetails = true;
             this.surveyDetail.issues.forEach( issue => {
                 this.countItem += issue.categoryQuestion.length;
+                issue.categoryQuestion.forEach(category => {
+                  category.questions.sort( (a, b) => a.id - b.id);
+                });
             });
         });
     }

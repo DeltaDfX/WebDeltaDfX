@@ -25,10 +25,18 @@
         <i class="fas fa-fw fa-users"></i>
         <span> Stakeholder groups</span></a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" (click)="sideBarClicked(checkType.StakeholderSurvey)">
-        <i class="fas fa-fw fa-pencil-alt"></i>
-        <span> Stakeholder survey</span></a>
+<!--    <li class="nav-item">-->
+<!--      <a class="nav-link" (click)="sideBarClicked(checkType.StakeholderSurvey)">-->
+<!--        <i class="fas fa-fw fa-pencil-alt"></i>-->
+<!--        <span> Stakeholder survey</span></a>-->
+<!--    </li>-->
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+           aria-expanded="false" id="dropdownStakeholder">Stakeholder survey</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownStakeholder">
+            <a class="dropdown-item" (click)="sideBarClicked(checkType.CreateSurvey)">Create a survey</a>
+            <a class="dropdown-item" (click)="sideBarClicked(checkType.SendSurvey)">Send a survey</a>
+        </div>
     </li>
     <!--<li class="nav-item">
         <a class="nav-link" (click)="sideBarClicked(checkType.Overview)">
@@ -56,7 +64,7 @@
         <li class="breadcrumb-item active">{{contentOfView}}</li>
       </ol>
       <app-list-stakeholder *ngIf="contentOfView==checkType.OrganisationInfo"></app-list-stakeholder>
-      <app-send-survey *ngIf="contentOfView==checkType.StakeholderSurvey"></app-send-survey>
+      <app-send-survey *ngIf="contentOfView==checkType.SendSurvey"></app-send-survey>
 <!--      <app-chart-page *ngIf="contentOfView==checkType.Overview"></app-chart-page>-->
       <app-upload-file *ngIf="contentOfView==checkType.Upload"></app-upload-file>
     </div>

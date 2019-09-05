@@ -9,6 +9,8 @@ export enum ContentOfView {
   OrganisationInfo = 'Organisation information',
   StakeholderGroups = 'Stakeholder groups',
   StakeholderSurvey = 'Stakeholder survey',
+  CreateSurvey = 'Create a survey',
+  SendSurvey = 'Send a survey',
   Upload = 'Upload'
 }
 

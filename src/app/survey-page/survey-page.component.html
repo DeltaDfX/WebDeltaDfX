@@ -53,7 +53,7 @@
                       </div>
                       <ng-template #TextInput>
                         <div class="flex-center">
-                          <input type="text" name="ratingLevel_{{question.id}}" id="Text_{{question.id}}">
+                          <input type="text" name="ratingLevel_{{question.id}}" id="Text_{{question.id}}" (keyup)="clickedRatingQuestion(question, $event.target.value)">
                         </div>
                       </ng-template>
                     </div>
