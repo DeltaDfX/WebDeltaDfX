@@ -44,7 +44,7 @@ export class CategoryFormComponent implements OnInit {
     });
   }
 
-  private get getCategory() {
+  get getCategory() {
     this.formArrayCategories = this.formCategories.get('group_categories') as FormArray;
     return this.formArrayCategories;
   }

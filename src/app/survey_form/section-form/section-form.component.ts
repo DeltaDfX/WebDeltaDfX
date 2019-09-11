@@ -24,7 +24,7 @@ export class SectionFormComponent implements OnInit {
   }
 
   /*Functionality of Section part*/
-  private get getArraySections() {
+  get getArraySections() {
     this.formArraySections = this.formSectionPart.get('group_sections') as FormArray;
     return this.formArraySections;
   }

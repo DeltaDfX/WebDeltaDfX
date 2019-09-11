@@ -25,7 +25,7 @@ export class QuestionFormComponent implements OnInit {
     });
   }
 
-  private get getQuestions() {
+  get getQuestions() {
     this.formArrayQuestions = this.formQuestion.get('formArrayQuestions') as FormArray;
     return this.formArrayQuestions;
   }
