@@ -45,6 +45,9 @@ import { LocationAndIndustryComponent } from './location-and-industry/location-a
 import { StackedColumnComponent } from './stacked-column/stacked-column.component';
 import { TableIssueImportanceComponent } from './table-issue-importance/table-issue-importance.component';
 import { CreateSurveyComponent } from './create-survey/create-survey.component';
+import { SectionFormComponent } from './survey_form/section-form/section-form.component';
+import { CategoryFormComponent } from './survey_form/category-form/category-form.component';
+import { QuestionFormComponent } from './survey_form/question-form/question-form.component';
 
 export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
     return () => service.use(['en']);
@@ -60,6 +63,7 @@ const appRoutes: Routes = [
     {path: 'management', component: ManagementPageComponent},
     {path: 'management/list-stakeholder', component: ListStakeholderComponent},
     {path: 'survey/:token', component: SurveyPageComponent},
+    {path: 'management/createSurvey', component: CreateSurveyComponent},
     {path: 'login', component: LoginPageComponent},
     {path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
@@ -92,7 +96,10 @@ const appRoutes: Routes = [
         LocationAndIndustryComponent,
         StackedColumnComponent,
         TableIssueImportanceComponent,
-        CreateSurveyComponent
+        CreateSurveyComponent,
+        SectionFormComponent,
+        CategoryFormComponent,
+        QuestionFormComponent
     ],
     imports: [
         BrowserModule,

@@ -1,0 +1,21 @@
+<div [formGroup]="formQuestion">
+  <label>Questions</label>
+  <div formArrayName="formArrayQuestions">
+    <div *ngFor="let question of getQuestions.controls; let questionIndex=index" [formGroupName]="questionIndex">
+      <div class="input-group">
+        <input type="text" class="form-control my-auto" formControlName="question">
+        <span class="input-group-append">
+                  <button class="btn btn-primary" (click)="addQuestion()"
+                          *ngIf="questionIndex == 0; else optionQuestion" type="button">
+                    <i class="fas fa-plus" type="button"></i>
+                  </button>
+                </span>
+        <ng-template #optionQuestion>
+          <button class="btn btn-danger" (click)="removeQuestion(questionIndex)">
+            <i class="fas fa-minus" type="button"></i>
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

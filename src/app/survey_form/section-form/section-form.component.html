@@ -1,0 +1,36 @@
+<div [formGroup]="formSectionPart">
+  <div class="form-group">
+    <label for="inputTitle">Title</label>
+    <input type="text" class="form-control" id="inputTitle" placeholder="" formControlName="title">
+  </div>
+  <div class="form-group">
+    <label for="inputDescription">Description</label>
+    <textarea type="text" class="form-control" id="inputDescription" placeholder="" rows="4" formControlName="description"></textarea>
+  </div>
+  <div class="form-group">
+    <label>Sections</label>
+    <!--Template section field-->
+    <div formArrayName="group_sections">
+      <div *ngFor="let controlItem of getArraySections.controls; let sectionIndex=index" >
+        <div class="input-group" [formGroupName]="sectionIndex">
+          <input type="text" class="form-control my-auto" formControlName="section">
+          <span class="input-group-append">
+                  <button class="btn btn-primary" (click)="addSection()"
+                          *ngIf="sectionIndex == 0; else optionSection" type="button">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </span>
+          <ng-template #optionSection>
+            <button class="btn btn-danger" (click)="removeSection(sectionIndex)">
+              <i class="fas fa-minus" type="button"></i>
+            </button>
+          </ng-template>
+        </div>
+      </div>
+      <small>Press <span><i class="fas fa-plus"></i></span> to add another form field</small>
+    </div>
+    <div class="form-group text-center">
+      <button type="button" class="btn btn-primary" (click)="nextStepClicked()" [disabled]="formSectionPart.invalid">Next</button>
+    </div>
+  </div>
+</div>

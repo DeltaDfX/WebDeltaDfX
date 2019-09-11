@@ -12,6 +12,7 @@ import {Receiver, SendSurveyObject} from '../JsonModel/send-survey-object';
 import {SurveyDetails} from '../model/survey-details';
 import {GroupStakeholderIssues} from '../JsonModel/group-stakeholder-issues';
 import {TopBottomIssues} from '../JsonModel/top-bottom-issues';
+import {Issue} from '../model/issue';
 
 @Injectable({
     providedIn: 'root'
@@ -62,6 +63,14 @@ export class SurveyService {
             tap(_ => console.log(`Send survey`)),
             catchError(this.handleError<boolean>(`Send survey`))
         );
+    }
+
+    createSurvey(data: any): Observable<boolean> {
+      const json = JSON.stringify(data);
+      return this.http.post<boolean>(this.constantService.CREATE_SURVEY, json).pipe(
+        tap(_ => console.log(`Create survey`)),
+        catchError(this.handleError<boolean>(`Create survey`))
+      );
     }
 
     private handleError<T>(operation = 'operation', result?: T) {

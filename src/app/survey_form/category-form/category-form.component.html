@@ -1,0 +1,70 @@
+<div [formGroup]="formCategories">
+  <h3>Sections</h3>
+  <h4>{{sections[currentSection].issue}}</h4>
+  <!--<div *ngFor="let section of sections; let sectionIndex=index">-->
+  <div formArrayName="group_categories">
+    <div class="accordion" id="accordionCategory">
+      <div class="card" *ngFor="let formCategory of getCategory.controls; let categoryIndex=index"
+           [formGroupName]="categoryIndex">
+        <div class="card-header" [id]="categoryIndex">
+          <div class="row">
+            <div class="col-11" >
+              <button class="btn btn-link" type="button" data-toggle="collapse"
+                      [attr.data-target]="'#collapse'+categoryIndex" [attr.aria-expanded]="true"
+                      [attr.aria-controls]="'#collapse'+categoryIndex">
+                {{formCategory.get('category_name').value == '' ? 'Category ' + categoryIndex: formCategory.get('category_name').value}}
+              </button>
+            </div>
+            <div class="col-1 btn-group-sm">
+              <button class="btn btn-primary -pull-right" (click)="addCategory()" *ngIf="categoryIndex == 0">
+                <i class="fas fa-plus" type="button"></i>
+              </button>
+              <button class="btn btn-danger -pull-right" (click)="removeCategory(categoryIndex)" *ngIf="categoryIndex > 0">
+                <i class="fas fa-minus" type="button"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div [id]="'collapse'+categoryIndex" class="collapse show" [attr.aria-labelledby]="categoryIndex"
+             data-parent="#accordionCategory">
+          <div class="card-body">
+            <div class="form-group">
+              <label>Title</label>
+              <input type="text" class="form-control" formControlName="category_name"
+                     id="categoryName_{{categoryIndex}}">
+            </div>
+            <div class="form-group">
+              <label>Subtitle</label>
+              <input type="text" class="form-control" formControlName="category_subTitle" placeholder="Optional">
+            </div>
+            <div class="form-group">
+              <label>Type</label>
+              <select class="custom-select form-group" formControlName="category_type" #type (ngModelChange)="isTouched = true">
+                <option disabled selected>Please select type of category</option>
+                <option name='rating' value="rating">Rating</option>
+                <option name='text' value="text">Input</option>
+              </select>
+            </div>
+            <div class="form-group" *ngIf="type.selectedOptions.namedItem('rating')">
+              <label>Scale</label>
+              <input type="number" class="form-control" formControlName="category_rating_scale">
+            </div>
+            <app-question-form #questionFormComponent></app-question-form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group flex-center mt-3">
+      <button class="btn btn-primary" (click)="nextButtonClicked()" *ngIf="currentSection < sections.length-1"
+              [disabled]="formCategories.invalid||!isTouched||questionFormComponent.formQuestion.invalid">Next</button>
+      <button class="btn btn-primary" (click)="submit()" *ngIf="currentSection == sections.length-1"
+              [disabled]="formCategories.invalid||!isTouched||questionFormComponent.formQuestion.invalid">Submit</button>
+    </div>
+    <div class="text-center">
+      <label>{{messageResult}}</label>
+      <a routerLink="management/createSurvey" class="nav-link flex-center" routerLinkActive="active">Go Back</a>
+    </div>
+  </div>
+</div>
+
