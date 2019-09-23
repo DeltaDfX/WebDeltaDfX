@@ -1,10 +1,10 @@
 import {Component, OnInit, Input, ViewChild, ElementRef} from '@angular/core';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {RegisterComponent} from '../register/register.component';
-import {UserService} from '../services/user.service';
+import {RegisterComponent} from '../../register/register.component';
+import {UserService} from '../../services/user.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {NavbarService} from '../services/navbar.service';
+import {NavbarService} from '../../services/navbar.service';
 
 @Component({
     selector: 'app-home',
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
                 private modalService: NgbModal,
                 private userService: UserService,
                 private formBuilder: FormBuilder, private nav: NavbarService) {
-        if (localStorage.getItem('currentUser') == null) {this.router.navigate(['login']); }
+        // if (localStorage.getItem('currentUser') == null) {this.router.navigate(['home']); }
         this.loginForm = formBuilder.group({
             email: new FormControl('', [Validators.required, Validators.email]),
             password: new FormControl('', Validators.required)
@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
     }
+
 
     loginOnClick(data) {
         if (this.loginForm.invalid) {

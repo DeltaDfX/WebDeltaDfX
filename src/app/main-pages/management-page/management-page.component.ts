@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { faTachometerAlt, faAddressCard, faUserPlus} from '@fortawesome/free-solid-svg-icons';
-import {ListStakeholderComponent} from '../list-stakeholder/list-stakeholder.component';
-import {NavbarService} from '../services/navbar.service';
+import {ListStakeholderComponent} from '../../list-stakeholder/list-stakeholder.component';
+import {NavbarService} from '../../services/navbar.service';
 import {Router} from '@angular/router';
-import {StakeholderService} from '../services/stakeholder.service';
+import {StakeholderService} from '../../services/stakeholder.service';
 
 export enum ContentOfView {
   OrganisationInfo = 'Organisation information',
   StakeholderGroups = 'Stakeholder groups',
-  StakeholderSurvey = 'Stakeholder survey',
+  SurveyManagement = 'Survey Management',
   CreateSurvey = 'Create a survey',
   SendSurvey = 'Send a survey',
   Upload = 'Upload'

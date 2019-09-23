@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewContainerRef} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Issue} from '../../model/issue';
 import {Category} from '../../model/category';
@@ -6,6 +6,7 @@ import {Question} from '../../model/question';
 import {QuestionFormComponent} from '../question-form/question-form.component';
 import {SurveyService} from '../../services/survey.service';
 import {Router} from '@angular/router';
+import {Survey} from '../../model/survey';
 
 @Component({
   selector: 'app-category-form',
@@ -13,11 +14,11 @@ import {Router} from '@angular/router';
   styleUrls: ['./category-form.component.scss']
 })
 export class CategoryFormComponent implements OnInit {
-  @Input() data: any;
+  @Input() data: Survey;
   @ViewChild(QuestionFormComponent)
   questionFormComponent: QuestionFormComponent;
   @Output() submittedData = new EventEmitter<boolean>();
-
+  @Input() isUpdate;
   sections: Issue [] = [];
   formCategories: FormGroup;
   formArrayCategories: FormArray;
@@ -25,13 +26,38 @@ export class CategoryFormComponent implements OnInit {
   isTouched = false;
   messageResult = '';
 
-  constructor(private formBuilder: FormBuilder, private surveyService: SurveyService) {
+  constructor(private formBuilder: FormBuilder, private surveyService: SurveyService, private route: Router) {
   }
 
   ngOnInit() {
-    this.sections = this.data.questions;
-    this.formCategories = this.formBuilder.group({
-      group_categories: this.formBuilder.array([this.createCategory()]),
+    this.sections = this.data.issues;
+    console.log(this.currentSection);
+    if (this.isUpdate) {
+      this.formCategories = this.formBuilder.group({
+        group_categories: this.loadCategory()
+      });
+    } else {
+      this.formCategories = this.formBuilder.group({
+        group_categories: this.formBuilder.array([this.createCategory()])
+      });
+    }
+  }
+
+  private loadCategory(): FormArray {
+    /*Updating data - Otherwise, creating a new one */
+    const section = this.sections[this.currentSection] as Issue;
+    return this.formBuilder.array(section.categoryQuestion.map(category => {
+        return this.createCategoryWithTitle(category);
+      }));
+  }
+
+  private createCategoryWithTitle(category: Category): FormGroup {
+    return this.formBuilder.group({
+      category_name: [category.title, Validators.required],
+      category_type: category.type,
+      category_subTitle: category.subtitle,
+      category_rating_scale: category.typeValue,
+      formQuestions: this.formBuilder.group([])
     });
   }
 
@@ -41,6 +67,7 @@ export class CategoryFormComponent implements OnInit {
       category_type: '',
       category_subTitle: '',
       category_rating_scale: '',
+      formQuestions: this.formBuilder.group([])
     });
   }
 
@@ -58,9 +85,9 @@ export class CategoryFormComponent implements OnInit {
     this.formArrayCategories.removeAt(index);
   }
 
-  private getListQuestions(): Question[]  {
+  private getListQuestions(): Question[] {
     const questions: Question[] = [];
-    this.questionFormComponent.formArrayQuestions.controls.forEach( control => {
+    this.questionFormComponent.getQuestions.controls.forEach(control => {
       questions.push(new Question(null, control.get('question').value, null));
     });
     return questions;
@@ -72,14 +99,15 @@ export class CategoryFormComponent implements OnInit {
     this.ngOnInit();
   }
 
-  submit() {
+  submitButtonClicked() {
     this.collectData();
-    this.data.questions = this.sections;
-    this.surveyService.createSurvey(this.data).subscribe( result => {
+    this.data.issues = this.sections;
+    this.surveyService.updateSurvey(this.data).subscribe(result => {
       console.log(`Result: ${result}`);
       if (result === true) {
         this.submittedData.emit(result);
-        this.messageResult = 'Created a new survey';
+        this.messageResult = 'Updated a survey';
+        this.route.navigate(['managementSurvey']);
       } else {
         this.messageResult = 'You cannot submit a new survey at the moment';
       }

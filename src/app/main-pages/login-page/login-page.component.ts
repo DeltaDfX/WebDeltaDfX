@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {RegisterComponent} from '../register/register.component';
+import {RegisterComponent} from '../../register/register.component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {UserService} from '../services/user.service';
+import {UserService} from '../../services/user.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {NavbarService} from '../services/navbar.service';
+import {NavbarService} from '../../services/navbar.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
@@ -27,7 +27,7 @@ export class LoginPageComponent implements OnInit {
                 private spinner: NgxSpinnerService) {
         nav.hide();
         if (sessionStorage.getItem('token') != null) {
-            this.router.navigate(['home']);
+            this.router.navigate(['home-page']);
         }
     }
 
@@ -48,7 +48,9 @@ export class LoginPageComponent implements OnInit {
                     );
                 }
                 localStorage.setItem('currentUser', JSON.stringify(stakeholder));
-                this.router.navigate(['home']);
+                this.router.navigate(['']).then( () => {
+                  window.location.reload();
+                });
                 return true;
             } else {
                 this.loginError = 'The email/password is not correct';

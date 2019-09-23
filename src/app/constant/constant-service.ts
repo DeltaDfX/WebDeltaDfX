@@ -29,10 +29,12 @@ export class ConstantService {
     DOWNLOAD_TEMPLATE_STAKEHOLDER_EXCEL: string
     GET_LIST_COUNTRIES_OF_ORGANIZATION: string
     CREATE_SURVEY: string;
+    DELETE_SURVEY: string;
+    UPDATE_SURVEY: string;
     // Contructor
     constructor() {
-        // this.API_ENDPOINT = 'http://localhost:8081/'
-        this.API_ENDPOINT = 'https://anton-app.herokuapp.com/'
+        this.API_ENDPOINT = 'http://localhost:8081/'
+        // this.API_ENDPOINT = 'https://anton-app.herokuapp.com/'
         this.USER = 'users';
         this.USER_AUTHENTICATION = this.API_ENDPOINT + 'login';
         this.GET_ORGANIZATIONS = this.API_ENDPOINT + 'api/organizations?country=';
@@ -58,5 +60,7 @@ export class ConstantService {
         this.DOWNLOAD_TEMPLATE_STAKEHOLDER_EXCEL = this.API_ENDPOINT + 'database/template/download/stakeholders-with-business-units.xlsx';
         this.GET_LIST_COUNTRIES_OF_ORGANIZATION = this.API_ENDPOINT + 'api/getListIndustruofAllCountries?userID=';
         this.CREATE_SURVEY = this.API_ENDPOINT + 'api/add-survey';
+        this.DELETE_SURVEY = this.API_ENDPOINT + 'api/delete-survey';
+        this.UPDATE_SURVEY = this.API_ENDPOINT + 'api/update-survey';
     }
 }

@@ -102,7 +102,6 @@ export class ListStakeholderComponent implements OnInit {
     delete(stakeholder: Stakeholder) {
         this.stakeholderService.deleteStakeholder(stakeholder).subscribe(data => {
             if (data) {
-                console.log(stakeholder);
                 this.stakeholders.splice(this.stakeholders.indexOf(stakeholder), 1);
                 alert(`Stakeholder has been deleted`);
             }

@@ -1,0 +1,41 @@
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-pen-fancy">{{title}}</i>
+  </div>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div id="table" class="table">
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+              <tr>
+                <th class="text-center">No</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Description</th>
+                <th class="text-center">Actions</th>
+              </tr>
+              <tr *ngFor="let survey of listSurveys, let surveyIndex = index">
+                <td class="pt-3-half">{{surveyIndex+1}}</td>
+                <td class="pt-3-half">{{survey.title}}</td>
+                <td class="pt-3-half">{{survey.description}}</td>
+                <td>
+                  <div class="row mx-auto">
+                    <button type="button" class="fas fa-edit" (click)="editSurvey(survey)"></button>
+                    <button type="button" class="fas fa-trash" (click)="deleteSurvey(survey)"></button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-primary" (click)="addNewSurvey()"><i class="fa fa-plus"> Add new survey</i></button>
+        </div>
+      </div>
+    </div>
+    <div class="container mt-3" #editSurveyForm>
+    </div>
+  </div>
+</div>

@@ -1,42 +1,59 @@
 <div class="content-wrapper">
-    <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top" *ngIf="nav.visible">
-        <a class="navbar-brand" href="../index.html" aria-label="Space">
-            <img class="logoBrand u-header__navbar-brand-default" src="assets/Delta_Dfx_White_Logo_With_Slogan.png" alt="Logo">
-        </a>
-        <div class="collapse navbar-collapse" id="navbarContent">
-            <ul class="navbar-nav ml-auto nav navbar-l">
-                <li class="nav-item">
-                    <a routerLink="home" class="nav-link" routerLinkActive="active"><i class="fa fa-home"></i> Home</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="material-issue-analysis" class="nav-link flex-center" routerLinkActive="active">
-                        <div class="d-flex align-items-center">
-                            <img src="assets/icon/icon-material-issue-analysis.png"
-                                 height="18" class="mr-1">Material Issue Analysis</div>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="management" class="nav-link" routerLinkActive="active">
-                        <div class="d-flex align-items-center">
-                            <img src="assets/icon/icon-data-management.png"
-                                 height="18" class="mr-1">Data Management</div></a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="reporting-portal" class="nav-link" routerLinkActive="active"><div class="d-flex align-items-center">
-                        <img src="assets/icon/icon-reporting-portal.png"
-                             height="18" class="mr-1">Reporting Portal</div></a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="faq" class="nav-link" routerLinkActive="active"><div class="d-flex align-items-center">
-                        <img src="assets/icon/icon-faqs.png"
-                             height="18" class="mr-1">FAQs</div></a>
-                </li>
-                <li class="nav-item ml-5">
-                    <button class="btn btn-outline-light btn-sm" (click)="userLogout()">Logout</button>
-                </li>
-            </ul>
+  <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top" *ngIf="nav.visible">
+    <a class="navbar-brand" href="../index.html" aria-label="Space">
+      <img class="logoBrand u-header__navbar-brand-default" src="assets/Delta_Dfx_White_Logo_With_Slogan.png"
+           alt="Logo">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav ml-auto nav navbar-l">
+        <li class="nav-item">
+          <a routerLink="home" class="nav-link" routerLinkActive="active"><i class="fa fa-home"></i> Home</a>
+        </li>
+        <li class="nav-item" *ngIf="isLogon">
+          <a routerLink="material-issue-analysis" class="nav-link flex-center" routerLinkActive="active">
+            <div class="d-flex align-items-center">
+              <img src="assets/icon/icon-material-issue-analysis.png"
+                   height="18" class="mr-1">Material Issue Analysis
+            </div>
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="isLogon">
+          <a routerLink="management" class="nav-link" routerLinkActive="active">
+            <div class="d-flex align-items-center">
+              <img src="assets/icon/icon-data-management.png"
+                   height="18" class="mr-1">Data Management
+            </div>
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="isLogon">
+          <a routerLink="reporting-portal" class="nav-link" routerLinkActive="active">
+            <div class="d-flex align-items-center">
+              <img src="assets/icon/icon-reporting-portal.png"
+                   height="18" class="mr-1">Reporting Portal
+            </div>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="faq" class="nav-link" routerLinkActive="active">
+            <div class="d-flex align-items-center">
+              <img src="assets/icon/icon-faqs.png"
+                   height="18" class="mr-1">FAQs
+            </div>
+          </a>
+        </li>
+        <div *ngIf="isLogon; else loginButton">
+          <li class="nav-item ml-5">
+            <button class="btn btn-outline-light btn-sm" (click)="userLogout()">Logout</button>
+          </li>
         </div>
-    </nav>
+        <ng-template #loginButton>
+          <li class="nav-item ml-5">
+            <button class="btn btn-outline-light btn-sm" (click)="userLogin()">Login</button>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </nav>
 </div>
 <router-outlet></router-outlet>
 

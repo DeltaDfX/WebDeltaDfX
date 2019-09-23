@@ -34,7 +34,7 @@
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
            aria-expanded="false" id="dropdownStakeholder">Stakeholder survey</a>
         <div class="dropdown-menu" aria-labelledby="dropdownStakeholder">
-            <a class="dropdown-item" (click)="sideBarClicked(checkType.CreateSurvey)">Create a survey</a>
+            <a class="dropdown-item" (click)="sideBarClicked(checkType.SurveyManagement)">Survey Management</a>
             <a class="dropdown-item" (click)="sideBarClicked(checkType.SendSurvey)">Send a survey</a>
         </div>
     </li>
@@ -65,7 +65,7 @@
       </ol>
       <app-list-stakeholder *ngIf="contentOfView==checkType.OrganisationInfo"></app-list-stakeholder>
       <app-send-survey *ngIf="contentOfView==checkType.SendSurvey"></app-send-survey>
-      <app-create-survey *ngIf="contentOfView==checkType.CreateSurvey"></app-create-survey>
+      <app-survey-main-page *ngIf="contentOfView==checkType.SurveyManagement"></app-survey-main-page>
       <app-upload-file *ngIf="contentOfView==checkType.Upload"></app-upload-file>
     </div>
   </div>

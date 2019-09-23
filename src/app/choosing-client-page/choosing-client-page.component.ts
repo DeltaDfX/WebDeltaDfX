@@ -18,7 +18,7 @@ export class ChoosingClientPageComponent implements OnInit {
     constructor(private router: Router) {}
 
     ngOnInit() {
-        this.surveys = [new Survey(1, 'Survey 1', 'Sample'),
+        /*this.surveys = [new Survey(1, 'Survey 1', 'Sample'),
             new Survey(1, 'Survey 2', 'Sample'),
             new Survey(1, 'Survey 3', 'Sample')];
         this.stakeholders = [
@@ -30,7 +30,7 @@ export class ChoosingClientPageComponent implements OnInit {
             new GroupStakeholder(6, 'Executive/Management'),
             new GroupStakeholder(7, 'Indigenous groups'),
             new GroupStakeholder(8, 'Everyone')
-        ];
+        ];*/
     }
 
     sendButtonClicked() {
