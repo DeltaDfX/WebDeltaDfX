@@ -10,10 +10,10 @@
           <a routerLink="home" class="nav-link" routerLinkActive="active"><i class="fa fa-home"></i> Home</a>
         </li>
         <li class="nav-item" *ngIf="isLogon">
-          <a routerLink="material-issue-analysis" class="nav-link flex-center" routerLinkActive="active">
+          <a routerLink="company-dashboard" class="nav-link flex-center" routerLinkActive="active">
             <div class="d-flex align-items-center">
               <img src="assets/icon/icon-material-issue-analysis.png"
-                   height="18" class="mr-1">Material Issue Analysis
+                   height="18" class="mr-1">Company Dashboards
             </div>
           </a>
         </li>
@@ -25,7 +25,7 @@
             </div>
           </a>
         </li>
-        <li class="nav-item" *ngIf="isLogon">
+        <!--<li class="nav-item" *ngIf="isLogon">
           <a routerLink="reporting-portal" class="nav-link" routerLinkActive="active">
             <div class="d-flex align-items-center">
               <img src="assets/icon/icon-reporting-portal.png"
@@ -40,7 +40,7 @@
                    height="18" class="mr-1">FAQs
             </div>
           </a>
-        </li>
+        </li>-->
         <div *ngIf="isLogon; else loginButton">
           <li class="nav-item ml-5">
             <button class="btn btn-outline-light btn-sm" (click)="userLogout()">Logout</button>

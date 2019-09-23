@@ -33,7 +33,7 @@
                 name="survey">
           <option disabled selected [ngValue]="null">Please select an survey</option>
           <option *ngFor="let survey of surveys"
-                  [ngValue]="survey">{{survey.name}}</option>
+                  [ngValue]="survey">{{survey.title}}</option>
         </select>
       </div>
       <button type="button" class="btn btn-primary pull-right" (click)="sendSurvey()">Next</button>

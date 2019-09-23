@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {NavbarService} from '../services/navbar.service';
+import {NavbarService} from '../../services/navbar.service';
 
 export enum ContentOfView {
   LocationAndIndustry = 'Location And Industry',
   StakeholderIssues = 'Stakeholder Issues',
-  MaterialIssueMatrix = 'Material Issues Matrix',
-  DataDetailsandVariables = 'Data Details and Variables'
 }
 
 @Component({
-  selector: 'app-material-issue-analysis',
-  templateUrl: './material-issue-analysis.component.html',
-  styleUrls: ['./material-issue-analysis.component.scss']
+  selector: 'app-company-dashboard',
+  templateUrl: './company-dashboard.component.html',
+  styleUrls: ['./company-dashboard.component.scss']
 })
-export class MaterialIssueAnalysisComponent implements OnInit {
+export class CompanyDashboardComponent implements OnInit {
   contentOfView: ContentOfView;
   view = ContentOfView;
 

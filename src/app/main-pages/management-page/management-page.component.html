@@ -7,14 +7,6 @@
         <span> Data Management</span>
       </a>
     </li>
-    <!--<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-           aria-expanded="false" id="dropdownStakeholder">Stakeholder</a>
-        <div class="dropdown-menu" aria-labelledby="dropdownStakeholder">
-            <a class="dropdown-item" (click)="sideBarClicked(checkType.ListStakeholer)">Update</a>
-            <a class="dropdown-item" (click)="sideBarClicked(checkType.SendSurvey)">Send Survey</a>
-        </div>
-    </li>-->
     <li class="nav-item">
       <a class="nav-link" (click)="sideBarClicked(checkType.OrganisationInfo)">
         <i class="fas fa-fw fa-pencil-alt"></i>
@@ -23,7 +15,7 @@
     <li class="nav-item">
       <a class="nav-link" (click)="sideBarClicked(checkType.StakeholderGroups)">
         <i class="fas fa-fw fa-users"></i>
-        <span> Stakeholder groups</span></a>
+        <span> Respondents</span></a>
     </li>
 <!--    <li class="nav-item">-->
 <!--      <a class="nav-link" (click)="sideBarClicked(checkType.StakeholderSurvey)">-->
@@ -32,7 +24,7 @@
 <!--    </li>-->
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-           aria-expanded="false" id="dropdownStakeholder">Stakeholder survey</a>
+           aria-expanded="false" id="dropdownStakeholder">Survey Admin</a>
         <div class="dropdown-menu" aria-labelledby="dropdownStakeholder">
             <a class="dropdown-item" (click)="sideBarClicked(checkType.SurveyManagement)">Survey Management</a>
             <a class="dropdown-item" (click)="sideBarClicked(checkType.SendSurvey)">Send a survey</a>
@@ -48,11 +40,11 @@
         <fa-icon class="fas fa-fw fa-upload"></fa-icon>
         <span>Upload</span></a>
     </li>
-    <li class="nav-item">
+    <!--<li class="nav-item">
       <a class="nav-link" (click)="downloadTemplate()">
         <fa-icon class="fas fa-fw fa-file-download"></fa-icon>
         <span>Download Template</span></a>
-    </li>
+    </li>-->
   </ul>
   <div id="content-wrapper">
     <div class="container-fluid">

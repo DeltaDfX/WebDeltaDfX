@@ -22,7 +22,7 @@ import {I18nCountrySelectModule, I18nCountrySelectService} from 'ngx-i18n-countr
 import {ChartPageComponent} from './chart-page/chart-page.component';
 import {ModalConfirmComponent} from './modal-confirm/modal-confirm.component';
 import {StakeholderFormComponent} from './stakeholder-form/stakeholder-form.component';
-import {SendSurveyComponent} from './send-survey/send-survey.component';
+import {SendSurveyComponent} from './main-pages/send-survey/send-survey.component';
 import {MyInterceptor} from './my-interceptor';
 import {MatDialogModule} from '@angular/material';
 import {ErrorDialogService} from './HandleServiceError/error-dialog.service';
@@ -38,7 +38,7 @@ import {PieChartComponent} from './chart-type/pie-chart/pie-chart.component';
 import {Utilities} from './utilities/utilities';
 import {ModalInfoComponent} from './modal-info/modal-info.component';
 import {UploadFileComponent} from './upload-file/upload-file.component';
-import {MaterialIssueAnalysisComponent} from './material-issue-analysis/material-issue-analysis.component';
+import {CompanyDashboardComponent} from './main-pages/company-dashboard/company-dashboard.component';
 import {GoogleChartsModule} from 'angular-google-charts';
 import {LocationAndIndustryComponent} from './location-and-industry/location-and-industry.component';
 import {StackedColumnComponent} from './stacked-column/stacked-column.component';
@@ -57,7 +57,7 @@ export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
 
 const appRoutes: Routes = [
   {path: 'home-page', component: HomeComponent},
-  {path: 'material-issue-analysis', component: MaterialIssueAnalysisComponent},
+  {path: 'company-dashboard', component: CompanyDashboardComponent},
   {path: 'survey-question-controller', component: SurveyQuestionControllerComponent},
   {path: 'choosing-client', component: ChoosingClientPageComponent},
   {path: 'register', component: RegisterComponent},
@@ -94,7 +94,7 @@ const appRoutes: Routes = [
     PieChartComponent,
     ModalInfoComponent,
     UploadFileComponent,
-    MaterialIssueAnalysisComponent,
+    CompanyDashboardComponent,
     LocationAndIndustryComponent,
     StackedColumnComponent,
     TableIssueImportanceComponent,

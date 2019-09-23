@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {GroupStakeholder} from '../model/group-stakeholder';
-import {StakeholderService} from '../services/stakeholder.service';
-import {Stakeholder} from '../model/stakeholder';
-import {StakeholderFormComponent} from '../stakeholder-form/stakeholder-form.component';
+import {GroupStakeholder} from '../../model/group-stakeholder';
+import {StakeholderService} from '../../services/stakeholder.service';
+import {Stakeholder} from '../../model/stakeholder';
+import {StakeholderFormComponent} from '../../stakeholder-form/stakeholder-form.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {Survey} from '../model/survey';
-import {SurveyService} from '../services/survey.service';
-import {JSGroupStakeholder} from '../JsonModel/jsgroup-stakeholder';
+import {Survey} from '../../model/survey';
+import {SurveyService} from '../../services/survey.service';
+import {JSGroupStakeholder} from '../../JsonModel/jsgroup-stakeholder';
 import {forEach} from '@angular/router/src/utils/collection';
 import {NgxSpinnerService} from 'ngx-spinner';
 
