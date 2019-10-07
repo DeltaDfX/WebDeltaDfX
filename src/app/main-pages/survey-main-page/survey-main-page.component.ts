@@ -4,6 +4,7 @@ import {SurveyService} from '../../services/survey.service';
 import {EditSurveyComponent} from '../../survey_form/edit-survey/edit-survey.component';
 import {ConfirmationDialogComponent} from '../../dialog/confirmation-dialog/confirmation-dialog.component';
 import {MatDialog} from '@angular/material';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-survey-main-page',
@@ -36,6 +37,7 @@ export class SurveyMainPageComponent implements OnInit {
     // add the component to the view
     const componentRef = this.container.createComponent(componentFactory);
     componentRef.instance.dataInput = this.survey;
+    componentRef.instance.cancelForm.subscribe(() => this.removeEditSurveyForm());
   }
 
   removeEditSurveyForm() {

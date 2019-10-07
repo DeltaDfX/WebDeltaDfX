@@ -3,22 +3,24 @@ import {UserService} from '../services/user.service';
 import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class NeedAuthGuard implements CanActivate {
 
   constructor(private userService: UserService, private router: Router) {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const redirectUrl = route['routerState']['url'];
+    const redirectUrl = route['_routerState']['url'];
 
-    if (localStorage.getItem('currentUser') != null) {
+    if (this.userService.isLogged()) {
       return true;
     }
 
     this.router.navigateByUrl(
       this.router.createUrlTree(
-        ['/login'], {
+        ['admin/login'], {
           queryParams: {
             redirectUrl
           }

@@ -1,18 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ConstantService} from '../constant/constant-service';
-import {GroupStakeholder} from '../model/group-stakeholder';
 import {Survey} from '../model/survey';
 import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import {SurveyStakeholder} from '../model/survey-stakeholder';
 import {Stakeholder} from '../model/stakeholder';
-import {forEach} from '@angular/router/src/utils/collection';
 import {Receiver, SendSurveyObject} from '../JsonModel/send-survey-object';
 import {SurveyDetails} from '../model/survey-details';
-import {GroupStakeholderIssues} from '../JsonModel/group-stakeholder-issues';
 import {TopBottomIssues} from '../JsonModel/top-bottom-issues';
-import {Issue} from '../model/issue';
+import {UserService} from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +16,8 @@ import {Issue} from '../model/issue';
 export class SurveyService {
 
   constructor(private http: HttpClient,
-              private constantService: ConstantService) {
+              private constantService: ConstantService,
+              private userService: UserService) {
   }
 
   sendSurveyToSelectedGroup(survey: Survey, receivers: Stakeholder[]): Observable<boolean> {
@@ -53,7 +50,7 @@ export class SurveyService {
   }
 
   getSurveys(): Observable<Survey[]> {
-    return this.http.get<Survey[]>(`${this.constantService.GET_LIST_SURVEYS}`).pipe(
+    return this.http.post<Survey[]>(`${this.constantService.GET_LIST_SURVEYS}`, this.userService.getTokenAuth()).pipe(
       tap(_ => console.log(`fetched list surveys`)),
       catchError(this.handleError<Survey[]>(`get list surveys`))
     );
@@ -92,7 +89,8 @@ export class SurveyService {
   }
 
   getTopBottomIssue(groupIDs: number[], quantity: number): Observable<TopBottomIssues> {
-    return this.http.get<TopBottomIssues>(this.constantService.GET_LIST_ISSUE_TOPBOTTOM + `groupID=${groupIDs}` + `&quantity=${quantity}`).pipe(
+    return this.http.get<TopBottomIssues>(this.constantService.GET_LIST_ISSUE_TOPBOTTOM + `groupID=${groupIDs}`
+      + `&quantity=${quantity}`).pipe(
       tap(_ => console.log(`Get list top bottom issue`)),
       catchError(this.handleError<TopBottomIssues>(`Get list top bottom issue`))
     );
@@ -113,14 +111,22 @@ export class SurveyService {
   }
 
   deleteSurvey(survey: Survey): Observable<boolean> {
-    return this.http.post<boolean>(this.constantService.DELETE_SURVEY, {surveyID: survey.id}).pipe(
+    const json = {
+      surveyID: survey.id,
+      auth: this.userService.getTokenAuth()
+    }
+    return this.http.post<boolean>(this.constantService.DELETE_SURVEY, json).pipe(
       tap(_ => console.log(`Get issues by group`)),
       catchError(this.handleError<any>(`Get issues by group`))
     );
   }
 
   updateSurvey(data: any): Observable<boolean> {
-    const json = JSON.stringify(data);
+    const jsonSurvey = JSON.stringify(data);
+    const json = {
+      survey: data,
+      auth: this.userService.getTokenAuth()
+    };
     return this.http.post<boolean>(this.constantService.UPDATE_SURVEY, json).pipe(
       tap(_ => console.log(`Create survey`)),
       catchError(this.handleError<boolean>(`Create survey`))

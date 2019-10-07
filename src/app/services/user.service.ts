@@ -6,17 +6,29 @@ import {Observable, of, throwError} from 'rxjs';
 import {Router} from '@angular/router';
 import {Stakeholder} from '../model/stakeholder';
 
+const TOKEN = 'currentUser';
+const TOKENAUTH = 'TOKEN';
+
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
     model: any = {};
+    isLogon: boolean;
 
     constructor(private http: HttpClient,
                 private constantService: ConstantService,
                 private router: Router) {
     }
 
+    public authenticateAdmin(email: string, password: string): Observable<string> {
+        return this.http.post<string>(this.constantService.ADMIN_AUTHENTICATE, {
+          email,
+          password
+        }).pipe(
+          catchError(this.handleError)
+        );
+    }
     public getAuthentication(email: string, password: string): Observable<Stakeholder> {
         return this.http.post<Stakeholder>(this.constantService.USER_AUTHENTICATION, {
             email,
@@ -30,6 +42,25 @@ export class UserService {
         return this.http.post<boolean>(this.constantService.SIGN_UP, data).pipe(
             catchError(this.handleError)
         );
+    }
+
+    removeToken() {
+      sessionStorage.removeItem('token');
+      localStorage.removeItem(TOKEN);
+    }
+
+    setToken(info: string, token: string): void {
+      localStorage.setItem(TOKEN, info);
+      localStorage.setItem(TOKENAUTH, token);
+    }
+
+    getTokenAuth(): string {
+      return JSON.parse(atob(localStorage.getItem(TOKENAUTH)));
+    }
+
+    public isLogged(): boolean {
+      this.isLogon =  localStorage.getItem(TOKEN) != null ? true : false;
+      return this.isLogon;
     }
 
     private handleError<T>(error: HttpErrorResponse) {

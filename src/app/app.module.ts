@@ -50,6 +50,9 @@ import {QuestionFormComponent} from './survey_form/question-form/question-form.c
 import {CanActivate} from '@angular/router/src/utils/preactivation';
 import { SurveyMainPageComponent } from './main-pages/survey-main-page/survey-main-page.component';
 import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confirmation-dialog.component';
+import { AdminMainComponent } from './admin-page/admin-main/admin-main.component';
+import { AdminLoginComponent } from './admin-page/admin-login/admin-login.component';
+import {NeedAuthGuard} from './utilities/need-auth-guard';
 
 export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
   return () => service.use(['en']);
@@ -68,6 +71,8 @@ const appRoutes: Routes = [
   {path: 'management/surveys', component: SurveyMainPageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'index', component: AppComponent},
+  {path: 'admin', component: AdminMainComponent, canActivate: [NeedAuthGuard]},
+  {path: 'admin/login', component: AdminLoginComponent},
   {path: '', redirectTo: 'home-page', pathMatch: 'full'}
 ];
 
@@ -103,7 +108,9 @@ const appRoutes: Routes = [
     CategoryFormComponent,
     QuestionFormComponent,
     SurveyMainPageComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    AdminMainComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -149,7 +156,8 @@ const appRoutes: Routes = [
       multi: true
     },
     ErrorDialogService,
-    Utilities
+    Utilities,
+    AppComponent
   ],
   bootstrap: [AppComponent],
   entryComponents: [

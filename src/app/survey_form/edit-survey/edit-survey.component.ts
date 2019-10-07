@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray} from '@angular/forms';
 import {Issue} from '../../model/issue';
 import {Survey} from '../../model/survey';
@@ -16,6 +16,7 @@ export class EditSurveyComponent implements OnInit {
   data;
   endPage = 1;
   @Input() dataInput: Survey;
+  @Output() cancelForm = new EventEmitter();
   isUpdate = false;
 
   ngOnInit() {
@@ -28,5 +29,13 @@ export class EditSurveyComponent implements OnInit {
     this.pageNum += 1;
     this.endPage = data.issues.length + 1;
     this.dataInput = data;
+  }
+
+  goBackClicked() {
+    this.pageNum -= 1;
+  }
+
+  cancelFormClicked(event) {
+    this.cancelForm.emit();
   }
 }

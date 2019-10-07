@@ -12,8 +12,8 @@
     <div class="container">
       <form role="form" autocomplete="off">
         <app-section-form *ngIf="pageNum == 1" (finishFormSections)="receivedDataSections($event)"
-                          [data]="dataInput"></app-section-form>
-        <app-category-form *ngIf="pageNum > 1 && pageNum <= endPage" [data]="dataInput" [isUpdate]="isUpdate"></app-category-form>
+                          [data]="dataInput" (cancelForm)="cancelFormClicked($event)"></app-section-form>
+        <app-category-form *ngIf="pageNum > 1 && pageNum <= endPage" [data]="dataInput" [isUpdate]="isUpdate" (cancelForm)="cancelFormClicked($event)" (goBackForm)="goBackClicked()"></app-category-form>
       </form>
     </div>
   </div>

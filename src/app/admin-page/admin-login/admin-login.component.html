@@ -1,0 +1,33 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <h1> Admin </h1>
+    <form #loginForm="ngForm" name="form" (ngSubmit)="loginOnClick()" novalidate autocomplete="off">
+      <div class="form-row">
+        <input type="email" class="form-control fadeIn second" [(ngModel)]="email" #emailInput = "ngModel"
+               placeholder="Enter your email" mdbInput mdbValidate name="email" [value]="email" required>
+        <mdb-error *ngIf="emailInput.invalid && emailInput.dirty && loginForm.submitted">Input invalid</mdb-error>
+      </div>
+      <br>
+      <div class="form-row">
+        <input type="password" class="form-control fadeIn second" placeholder="Password" id="password"
+               [(ngModel)]="password" [ngModelOptions]="{standalone: true}" [value]="password" required></div>
+      <div class="form-check fadeIn third">
+        <div class="row align-items-center">
+          <div class="col-auto mr-auto form-check">
+            <input type="checkbox" class="form-check-input" id="remember_check" [(ngModel)]="isRemember" [ngModelOptions]="{standalone: true}">
+            <label class="form-check-label" for="remember_check">Remember</label>
+          </div>
+          <!--<div class="col-auto">
+            <button class="btn btn-link text-capitalize text-primary link-color" type="button" (click)="openRegister()">Register</button>
+          </div>-->
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success btn-sm fadeIn fourth" [disabled]="loginForm.invalid">Login</button>
+    </form>
+    <div class="alert alert-primary" role="alert" *ngIf="loginError != null">
+      {{loginError}}
+    </div>
+  </div>
+</div>
+<ngx-spinner></ngx-spinner>
+

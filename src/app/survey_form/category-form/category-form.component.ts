@@ -18,6 +18,8 @@ export class CategoryFormComponent implements OnInit {
   @ViewChild(QuestionFormComponent)
   questionFormComponent: QuestionFormComponent;
   @Output() submittedData = new EventEmitter<boolean>();
+  @Output() cancelForm = new EventEmitter();
+  @Output() goBackForm = new EventEmitter();
   @Input() isUpdate;
   sections: Issue [] = [];
   formCategories: FormGroup;
@@ -107,7 +109,7 @@ export class CategoryFormComponent implements OnInit {
       if (result === true) {
         this.submittedData.emit(result);
         this.messageResult = 'Updated a survey';
-        this.route.navigate(['managementSurvey']);
+        window.location.reload();
       } else {
         this.messageResult = 'You cannot submit a new survey at the moment';
       }
@@ -120,5 +122,13 @@ export class CategoryFormComponent implements OnInit {
       item.categoryQuestion.push(new Category(null, control.get('category_name').value, this.getListQuestions(), null,
         control.get('category_subTitle').value, control.get('category_type').value, control.get('category_rating_scale').value));
     });
+  }
+
+  cancelFormCicked() {
+    this.cancelForm.emit();
+  }
+
+  goBackFormCicked() {
+    this.goBackForm.emit();
   }
 }

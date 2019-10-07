@@ -26,13 +26,13 @@ export class SendSurveyComponent implements OnInit {
   groups: JSGroupStakeholder[] = [];
   checkAll = false;
 
-  constructor(private stakeholderService: StakeholderService, private modalService: NgbModal, private surveyServiec: SurveyService, private spinner: NgxSpinnerService){ }
+  constructor(private stakeholderService: StakeholderService, private modalService: NgbModal, private surveyService: SurveyService, private spinner: NgxSpinnerService){ }
 
   ngOnInit() {
     this.stakeholderService.getGroupStakeholdersAndStakeholders().subscribe( data => {
       this.groups = data;
     });
-    this.stakeholderService.getSurveys().subscribe( data => {
+    this.surveyService.getSurveys().subscribe( data => {
       this.surveys = data;
     });
   }
@@ -67,7 +67,7 @@ export class SendSurveyComponent implements OnInit {
     }).forEach( group => {
       group.stakeholders.filter( x =>  x.isSelected === true).forEach( stakeholder => stakeholders.push(stakeholder));
     });
-    this.surveyServiec.sendSurveyToSelectedGroup(this.survey, stakeholders).subscribe( result => {
+    this.surveyService.sendSurveyToSelectedGroup(this.survey, stakeholders).subscribe( result => {
       if (result) {
         alert('Survey has been sent.');
       } else {

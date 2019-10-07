@@ -13,6 +13,7 @@ export class SectionFormComponent implements OnInit {
   formSectionPart: FormGroup;
   formArraySections: FormArray;
   @Output() finishFormSections = new EventEmitter<any>();
+  @Output() cancelForm = new EventEmitter();
   @Input() data: Survey;
 
   constructor(private formBuilder: FormBuilder) {
@@ -97,5 +98,9 @@ export class SectionFormComponent implements OnInit {
       };
       this.finishFormSections.emit(dataJson);
     }
+  }
+
+  cancelClicked() {
+    this.cancelForm.emit();
   }
 }

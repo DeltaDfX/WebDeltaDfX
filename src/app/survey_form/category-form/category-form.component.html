@@ -58,6 +58,12 @@
       </div>
     </div>
     <div class="form-group flex-center mt-3">
+      <div>
+        <button class="btn btn-primary" (click)="cancelFormCicked()">Cancel</button>
+      </div>
+      <div>
+        <button class="btn btn-primary" (click)="goBackFormCicked()">Back</button>
+      </div>
       <div *ngIf="currentSection < sections.length-1, else submit">
         <button class="btn btn-primary" (click)="nextButtonClicked()"
                 [disabled]="formCategories.invalid">Next</button>
@@ -69,7 +75,6 @@
     </div>
     <div class="text-center">
       <label>{{messageResult}}</label>
-      <a routerLink="management/createSurvey" class="nav-link flex-center" routerLinkActive="active">Go Back</a>
     </div>
   </div>
 </div>

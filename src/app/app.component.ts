@@ -1,21 +1,32 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChange,
+  SimpleChanges
+} from '@angular/core';
+import {Router, RouterStateSnapshot} from '@angular/router';
 import {NavbarService} from './services/navbar.service';
-import {Observable} from 'rxjs';
+import {UserService} from './services/user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   title = 'Home page';
-  isLogon = false;
+  @Input() isLogon;
 
-  constructor(private router: Router, public nav: NavbarService) {
+  constructor(private router: Router, public nav: NavbarService, private userService: UserService) {
   }
 
   ngOnInit(): void {
+    this.changeUserStatus();
   }
 
   userLogout() {
@@ -25,11 +36,21 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   userLogin() {
-    this.router.navigate(['login']);
+    const snapshot: RouterStateSnapshot = this.router.routerState.snapshot;
+    const redirectUrl = snapshot['url'];
+    this.router.navigateByUrl(
+      this.router.createUrlTree(
+        ['login'], {
+          queryParams: {
+            redirectUrl
+          }
+        }
+      )
+    );
   }
 
-  ngAfterViewInit(): void {
-    if (localStorage.getItem('currentUser') == null) {
+  changeUserStatus() {
+    if (!this.userService.isLogged()) {
       this.router.navigate(['home-page']);
       this.isLogon = false;
     } else {

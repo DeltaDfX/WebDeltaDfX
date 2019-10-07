@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class ConstantService {
@@ -31,6 +30,8 @@ export class ConstantService {
     CREATE_SURVEY: string;
     DELETE_SURVEY: string;
     UPDATE_SURVEY: string;
+    ADMIN_AUTHENTICATE: string;
+
     // Contructor
     constructor() {
         this.API_ENDPOINT = 'http://localhost:8081/'
@@ -62,5 +63,6 @@ export class ConstantService {
         this.CREATE_SURVEY = this.API_ENDPOINT + 'api/add-survey';
         this.DELETE_SURVEY = this.API_ENDPOINT + 'api/delete-survey';
         this.UPDATE_SURVEY = this.API_ENDPOINT + 'api/update-survey';
+        this.ADMIN_AUTHENTICATE = this.API_ENDPOINT + 'admin-login';
     }
 }
