@@ -31,11 +31,12 @@ export class ConstantService {
     DELETE_SURVEY: string;
     UPDATE_SURVEY: string;
     ADMIN_AUTHENTICATE: string;
+    GET_INDUSTRIES: string;
 
     // Contructor
     constructor() {
-        this.API_ENDPOINT = 'http://localhost:8081/'
-        // this.API_ENDPOINT = 'https://anton-app.herokuapp.com/'
+        // this.API_ENDPOINT = 'http://localhost:8081/'
+        this.API_ENDPOINT = 'https://anton-app.herokuapp.com/'
         this.USER = 'users';
         this.USER_AUTHENTICATION = this.API_ENDPOINT + 'login';
         this.GET_ORGANIZATIONS = this.API_ENDPOINT + 'api/organizations?country=';
@@ -64,5 +65,6 @@ export class ConstantService {
         this.DELETE_SURVEY = this.API_ENDPOINT + 'api/delete-survey';
         this.UPDATE_SURVEY = this.API_ENDPOINT + 'api/update-survey';
         this.ADMIN_AUTHENTICATE = this.API_ENDPOINT + 'admin-login';
+        this.GET_INDUSTRIES = this.API_ENDPOINT + 'api/getIndustries';
     }
 }

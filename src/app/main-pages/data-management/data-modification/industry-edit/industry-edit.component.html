@@ -1,0 +1,29 @@
+<div class="form-inline">
+  <div class="p-2">
+    <div class="row p-2">
+      <label id="industry-description" for="industry-input">Industry:</label>
+      <input type="text" id="industry-input" aria-describedby="industry-description">
+    </div>
+  </div>
+  <div class="d-inline-flex p-2 flex-column">
+    <button class="btn btn-outline-primary btn-sm">Add</button>
+  </div>
+</div>
+<div id="table" class="table">
+  <table class="table table-bordered table-responsive-md table-striped text-center">
+    <tr>
+      <th class="text-center">Name</th>
+      <th class="text-center">Actions</th>
+    </tr>
+    <tr *ngFor="let industry of industries, let surveyIndex = index">
+      <td class="pt-3-half">{{industry.name}}</td>
+      <td>
+        <div class="row mx-auto">
+          <button type="button" class="fas fa-edit" (click)="editSurvey(industry)"></button>
+          <button type="button" class="fas fa-trash" (click)="deleteSurvey(industry)"></button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+

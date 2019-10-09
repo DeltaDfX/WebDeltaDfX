@@ -1,27 +1,27 @@
 <div class="content-wrapper">
   <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top" *ngIf="nav.visible">
-    <a class="navbar-brand" href="../index.html" aria-label="Space">
+    <a class="navbar-brand" href="/home-page" aria-label="Space">
       <img class="logoBrand u-header__navbar-brand-default" src="assets/Delta_Dfx_White_Logo_With_Slogan.png"
            alt="Logo">
     </a>
     <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav ml-auto nav navbar-l">
         <li class="nav-item">
-          <a routerLink="home" class="nav-link" routerLinkActive="active"><i class="fa fa-home"></i> Home</a>
-        </li>
-        <li class="nav-item" *ngIf="isLogon">
-          <a routerLink="company-dashboard" class="nav-link flex-center" routerLinkActive="active">
-            <div class="d-flex align-items-center">
-              <img src="assets/icon/icon-material-issue-analysis.png"
-                   height="18" class="mr-1">Company Dashboards
-            </div>
-          </a>
+          <a routerLink="home-page" class="nav-link" routerLinkActive="active"><i class="fa fa-home"></i> Home</a>
         </li>
         <li class="nav-item" *ngIf="isLogon">
           <a routerLink="management" class="nav-link" routerLinkActive="active">
             <div class="d-flex align-items-center">
               <img src="assets/icon/icon-data-management.png"
                    height="18" class="mr-1">Data Management
+            </div>
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="isLogon">
+          <a routerLink="company-dashboard" class="nav-link flex-center" routerLinkActive="active">
+            <div class="d-flex align-items-center">
+              <img src="assets/icon/icon-material-issue-analysis.png"
+                   height="18" class="mr-1">Company Dashboards
             </div>
           </a>
         </li>

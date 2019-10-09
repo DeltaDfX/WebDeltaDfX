@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, ViewChild, ElementRef} from '@angular/core';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {RegisterComponent} from '../../register/register.component';
+import {RegisterComponent} from '../register/register.component';
 import {UserService} from '../../services/user.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {NavbarService} from '../../services/navbar.service';

@@ -5,54 +5,53 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './main-pages/home-page/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {SurveyQuestionControllerComponent} from './survey-question-controller/survey-question-controller.component';
-import {ChoosingClientPageComponent} from './choosing-client-page/choosing-client-page.component';
 import {MatListModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {RegisterComponent} from './register/register.component';
+import {RegisterComponent} from './main-pages/register/register.component';
 import {ConstantService} from './constant/constant-service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DropdownModule, InputsModule, InputUtilitiesModule} from 'angular-bootstrap-md';
-import {AddNewEmployeeComponent} from './add-new-employee/add-new-employee.component';
-import {ManagementPageComponent} from './main-pages/management-page/management-page.component';
+import {ManagementPageComponent} from './main-pages/data-management/management-page/management-page.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
-import {ListStakeholderComponent} from './list-stakeholder/list-stakeholder.component';
+import {ListStakeholderComponent} from './main-pages/data-management/organisation-information/list-stakeholder/list-stakeholder.component';
 import {I18nCountrySelectModule, I18nCountrySelectService} from 'ngx-i18n-country-select';
-import {ChartPageComponent} from './chart-page/chart-page.component';
-import {ModalConfirmComponent} from './modal-confirm/modal-confirm.component';
-import {StakeholderFormComponent} from './stakeholder-form/stakeholder-form.component';
-import {SendSurveyComponent} from './main-pages/send-survey/send-survey.component';
+import {ChartPageComponent} from './main-pages/dashboard/infographics/charts/chart-page/chart-page.component';
+import {ModalConfirmComponent} from './modal-views/modal-confirm/modal-confirm.component';
+import {StakeholderFormComponent} from './modal-views/stakeholder-form/stakeholder-form.component';
+import {SendSurveyComponent} from './main-pages/data-management/survey/send-survey/send-survey.component';
 import {MyInterceptor} from './my-interceptor';
 import {MatDialogModule} from '@angular/material';
-import {ErrorDialogService} from './HandleServiceError/error-dialog.service';
-import {SurveyPageComponent} from './main-pages/survey-page/survey-page.component';
+import {ErrorDialogService} from './services/HandleServiceError/error-dialog.service';
+import {SurveyPageComponent} from './main-pages/data-management/survey/survey-page/survey-page.component';
 import {OverviewPageComponent} from './main-pages/overview-page/overview-page.component';
 import {LoginPageComponent} from './main-pages/login-page/login-page.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {MatCheckboxModule} from '@angular/material';
-import {RadarChartComponent} from './chart-type/radar-chart/radar-chart.component';
-import {HorizontalBarChartComponent} from './chart-type/horizontal-bar-chart/horizontal-bar-chart.component';
-import {PieChartComponent} from './chart-type/pie-chart/pie-chart.component';
+import {RadarChartComponent} from './main-pages/dashboard/infographics/charts/chart-type/radar-chart/radar-chart.component';
+import {HorizontalBarChartComponent} from './main-pages/dashboard/infographics/charts/chart-type/horizontal-bar-chart/horizontal-bar-chart.component';
+import {PieChartComponent} from './main-pages/dashboard/infographics/charts/chart-type/pie-chart/pie-chart.component';
 import {Utilities} from './utilities/utilities';
-import {ModalInfoComponent} from './modal-info/modal-info.component';
-import {UploadFileComponent} from './upload-file/upload-file.component';
+import {ModalInfoComponent} from './modal-views/modal-info/modal-info.component';
+import {UploadFileComponent} from './main-pages/data-management/upload-file/upload-file.component';
 import {CompanyDashboardComponent} from './main-pages/company-dashboard/company-dashboard.component';
 import {GoogleChartsModule} from 'angular-google-charts';
-import {LocationAndIndustryComponent} from './location-and-industry/location-and-industry.component';
-import {StackedColumnComponent} from './stacked-column/stacked-column.component';
-import {TableIssueImportanceComponent} from './table-issue-importance/table-issue-importance.component';
-import {EditSurveyComponent} from './survey_form/edit-survey/edit-survey.component';
-import {SectionFormComponent} from './survey_form/section-form/section-form.component';
-import {CategoryFormComponent} from './survey_form/category-form/category-form.component';
-import {QuestionFormComponent} from './survey_form/question-form/question-form.component';
-import {CanActivate} from '@angular/router/src/utils/preactivation';
-import { SurveyMainPageComponent } from './main-pages/survey-main-page/survey-main-page.component';
-import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confirmation-dialog.component';
-import { AdminMainComponent } from './admin-page/admin-main/admin-main.component';
-import { AdminLoginComponent } from './admin-page/admin-login/admin-login.component';
+import {LocationAndIndustryComponent} from './main-pages/dashboard/RegionIndustry/location-and-industry/location-and-industry.component';
+import {StackedColumnComponent} from './main-pages/dashboard/RegionIndustry/stacked-column/stacked-column.component';
+import {TableIssueImportanceComponent} from './main-pages/dashboard/infographics/table-issue-importance/table-issue-importance.component';
+import {EditSurveyComponent} from './main-pages/data-management/survey/survey_form/edit-survey/edit-survey.component';
+import {SectionFormComponent} from './main-pages/data-management/survey/survey_form/section-form/section-form.component';
+import {CategoryFormComponent} from './main-pages/data-management/survey/survey_form/category-form/category-form.component';
+import {QuestionFormComponent} from './main-pages/data-management/survey/survey_form/question-form/question-form.component';
+import {SurveyMainPageComponent} from './main-pages/data-management/survey/survey-main-page/survey-main-page.component';
+import {ConfirmationDialogComponent} from './modal-views/dialog/confirmation-dialog/confirmation-dialog.component';
+import {AdminMainComponent} from './main-pages/admin/admin-main/admin-main.component';
+import {AdminLoginComponent} from './main-pages/admin/admin-login/admin-login.component';
 import {NeedAuthGuard} from './utilities/need-auth-guard';
+import {DataModificationMainComponent} from './main-pages/data-management/data-modification/data-modification-main/data-modification-main.component';
+import { IndustryEditComponent } from './main-pages/data-management/data-modification/industry-edit/industry-edit.component';
+import { OrganisationEditComponent } from './main-pages/data-management/data-modification/organisation-edit/organisation-edit.component';
 
 export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
   return () => service.use(['en']);
@@ -61,8 +60,6 @@ export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
 const appRoutes: Routes = [
   {path: 'home-page', component: HomeComponent},
   {path: 'company-dashboard', component: CompanyDashboardComponent},
-  {path: 'survey-question-controller', component: SurveyQuestionControllerComponent},
-  {path: 'choosing-client', component: ChoosingClientPageComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'management', component: ManagementPageComponent},
   {path: 'management/list-stakeholder', component: ListStakeholderComponent},
@@ -81,10 +78,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    SurveyQuestionControllerComponent,
-    ChoosingClientPageComponent,
     RegisterComponent,
-    AddNewEmployeeComponent,
     ManagementPageComponent,
     ListStakeholderComponent,
     ChartPageComponent,
@@ -110,7 +104,10 @@ const appRoutes: Routes = [
     SurveyMainPageComponent,
     ConfirmationDialogComponent,
     AdminMainComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    DataModificationMainComponent,
+    IndustryEditComponent,
+    OrganisationEditComponent
   ],
   imports: [
     BrowserModule,

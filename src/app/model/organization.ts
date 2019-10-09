@@ -1,5 +1,4 @@
 import {Industry} from './industry';
-import {forEach} from '@angular/router/src/utils/collection';
 
 export class Organization {
     id: number;

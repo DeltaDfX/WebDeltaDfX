@@ -1,0 +1,37 @@
+<div class="form-inline">
+  <div class="form-group">
+    <label for="country">Country: </label>
+    <select class="custom-select" id="country" [ngModel]="selectedCountry"
+            (ngModelChange)="selectCountry($event)" name="selCountry">
+      <option disabled selected [ngValue]="null">Please select a country</option>
+      <option [ngValue]="item.key"
+              *ngFor="let item of countries|keyvalue">{{item.value}}</option>
+    </select>
+  </div>
+  <div class="p-2">
+    <div class="row p-2">
+      <label id="organisation-description" for="organisation-input">Organisation:</label>
+      <input type="text" id="organisation-input" aria-describedby="organisation-description">
+    </div>
+  </div>
+  <div class="d-inline-flex p-2 flex-column">
+    <button class="btn btn-outline-primary btn-sm">Add</button>
+  </div>
+</div>
+<div id="table" class="table">
+  <table class="table table-bordered table-responsive-md table-striped text-center">
+    <tr>
+      <th class="text-center">Name</th>
+      <th class="text-center">Actions</th>
+    </tr>
+    <tr *ngFor="let organisation of organisations, let surveyIndex = index">
+      <td class="pt-3-half">{{organisation.name}}</td>
+      <td>
+        <div class="row mx-auto">
+          <button type="button" class="fas fa-edit" (click)="editOrganisation(organisation)"></button>
+          <button type="button" class="fas fa-trash" (click)="deleteOrganisation(organisation)"></button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

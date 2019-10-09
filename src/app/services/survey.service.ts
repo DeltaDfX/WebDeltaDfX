@@ -5,9 +5,9 @@ import {Survey} from '../model/survey';
 import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import {Stakeholder} from '../model/stakeholder';
-import {Receiver, SendSurveyObject} from '../JsonModel/send-survey-object';
+import {Receiver, SendSurveyObject} from '../response-model/send-survey-object';
 import {SurveyDetails} from '../model/survey-details';
-import {TopBottomIssues} from '../JsonModel/top-bottom-issues';
+import {TopBottomIssues} from '../response-model/top-bottom-issues';
 import {UserService} from './user.service';
 
 @Injectable({
