@@ -63,6 +63,10 @@ export class UserService {
       return this.isLogon;
     }
 
+    getUserInfo() {
+      return JSON.parse(localStorage.getItem(TOKEN));
+    }
+
     private handleError<T>(error: HttpErrorResponse) {
         if (error.error instanceof ErrorEvent) {
             // A client-side or network error occurred. Handle it accordingly.

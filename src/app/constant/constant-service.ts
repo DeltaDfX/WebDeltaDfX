@@ -25,8 +25,8 @@ export class ConstantService {
     GET_ISSUES: string;
     SIGN_UP: string;
     UPLOAD_STAKEHOLDERLIST: string;
-    DOWNLOAD_TEMPLATE_STAKEHOLDER_EXCEL: string
-    GET_LIST_COUNTRIES_OF_ORGANIZATION: string
+    DOWNLOAD_TEMPLATE_STAKEHOLDER_EXCEL: string;
+    GET_LIST_COUNTRIES_OF_ORGANIZATION: string;
     CREATE_SURVEY: string;
     DELETE_SURVEY: string;
     UPDATE_SURVEY: string;
@@ -35,8 +35,8 @@ export class ConstantService {
 
     // Contructor
     constructor() {
-        // this.API_ENDPOINT = 'http://localhost:8081/'
-        this.API_ENDPOINT = 'https://anton-app.herokuapp.com/'
+        // this.API_ENDPOINT = 'http://localhost:8081/';
+        this.API_ENDPOINT = 'https://anton-app.herokuapp.com/';
         this.USER = 'users';
         this.USER_AUTHENTICATION = this.API_ENDPOINT + 'login';
         this.GET_ORGANIZATIONS = this.API_ENDPOINT + 'api/organizations?country=';

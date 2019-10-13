@@ -5,7 +5,101 @@
   </div>
   <div class="card-body">
     <div class="container">
-      <table class="table">
+      <div class="row">
+        <!--Manager section-->
+        <div class="col-md-6">
+          <div class="col-md-12">
+            <div class="row justify-content-center">
+              <label style="font-size: 24px;" class="font-weight-bold">Manager</label>
+            </div>
+            <div class="row align-self-center p-2">
+              <div class="col col-10">
+                <label for="uploadManager" class="my-auto">Upload List</label>
+              </div>
+              <div class="col col-2">
+                <button class="fas fa-edit align-middle" type="button" id="uploadManager"></button>
+              </div>
+            </div>
+            <div class="row align-self-center p-2">
+              <div class="col col-10">
+                <label for="manual-entry-manager" class="my-auto">Manual Entry</label>
+              </div>
+              <div class="col col-2">
+                <button class="fas fa-edit align-middle" type="button" id="manual-entry-manager"
+                        (click)="manualEntry(groupType.Manager)"></button>
+              </div>
+            </div>
+            <div class="row align-self-center p-2">
+              <div class="col col-10">
+                <label for="view-list-manager" class="my-auto">View List</label>
+              </div>
+              <div class="col col-2">
+                <button class="fas fa-edit align-middle" type="button" id="view-list-manager"
+                        (click)="viewList(groupType.Manager)"></button>
+              </div>
+            </div>
+            <div class="row">
+              <label for="survey-manager">Select survey: </label>
+              <select class="custom-select form-group" id="survey-manager" [(ngModel)]="surveyManager"
+                      name="survey">
+                <option disabled selected [ngValue]="null">Please select a survey</option>
+                <option *ngFor="let survey of surveys"
+                        [ngValue]="survey">{{survey.title}}</option>
+              </select>
+            </div>
+            <div class="row justify-content-center">
+              <button type="button" class="btn btn-primary pull-right" style="width: 200px!important;" (click)="sendSurvey(groupType.Manager)">Next</button>
+            </div>
+          </div>
+        </div>
+        <!--Employee section-->
+        <div class="col-md-6">
+          <div class="col-md-12">
+            <div class="row justify-content-center">
+              <label style="font-size: 24px;" class="font-weight-bold">Employee</label>
+            </div>
+            <div class="row align-self-center p-2">
+              <div class="col col-10">
+                <label for="uploadEmployee" class="my-auto">Upload List</label>
+              </div>
+              <div class="col col-2">
+                <button class="fas fa-edit align-middle" type="button" id="uploadEmployee"></button>
+              </div>
+            </div>
+            <div class="row align-self-center p-2">
+              <div class="col col-10">
+                <label for="manual-entry-employee" class="my-auto">Manual Entry</label>
+              </div>
+              <div class="col col-2">
+                <button class="fas fa-edit align-middle" type="button" id="manual-entry-employee"
+                        (click)="manualEntry(groupType.Employee)"></button>
+              </div>
+            </div>
+            <div class="row align-self-center p-2">
+              <div class="col col-10">
+                <label for="view-list-employee" class="my-auto">View List</label>
+              </div>
+              <div class="col col-2">
+                <button class="fas fa-edit align-middle" type="button" id="view-list-employee"
+                        (click)="viewList(groupType.Employee)"></button>
+              </div>
+            </div>
+            <div class="row">
+              <label for="survey-employee">Select survey: </label>
+              <select class="custom-select form-group" id="survey-employee" [(ngModel)]="surveyEmployee"
+                      name="survey">
+                <option disabled selected [ngValue]="null">Please select a survey</option>
+                <option *ngFor="let survey of surveys"
+                        [ngValue]="survey">{{survey.title}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <button type="button" class="btn btn-primary pull-right" style="width: 200px!important;" (click)="sendSurvey(groupType.Employee)">Next</button>
+          </div>
+          </div>
+      </div>
+      <!--<table class="table">
         <thead>
         <tr>
           <th>#</th>
@@ -26,8 +120,8 @@
             </td>
           </tr>
         </tbody>
-      </table>
-      <div>
+      </table>-->
+      <!--<div>
         <label for="survey">Select survey: </label>
         <select class="custom-select form-group" id="survey" [(ngModel)]="survey"
                 name="survey">
@@ -36,7 +130,7 @@
                   [ngValue]="survey">{{survey.title}}</option>
         </select>
       </div>
-      <button type="button" class="btn btn-primary pull-right" (click)="sendSurvey()">Next</button>
+      <button type="button" class="btn btn-primary pull-right" (click)="sendSurvey()">Next</button>-->
     </div>
   </div>
   <div class="card-body">
@@ -79,7 +173,6 @@
             </tr>
           </table>
         </div>
-
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal" (click) = "hide()">Close</button>
