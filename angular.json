@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "WebAppCLI": {
+    "WebDeltaDfX": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/WebAppCLI",
+            "outputPath": "dist/WebDeltaDfX",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -78,18 +78,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "WebAppCLI:build"
+            "browserTarget": "WebDeltaDfX:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "WebAppCLI:build:production"
+              "browserTarget": "WebDeltaDfX:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "WebAppCLI:build"
+            "browserTarget": "WebDeltaDfX:build"
           }
         },
         "test": {
@@ -123,7 +123,7 @@
         }
       }
     },
-    "WebAppCLI-e2e": {
+    "WebDeltaDfX-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -132,11 +132,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "WebAppCLI:serve"
+            "devServerTarget": "WebDeltaDfX:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "WebAppCLI:serve:production"
+              "devServerTarget": "WebDeltaDfX:serve:production"
             }
           }
         },
@@ -152,7 +152,7 @@
       }
     }
   },
-  "defaultProject": "WebAppCLI",
+  "defaultProject": "WebDeltaDfX",
   "schematics": {
     "@schematics/angular:component": {
       "styleext": "scss"
