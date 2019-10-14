@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faTachometerAlt, faAddressCard, faUserPlus} from '@fortawesome/free-solid-svg-icons';
 import {ListStakeholderComponent} from '../organisation-information/list-stakeholder/list-stakeholder.component';
 import {NavbarService} from '../../../services/navbar.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {StakeholderService} from '../../../services/stakeholder.service';
 
 export enum ContentOfView {
@@ -24,7 +24,8 @@ export class ManagementPageComponent implements OnInit {
   contentOfView;
   checkType = ContentOfView;
 
-  constructor(private nav: NavbarService, private router: Router, private stakeholderService: StakeholderService) {
+  constructor(private nav: NavbarService, private router: Router, private stakeholderService: StakeholderService, private activateRoute: ActivatedRoute) {
+    this.contentOfView = this.activateRoute.snapshot.paramMap.get('view');
     if (localStorage.getItem('currentUser') == null) {this.router.navigate(['login']); }
     nav.show();
   }

@@ -50,8 +50,8 @@ import {AdminMainComponent} from './main-pages/admin/admin-main/admin-main.compo
 import {AdminLoginComponent} from './main-pages/admin/admin-login/admin-login.component';
 import {NeedAuthGuard} from './utilities/need-auth-guard';
 import {DataModificationMainComponent} from './main-pages/data-management/data-modification/data-modification-main/data-modification-main.component';
-import { IndustryEditComponent } from './main-pages/data-management/data-modification/industry-edit/industry-edit.component';
-import { OrganisationEditComponent } from './main-pages/data-management/data-modification/organisation-edit/organisation-edit.component';
+import {IndustryEditComponent} from './main-pages/data-management/data-modification/industry-edit/industry-edit.component';
+import {OrganisationEditComponent} from './main-pages/data-management/data-modification/organisation-edit/organisation-edit.component';
 
 export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
   return () => service.use(['en']);
@@ -61,6 +61,7 @@ const appRoutes: Routes = [
   {path: 'home-page', component: HomeComponent},
   {path: 'company-dashboard', component: CompanyDashboardComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'management/:view', component: ManagementPageComponent},
   {path: 'management', component: ManagementPageComponent},
   {path: 'management/list-stakeholder', component: ListStakeholderComponent},
   {path: 'survey/:token', component: SurveyPageComponent},

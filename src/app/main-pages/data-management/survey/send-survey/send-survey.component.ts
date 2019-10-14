@@ -64,7 +64,6 @@ export class SendSurveyComponent implements OnInit {
     this.showModal = false;
   }
 
-
   manualEntry(grouptype: GroupType) {
     this.isSelectedGroup = grouptype;
     const modalRef = this.modalService.open(StakeholderFormComponent, {centered: true});

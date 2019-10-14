@@ -1,89 +1,70 @@
 <div class="row mt-5" ng-controller="homeCtrl">
-    <div class="container-fluid align-items-center mr-3 ml-3">
-        <div class="row">
-            <div class="col-8 border border-info mx-auto">
-                <h1>Title</h1>
-                <h6>What is Lorem Ipsum?
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                    type and
-                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the
-                    leap
-                    into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
-                    with the
-                    release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                    publishing
-                    software like Aldus PageMaker including versions of Lorem Ipsum.
-
-                    Why do we use it?
-                    It is a long established fact that a reader will be distracted by the readable content of a page
-                    when
-                    looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                    distribution
-                    of letters, as opposed to using 'Content here, content here', making it look like readable
-                    English. Many
-                    desktop publishing packages and web page editors now use Lorem Ipsum as their default model
-                    text, and a
-                    search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions
-                    have
-                    evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the
-                    like).
-
-
-                    Where does it come from?
-                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-                    classical
-                    Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin
-                    professor at
-                    Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur,
-                    from a
-                    Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered
-                    the
-                    undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum
-                    et
-                    Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on
-                    the
-                    theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem
-                    ipsum dolor
-                    sit amet..", comes from a line in section 1.10.32.
-
-                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
-                    Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced
-                    in their
-                    exact original form, accompanied by English versions from the 1914 translation by H.
-                    Rackham.</h6>
-            </div>
-            <!--<div class="col container-fluid border border-info p-3 mr-3">
-                <form [formGroup]="loginForm" (ngSubmit)="loginOnClick(loginForm.value)">
-                    <div class="alert alert-primary" role="alert" *ngIf="loginError != null">
-                        {{loginError}}
-                    </div>
-                    <div class="form-group">
-                        <label>Email: </label>
-                        <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp"
-                               placeholder="Enter your email">
-                        <small id="emailHelp" class="form-text text-muted">name@example.com</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" placeholder="Password" id="password"
-                               formControlName="password" required></div>
-                    <div class="form-check">
-                        <div class="row align-items-center">
-                            <div class="col-auto mr-auto form-check">
-                                <input type="checkbox" class="form-check-input" id="remember_check">
-                                <label class="form-check-label" for="remember_check">Remember</label>
-                            </div>
-                            <div class="col-auto">
-                                <button class="btn btn-link" type="button" (click)="open()">Register</button>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </form>
-            </div>-->
+  <div class="container-fluid align-items-center mr-3 ml-3">
+    <div class="row" id="top-homepage">
+      <div class="col-10 mx-auto">
+        <div class="row justify-content-center">
+          <div class="col-8 align-items-center text-center">
+            <h2>Welcome to the DeltaDFX platform, your first step in creating a more <br> innovative and
+              entrepreneurial organisation.</h2>
+          </div>
         </div>
+        <div class="row mt-5 justify-content-center">
+          <div class="col-7 align-items-center text-center">
+            <h3 class="font-italic light-font" style="font-family: 'Source Sans Pro', sans-serif; color: #7F7F7F">
+              Three sequential steps are outlined below in starting your journey! <br> Click the interactive icons to
+              continue.</h3>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="row justify-content-center mt-5" id="content-homepage">
+      <div class="col-8">
+        <div class="row">
+          <div class="col-4 align-items-center p-4">
+            <div class="row justify-content-center">
+              <a type="button" class="border-0" href="/register">
+                <img src="assets/icon/register-homepage-button.png" height="150" width="150"/>
+              </a>
+            </div>
+            <div class="row justify-content-center mt-2">
+              <h4 class="text-center font-italic" style="font-family: 'Source Sans Pro', sans-serif;">1. Register
+                participants</h4>
+              <h6 class="text-center font-italic">Register participants to be involved – Who do you want the surveys to
+                be sent
+                to?</h6>
+            </div>
+          </div>
+          <div class="col-4 align-items-center p-4">
+            <div class="row justify-content-center">
+              <a type="button" class="border-0" [routerLink]="['/management', contentViewOfManagementEnum.SendSurvey]">
+                <img src="assets/icon/send-survey-homepage-button.png" height="150" width="150"/>
+              </a>
+            </div>
+            <div class="row justify-content-center mt-2">
+              <h4 class="text-center font-italic" style="font-family: 'Source Sans Pro', sans-serif;">2. Send
+                survey</h4>
+              <h6 class="text-center font-italic">Confirm participants and send surveys – begin collecting the
+                information you need
+                to make decisions!</h6>
+            </div>
+          </div>
+          <div class="col-4 align-items-center p-4">
+            <div class="row justify-content-center">
+              <a type="button" class="border-0" [routerLink]="['/company-dashboard']">
+                <img src="assets/icon/company-dashboard-homepage-button.png" height="150" width="150"/>
+              </a>
+            </div>
+            <div class="row justify-content-center mt-2">
+              <h4 class="text-center font-italic" style="font-family: 'Source Sans Pro', sans-serif;">3. Company
+                Dashboard</h4>
+              <h6 class="text-center font-italic">See the results from your surveys – What is your current performance
+                and where do you need to focus?
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 

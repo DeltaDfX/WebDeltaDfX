@@ -5,11 +5,12 @@ import {RegisterComponent} from '../register/register.component';
 import {UserService} from '../../services/user.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {NavbarService} from '../../services/navbar.service';
+import {ContentOfView} from '../data-management/management-page/management-page.component';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+    styleUrls: ['./home.component.scss']
 })
 
 export class HomeComponent implements OnInit {
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
     email;
     password;
     loginError;
+    contentViewOfManagementEnum = ContentOfView;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
