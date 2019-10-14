@@ -70,10 +70,12 @@ export class SendSurveyComponent implements OnInit {
     modalRef.componentInstance.title = 'Add New Stakeholder';
     modalRef.componentInstance.groupType = grouptype;
     modalRef.result.then(result => {
-      if (grouptype === GroupType.Manager) {
-        this.managerStakeholders.push(result);
-      } else {
-        this.employeeStakeholders.push(result);
+      if (result != null) {
+        if (grouptype === GroupType.Manager) {
+          this.managerStakeholders.push(result);
+        } else {
+          this.employeeStakeholders.push(result);
+        }
       }
     });
   }

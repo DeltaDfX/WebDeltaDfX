@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --base-href https://deltadfx.github.io/WebDeltaDfX/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "deploy": "ngh --dir=dist/WebDeltaDfX --no-silent",
     "postinstall": "ng build --aot --prod"
   },
   "private": false,

@@ -62,7 +62,9 @@ export class LoginPageComponent implements OnInit {
       } else {
         this.loginError = 'The email/password is not correct';
       }
-    });
+    }, (error => {
+      this.spinner.hide();
+    }));
   }
 
   openRegister() {
