@@ -46,7 +46,7 @@
           <div class="col-md-12">
             <select class="custom-select" id="country" [ngModel]="selectedCountry"
                     (ngModelChange)="onSelectCountry($event)" name="selCountry">
-              <option disabled selected [ngValue]="null">Please select a country</option>
+              <option disabled selected [ngValue]="null">Select country</option>
               <option [ngValue]="item.key"
                       *ngFor="let item of countries|keyvalue">{{item.value}}</option>
             </select>
@@ -56,7 +56,7 @@
           <div class="col-md-12">
             <select class="custom-select form-group" id="industry" [(ngModel)]="selectedIndustry"
                     (change)="onSelectIndustry($event)" name="industry">
-              <option disabled selected [ngValue]="null">Please select a industry</option>
+              <option disabled selected [ngValue]="null">Select industry</option>
               <option *ngFor="let industry of industries"
                       [ngValue]="industry">{{industry.name}}</option>
             </select>
