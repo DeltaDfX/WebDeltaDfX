@@ -31,4 +31,14 @@ export class SentSurveyListStakeholdersComponent implements OnInit {
       this.stakeholders[index] = result;
     });
   }
+
+  delete(stakeholder: Stakeholder) {
+    this.stakeholderService.deleteStakeholder(stakeholder).subscribe(data => {
+      if (data) {
+        this.stakeholders.splice(this.stakeholders.indexOf(stakeholder), 1);
+        alert(`Stakeholder has been deleted`);
+      }
+      console.log((this.stakeholders));
+    });
+  }
 }
