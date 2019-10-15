@@ -1,0 +1,42 @@
+<div class="modal modal-wide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     style="display: block">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Group Stakeholder</h4>
+        <button type="button" class="close" data-dismiss="modal" (click) = "hide()">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Group</th>
+            <th class="text-center">Select</th>
+            <th class="text-center">Edit</th>
+          </tr>
+          <tr *ngFor="let stakeholder of stakeholders">
+            <td class="pt-3-half">{{stakeholder.id}}</td>
+            <td class="pt-3-half">{{stakeholder.name}}</td>
+            <td class="pt-3-half">{{stakeholder.email}}</td>
+            <td class="pt-3-half">{{stakeholder.group.name}}</td>
+            <td>
+              <input type="checkbox" [checked]="stakeholder.isSelected" value="{{stakeholder.isSelected}}"
+                     [(ngModel)]="stakeholder.isSelected">
+            </td>
+            <td>
+              <button type="button" class="fas fa-edit" (click)="edit(stakeholder)"></button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click) = "hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

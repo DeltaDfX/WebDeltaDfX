@@ -1,0 +1,102 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 border">
+      <div class="nav flex-column nav-pills my-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active custom-navs" id="innovativeness-tab" data-toggle="pill" href="#innovativeness"
+           role="tab"
+           aria-controls="innovativeness" aria-selected="true">Innovativeness</a>
+        <a class="nav-link custom-navs" id="riskTaking-tab" data-toggle="pill" href="#riskTaking" role="tab"
+           aria-controls="riskTaking" aria-selected="false">Risk-taking</a>
+        <a class="nav-link custom-navs" id="proActiveness-tab" data-toggle="pill" href="#proActiveness" role="tab"
+           aria-controls="proActiveness" aria-selected="false">Pro-activeness</a>
+        <a class="nav-link custom-navs" id="leadership-tab" data-toggle="pill" href="#leadership" role="tab"
+           aria-controls="leadership" aria-selected="false">Leadership</a>
+        <a class="nav-link custom-navs" id="industryEnvironment-tab" data-toggle="pill" href="#industryEnvironment"
+           role="tab"
+           aria-controls="industryEnvironment" aria-selected="false">Industry environment</a>
+        <a class="nav-link custom-navs" id="innovationStrategy-tab" data-toggle="pill" href="#innovationStrategy"
+           role="tab"
+           aria-controls="innovationStrategy" aria-selected="false">Innovation strategy</a>
+        <a class="nav-link custom-navs" id="innovationProcess-tab" data-toggle="pill" href="#innovationProcess"
+           role="tab"
+           aria-controls="innovationProcess" aria-selected="false">Innovation process</a>
+        <a class="nav-link custom-navs" id="innovationTools-tab" data-toggle="pill" href="#innovationTools" role="tab"
+           aria-controls="innovationTools" aria-selected="false">Innovation tools</a>
+        <a class="nav-link custom-navs" id="dynamicInnovationCapability-tab" data-toggle="pill"
+           href="#dynamicInnovationCapability" role="tab"
+           aria-controls="dynamicInnovationCapability" aria-selected="false">Dynamic innovation capability</a>
+        <a class="nav-link custom-navs" id="openInnovation-tab" data-toggle="pill" href="#openInnovation" role="tab"
+           aria-controls="openInnovation" aria-selected="false">Open innovation</a>
+        <a class="nav-link custom-navs" id="frequencyOfEntrepreneurship-tab" data-toggle="pill"
+           href="#frequencyOfEntrepreneurship" role="tab"
+           aria-controls="frequencyOfEntrepreneurship" aria-selected="false">Frequency of entrepreneurship</a>
+        <a class="nav-link custom-navs" id="degreeOfEntrepreneurship-tab" data-toggle="pill"
+           href="#degreeOfEntrepreneurship"
+           role="tab"
+           aria-controls="degreeOfEntrepreneurship" aria-selected="false">Degree of entrepreneurship</a>
+        <a class="nav-link custom-navs" id="entrepreneurialIntensity-tab" data-toggle="pill"
+           href="#entrepreneurialIntensity"
+           role="tab"
+           aria-controls="entrepreneurialIntensity" aria-selected="false">Entrepreneurial intensity</a>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row justify-content-center">
+        <div class="col">
+          <div class="col-md-12">
+            <select class="custom-select" id="country" [ngModel]="selectedCountry"
+                    (ngModelChange)="onSelectCountry($event)" name="selCountry">
+              <option disabled selected [ngValue]="null">Please select a country</option>
+              <option [ngValue]="item.key"
+                      *ngFor="let item of countries|keyvalue">{{item.value}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-md-12">
+            <select class="custom-select form-group" id="industry" [(ngModel)]="selectedIndustry"
+                    (change)="onSelectIndustry($event)" name="industry">
+              <option disabled selected [ngValue]="null">Please select a industry</option>
+              <option *ngFor="let industry of industries"
+                      [ngValue]="industry">{{industry.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-form-label">
+                <label for="input-size">Size: </label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="input-size">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="form-check form-check-inline px-5">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radarChart" value="radarChart">
+          <label class="form-check-label" for="radarChart">Radar Chart</label>
+        </div>
+        <div class="form-check form-check-inline px-5">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="barChart" value="barChart">
+          <label class="form-check-label" for="barChart">Bar Chart</label>
+        </div>
+        <div class="form-check form-check-inline px-5">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="pieChart" value="pieChart">
+          <label class="form-check-label" for="pieChart">Pie Chart</label>
+        </div>
+      </div>
+      <hr>
+      <div class="row justify-content-center">
+        <span>Result</span>
+      </div>
+      <hr>
+      <div class="row justify-content-center">
+        <span>Footer Content</span>
+      </div>
+    </div>
+  </div>
+</div>

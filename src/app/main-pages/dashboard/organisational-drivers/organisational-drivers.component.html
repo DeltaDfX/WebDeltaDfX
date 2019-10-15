@@ -1,0 +1,79 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 border">
+      <div class="nav flex-column nav-pills my-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active custom-navs" id="organisationalBoundaries-tab" data-toggle="pill"
+           href="#organisationalBoundaries" role="tab" aria-controls="organisationalBoundaries" aria-selected="true">Organisational
+          boundaries</a>
+        <a class="nav-link custom-navs" id="timeAvailability-tab" data-toggle="pill" href="#timeAvailability" role="tab"
+           aria-controls="timeAvailability" aria-selected="false">Time availability</a>
+        <a class="nav-link custom-navs" id="rewardReinforcement-tab" data-toggle="pill" href="#rewardReinforcement"
+           role="tab"
+           aria-controls="rewardReinforcement" aria-selected="false">Rewards/reinforcement</a>
+        <a class="nav-link custom-navs" id="managementSupport-tab" data-toggle="pill" href="#managementSupport"
+           role="tab"
+           aria-controls="managementSupport" aria-selected="false">Management support</a>
+        <a class="nav-link custom-navs" id="workDiscretion-tab" data-toggle="pill" href="#workDiscretion"
+           role="tab" aria-controls="workDiscretion" aria-selected="false">Work discretion</a>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row justify-content-center">
+        <div class="col">
+          <div class="col-md-12">
+            <select class="custom-select" id="country" [ngModel]="selectedCountry"
+                    (ngModelChange)="onSelectCountry($event)" name="selCountry">
+              <option disabled selected [ngValue]="null">Please select a country</option>
+              <option [ngValue]="item.key"
+                      *ngFor="let item of countries|keyvalue">{{item.value}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-md-12">
+            <select class="custom-select form-group" id="industry" [(ngModel)]="selectedIndustry"
+                    (change)="onSelectIndustry($event)" name="industry">
+              <option disabled selected [ngValue]="null">Please select a industry</option>
+              <option *ngFor="let industry of industries"
+                      [ngValue]="industry">{{industry.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-form-label">
+                <label for="input-size">Size: </label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="input-size">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="form-check form-check-inline px-5">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radarChart" value="radarChart">
+          <label class="form-check-label" for="radarChart">Radar Chart</label>
+        </div>
+        <div class="form-check form-check-inline px-5">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="barChart" value="barChart">
+          <label class="form-check-label" for="barChart">Bar Chart</label>
+        </div>
+        <div class="form-check form-check-inline px-5">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="pieChart" value="pieChart">
+          <label class="form-check-label" for="pieChart">Pie Chart</label>
+        </div>
+      </div>
+      <hr>
+      <div class="row justify-content-center">
+        <span>Result</span>
+      </div>
+      <hr>
+      <div class="row justify-content-center">
+        <span>Footer Content</span>
+      </div>
+    </div>
+  </div>
+</div>

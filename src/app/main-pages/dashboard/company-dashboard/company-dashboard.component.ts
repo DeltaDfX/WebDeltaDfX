@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {NavbarService} from '../../services/navbar.service';
+import {NavbarService} from '../../../services/navbar.service';
 import {ActivatedRoute} from '@angular/router';
 
 export enum ContentOfView {
   LocationAndIndustry = 'Location And Industry',
   StakeholderIssues = 'Stakeholder Issues',
+  CorporateSnapshot = 'Corporate Snapshot',
+  OrganisationalDrivers = 'Organisational Driver'
 }
 
 @Component({
@@ -17,6 +19,7 @@ export class CompanyDashboardComponent implements OnInit {
   view = ContentOfView;
 
   constructor(private nav: NavbarService, private activateRoute: ActivatedRoute) {
+    this.contentOfView = ContentOfView.CorporateSnapshot;
     nav.show();
   }
 

@@ -23,7 +23,7 @@
                         <td>{{group.name}}</td>
                         <td><input type="checkbox" name="selectGroup" [defaultChecked]="group.isChecked"
                                    value="{{group.isChecked}}" [(ngModel)]="group.isChecked"
-                                   (change)="toggleVisibility(group, $event)"></td>
+                                   (change)="toggleVisibility(group)"></td>
                     </tr>
                     </tbody>
                 </table>

@@ -1,4 +1,4 @@
-x`<div id="wrapper">
+<div id="wrapper">
   <!-- Sidebar -->
   <ul class="sidebar navbar-nav">
     <li class="nav-item active">
@@ -11,12 +11,12 @@ x`<div id="wrapper">
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link" aria-haspopup="true"
-         aria-expanded="false" (click)="sideBarClicked(view.LocationAndIndustry)">
-        <span>Region and Industry</span></a>
+         aria-expanded="false" (click)="sideBarClicked(view.CorporateSnapshot)">
+        <span>Corporate Snapshot</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" (click)="sideBarClicked(view.StakeholderIssues)">
-        <span>Infographics</span></a>
+      <a class="nav-link" (click)="sideBarClicked(view.OrganisationalDrivers)">
+        <span>Organisational Drivers</span></a>
     </li>
   </ul>
   <div id="content-wrapper">
@@ -33,7 +33,13 @@ x`<div id="wrapper">
           <app-location-and-industry></app-location-and-industry>
         </ng-template>
         <ng-template [ngSwitchCase]="view.StakeholderIssues">
-          <app-chart-page *ngIf="contentOfView==view.StakeholderIssues"></app-chart-page>
+          <app-chart-page></app-chart-page>
+        </ng-template>
+        <ng-template [ngSwitchCase]="view.OrganisationalDrivers">
+          <app-organisational-drivers></app-organisational-drivers>
+        </ng-template>
+        <ng-template [ngSwitchCase]="view.CorporateSnapshot">
+          <app-coporate-snapshot></app-coporate-snapshot>
         </ng-template>
       </div>
     </div>

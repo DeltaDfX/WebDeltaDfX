@@ -8,6 +8,7 @@ import {Survey} from '../../../../model/survey';
 import {SurveyService} from '../../../../services/survey.service';
 import {JSGroupStakeholder} from '../../../../response-model/jsgroup-stakeholder';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {SentSurveyListStakeholdersComponent} from '../../../../modal-views/sent-survey-list-stakeholders/sent-survey-list-stakeholders.component';
 
 export enum GroupType {
   Manager = 'Manager',
@@ -87,18 +88,8 @@ export class SendSurveyComponent implements OnInit {
     } else {
       this.stakeholders = this.employeeStakeholders;
     }
-    this.showModal = true;
-
-  }
-
-  edit(stakeholder: Stakeholder) {
-    const modalRef = this.modalService.open(StakeholderFormComponent, {centered: true});
-    modalRef.componentInstance.stakeholder = stakeholder;
-    modalRef.componentInstance.title = 'Edit The Information';
-    modalRef.result.then(result => {
-      const index = this.stakeholders.indexOf(stakeholder);
-      this.stakeholders[index] = result;
-    });
+    const modalListStakeholder = this.modalService.open(SentSurveyListStakeholdersComponent, {centered: true});
+    modalListStakeholder.componentInstance.stakeholders = this.stakeholders;
   }
 
   sendSurvey(groupType: GroupType) {

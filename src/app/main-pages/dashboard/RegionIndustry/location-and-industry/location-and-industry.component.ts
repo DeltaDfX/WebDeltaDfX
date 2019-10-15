@@ -27,8 +27,9 @@ export class LocationAndIndustryComponent implements OnInit {
   countryIndustryList: CountryIndustry[] = [];
   industries: IndustrySurvey[] = [];
   industryChartData = [];
-  respomdentSurveys: SurveyRespondent[];
+  respondentSurveys: SurveyRespondent[];
   rerender = false;
+
   @ViewChild('stackedColumn', {static: false}) industryCanvas: StackedColumnComponent;
 
   constructor(private stakeholderService: StakeholderService, private cdRef: ChangeDetectorRef) {
@@ -116,7 +117,7 @@ export class LocationAndIndustryComponent implements OnInit {
 
   onSelectIndustry(event) {
     if (this.selectedIndustry != null) {
-      this.respomdentSurveys = this.selectedIndustry.surveys;
+      this.respondentSurveys = this.selectedIndustry.surveys;
     }
   }
 }

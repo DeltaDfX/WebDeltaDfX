@@ -35,7 +35,7 @@ import {PieChartComponent} from './main-pages/dashboard/infographics/charts/char
 import {Utilities} from './utilities/utilities';
 import {ModalInfoComponent} from './modal-views/modal-info/modal-info.component';
 import {UploadFileComponent} from './main-pages/data-management/upload-file/upload-file.component';
-import {CompanyDashboardComponent} from './main-pages/company-dashboard/company-dashboard.component';
+import {CompanyDashboardComponent} from './main-pages/dashboard/company-dashboard/company-dashboard.component';
 import {GoogleChartsModule} from 'angular-google-charts';
 import {LocationAndIndustryComponent} from './main-pages/dashboard/RegionIndustry/location-and-industry/location-and-industry.component';
 import {StackedColumnComponent} from './main-pages/dashboard/RegionIndustry/stacked-column/stacked-column.component';
@@ -52,6 +52,9 @@ import {NeedAuthGuard} from './utilities/need-auth-guard';
 import {DataModificationMainComponent} from './main-pages/data-management/data-modification/data-modification-main/data-modification-main.component';
 import {IndustryEditComponent} from './main-pages/data-management/data-modification/industry-edit/industry-edit.component';
 import {OrganisationEditComponent} from './main-pages/data-management/data-modification/organisation-edit/organisation-edit.component';
+import { CoporateSnapshotComponent } from './main-pages/dashboard/coporate-snapshot/coporate-snapshot.component';
+import { OrganisationalDriversComponent } from './main-pages/dashboard/organisational-drivers/organisational-drivers.component';
+import { SentSurveyListStakeholdersComponent } from './modal-views/sent-survey-list-stakeholders/sent-survey-list-stakeholders.component';
 
 export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
   return () => service.use(['en']);
@@ -108,7 +111,10 @@ const appRoutes: Routes = [
     AdminLoginComponent,
     DataModificationMainComponent,
     IndustryEditComponent,
-    OrganisationEditComponent
+    OrganisationEditComponent,
+    CoporateSnapshotComponent,
+    OrganisationalDriversComponent,
+    SentSurveyListStakeholdersComponent
   ],
   imports: [
     BrowserModule,
@@ -162,7 +168,8 @@ const appRoutes: Routes = [
     StakeholderFormComponent,
     ModalInfoComponent,
     UploadFileComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    SentSurveyListStakeholdersComponent
   ]
 })
 export class AppModule {
