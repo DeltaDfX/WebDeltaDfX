@@ -9,6 +9,7 @@ import {isDeepStrictEqual} from 'util';
 import {deepEqual, notDeepStrictEqual} from 'assert';
 import {UserService} from '../../services/user.service';
 import {GroupType} from '../../main-pages/data-management/survey/send-survey/send-survey.component';
+import {ResponseObject} from '../../response-model/response-object';
 
 @Component({
   selector: 'app-stakeholder-form',
@@ -27,7 +28,7 @@ export class StakeholderFormComponent implements OnInit {
   isEdit = false;
   oldValue: Stakeholder;
   groupStakeholder: GroupStakeholder[] = [];
-
+  messageError = '';
   constructor(private stakeholderService: StakeholderService, public activeModal: NgbActiveModal, private formBuilder: FormBuilder,
               private userService: UserService) {
   }
@@ -89,13 +90,15 @@ export class StakeholderFormComponent implements OnInit {
       // Add new stakeholder to the business unit of sender
       const sender: Stakeholder = this.userService.getUserInfo();
       this.stakeholder.businessUnit = sender.businessUnit;
-      this.stakeholderService.insertStakeholder(this.stakeholder).subscribe((object: Stakeholder) => {
-        if (object) {
+      this.stakeholderService.insertStakeholder(this.stakeholder).subscribe(object => {
+        if (object.email !== undefined ) {
           object.isSelected = true;
           console.log(`Stakeholder ${this.stakeholder.id} is inserted now.`);
           this.activeModal.close(object);
         } else {
           alert('The stakeholder is not inserted to database');
+          const response = Object.create(object) as ResponseObject;
+          this.messageError = response.message;
         }
       });
     }

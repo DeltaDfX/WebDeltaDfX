@@ -42,13 +42,15 @@
               <label for="survey-manager">Select survey: </label>
               <select class="custom-select form-group" id="survey-manager" [(ngModel)]="surveyManager"
                       name="survey">
-                <option disabled selected [ngValue]="null">Please select a survey</option>
+                <option disabled selected [ngValue]="null">Select survey</option>
                 <option *ngFor="let survey of surveys"
                         [ngValue]="survey">{{survey.title}}</option>
               </select>
             </div>
             <div class="row justify-content-center">
-              <button type="button" class="btn btn-primary pull-right" style="width: 200px!important;" (click)="sendSurvey(groupType.Manager)">Next</button>
+              <button type="button" class="btn btn-primary pull-right" style="width: 200px!important;"
+                      (click)="sendSurvey(groupType.Manager)">Send
+              </button>
             </div>
           </div>
         </div>
@@ -88,16 +90,18 @@
               <label for="survey-employee">Select survey: </label>
               <select class="custom-select form-group" id="survey-employee" [(ngModel)]="surveyEmployee"
                       name="survey">
-                <option disabled selected [ngValue]="null">Please select a survey</option>
+                <option disabled selected [ngValue]="null">Select survey</option>
                 <option *ngFor="let survey of surveys"
                         [ngValue]="survey">{{survey.title}}</option>
               </select>
             </div>
           </div>
           <div class="row justify-content-center">
-            <button type="button" class="btn btn-primary pull-right" style="width: 200px!important;" (click)="sendSurvey(groupType.Employee)">Next</button>
+            <button type="button" class="btn btn-primary pull-right" style="width: 200px!important;"
+                    (click)="sendSurvey(groupType.Employee)">Send
+            </button>
           </div>
-          </div>
+        </div>
       </div>
       <!--<table class="table">
         <thead>
@@ -182,9 +186,9 @@
   </div>-->
 </div>
 <ngx-spinner
-        bdColor="rgba(51,51,51,0.8)"
-        size="medium"
-        color="#fff"
-        type="ball-scale-multiple">
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple">
   <p style="font-size: 20px; color: white">Sending...</p>
 </ngx-spinner>

@@ -7,21 +7,21 @@
     <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav ml-auto nav navbar-l">
         <li class="nav-item">
-          <a routerLink="home-page" class="nav-link" routerLinkActive="active"><i class="fa fa-home"></i> Home</a>
+          <a routerLink="home-page" class="nav-link" routerLinkActive="active"><i class="fa fa-home" style="font-size: 1.2em"></i> Home</a>
         </li>
         <li class="nav-item" *ngIf="isLogon">
           <a routerLink="management" class="nav-link" routerLinkActive="active">
             <div class="d-flex align-items-center">
               <img src="assets/icon/icon-data-management.png"
-                   height="18" class="mr-1">Data Management
+                   height="20px" class="mr-1">Data Management
             </div>
           </a>
         </li>
         <li class="nav-item" *ngIf="isLogon">
           <a routerLink="company-dashboard" class="nav-link flex-center" routerLinkActive="active">
             <div class="d-flex align-items-center">
-              <img src="assets/icon/icon-material-issue-analysis.png"
-                   height="18" class="mr-1">Company Dashboards
+              <img src="assets/icon/company-dashboard-homepage-button.png"
+                   height="20px" class="mr-1">Company Dashboards
             </div>
           </a>
         </li>
