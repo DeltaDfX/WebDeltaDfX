@@ -9,6 +9,7 @@ import {SurveyService} from '../../../../services/survey.service';
 import {JSGroupStakeholder} from '../../../../response-model/jsgroup-stakeholder';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {SentSurveyListStakeholdersComponent} from '../../../../modal-views/sent-survey-list-stakeholders/sent-survey-list-stakeholders.component';
+import {SurveyTypeEnum} from '../../../../enums/survey-type-enum.enum';
 
 export enum GroupType {
   Manager = 'Manager',
@@ -28,7 +29,8 @@ export class SendSurveyComponent implements OnInit {
   groupStakeholder: GroupStakeholder[] = [];
   surveyManager: Survey;
   surveyEmployee: Survey;
-  surveys: Survey[] = [];
+  managerSurveys: Survey[] = [];
+  employeeSurveys: Survey[] = [];
   groups: JSGroupStakeholder[] = [];
   groupType = GroupType;
   stakeholders: Stakeholder[] = [];
@@ -40,7 +42,13 @@ export class SendSurveyComponent implements OnInit {
 
   ngOnInit() {
     this.surveyService.getSurveys().subscribe(data => {
-      this.surveys = data;
+      data.forEach(survey => {
+        if (survey.type === SurveyTypeEnum.Manager) {
+          this.managerSurveys.push(survey);
+        } else {
+          this.employeeSurveys.push(survey);
+        }
+      });
     });
     this.stakeholderService.getGroupStakeholdersAndStakeholders().subscribe(data => {
       this.groups = data;

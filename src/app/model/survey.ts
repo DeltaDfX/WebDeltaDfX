@@ -5,6 +5,7 @@ export class Survey {
     title: string;
     description: string;
     issues: Issue[];
+    type: string;
 
     constructor(id: number, name: string, description: string, issues: Issue[]) {
         this.id = id;

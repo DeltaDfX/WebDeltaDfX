@@ -43,7 +43,7 @@
               <select class="custom-select form-group" id="survey-manager" [(ngModel)]="surveyManager"
                       name="survey">
                 <option disabled selected [ngValue]="null">Select survey</option>
-                <option *ngFor="let survey of surveys"
+                <option *ngFor="let survey of managerSurveys"
                         [ngValue]="survey">{{survey.title}}</option>
               </select>
             </div>
@@ -91,7 +91,7 @@
               <select class="custom-select form-group" id="survey-employee" [(ngModel)]="surveyEmployee"
                       name="survey">
                 <option disabled selected [ngValue]="null">Select survey</option>
-                <option *ngFor="let survey of surveys"
+                <option *ngFor="let survey of employeeSurveys"
                         [ngValue]="survey">{{survey.title}}</option>
               </select>
             </div>
