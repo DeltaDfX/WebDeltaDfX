@@ -18,7 +18,8 @@ export class OrganisationalDriversComponent implements OnInit {
 
   ngOnInit() {
     i18nIsoCountries.registerLocale(require('i18n-iso-countries/langs/en.json'));
-    this.countries = i18nIsoCountries.getNames('en');
+    // this.countries = i18nIsoCountries.getNames('en');
+    this.countries = ['Global', 'Australia', 'Canada', 'New Zealand', 'United Kingdom', 'USA'];
     this.stakeholderService.getIndustries().subscribe( industries => this.industries = industries );
   }
 
