@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.changeUserStatus();
+    // this.changeUserStatus();
   }
 
   userLogout() {

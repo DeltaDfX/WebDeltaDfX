@@ -32,6 +32,7 @@ export class SurveyPageComponent implements OnInit {
 
   constructor(private nav: NavbarService, private route: ActivatedRoute, private surveyService: SurveyService,
               private spinner: NgxSpinnerService) {
+    console.log("Loading survey data.......");
   }
 
   ngOnInit() {

@@ -20,7 +20,7 @@ export class NeedAuthGuard implements CanActivate {
 
     this.router.navigateByUrl(
       this.router.createUrlTree(
-        ['admin/login'], {
+        ['/login'], {
           queryParams: {
             redirectUrl
           }
