@@ -55,6 +55,7 @@ import {OrganisationEditComponent} from './main-pages/data-management/data-modif
 import { CoporateSnapshotComponent } from './main-pages/dashboard/coporate-snapshot/coporate-snapshot.component';
 import { OrganisationalDriversComponent } from './main-pages/dashboard/organisational-drivers/organisational-drivers.component';
 import { SentSurveyListStakeholdersComponent } from './modal-views/sent-survey-list-stakeholders/sent-survey-list-stakeholders.component';
+import { ResultContentViewComponent } from './main-pages/dashboard/result-content-view/result-content-view.component';
 
 export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
   return () => service.use(['en']);
@@ -114,7 +115,8 @@ const appRoutes: Routes = [
     OrganisationEditComponent,
     CoporateSnapshotComponent,
     OrganisationalDriversComponent,
-    SentSurveyListStakeholdersComponent
+    SentSurveyListStakeholdersComponent,
+    ResultContentViewComponent
   ],
   imports: [
     BrowserModule,

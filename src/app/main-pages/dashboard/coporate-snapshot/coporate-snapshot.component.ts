@@ -15,6 +15,7 @@ export class CoporateSnapshotComponent implements OnInit {
   selectedIndustry = null;
   countries: any;
   industries: Industry[];
+  construct = null;
 
   constructor(private stakeholderService: StakeholderService) {
   }
@@ -26,8 +27,8 @@ export class CoporateSnapshotComponent implements OnInit {
     this.stakeholderService.getIndustries().subscribe(industries => this.industries = industries);
   }
 
-  onSelectCountry(event) {
-
+  onClickedConstructor(value) {
+    this.construct = value;
   }
 
   onSelectIndustry(event) {

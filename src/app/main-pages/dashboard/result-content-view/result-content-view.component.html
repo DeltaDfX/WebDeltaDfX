@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col">
+      <div class="col-md-12">
+        <select class="custom-select" id="country" [(ngModel)]="selectedCountry"
+                (change)="onSelectCountry($event)" name="selCountry">
+          <option disabled selected [ngValue]="null">Select country</option>
+          <option *ngFor="let item of countries" [ngValue]="item">{{item}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col">
+      <div class="col-md-12">
+        <select class="custom-select form-group" id="industry" [(ngModel)]="selectedIndustry"
+                (change)="onSelectIndustry($event)" name="industry">
+          <option disabled selected [ngValue]="null">Select industry</option>
+          <option *ngFor="let industry of industries"
+                  [ngValue]="industry">{{industry.name}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="form-check form-check-inline px-5">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radarChart" value="radar" [(ngModel)]="chartType">
+      <label class="form-check-label" for="radarChart">Radar Chart</label>
+    </div>
+    <div class="form-check form-check-inline px-5">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="barChart" value="bar" [(ngModel)]="chartType">
+      <label class="form-check-label" for="barChart">Bar Chart</label>
+    </div>
+    <div class="form-check form-check-inline px-5">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="pieChart" value="pie" [(ngModel)]="chartType">
+      <label class="form-check-label" for="pieChart">Pie Chart</label>
+    </div>
+  </div>
+  <div class="row justify-content-center pt-3">
+    <button class="btn btn-sm btn-outline-primary" (click)="getResult()">Get Result</button>
+  </div>
+  <hr>
+  <div class="row justify-content-center">
+      <div class="col-md-8" *ngIf="dataSet.length > 0">
+        <canvas mdbChart
+                [chartType]="chartType"
+                [datasets]="dataSet"
+                [labels]="labels"
+                [colors]="barColors"
+                [options]="chartOptions"
+                [legend]="true"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)">
+        </canvas>
+      </div>
+  </div>
+  <div class="row mt-4" *ngFor="let question of questions">
+    <div class="d-inline-block">
+      <label>{{question.name}} : </label>
+      <label>{{question.description}}</label>
+    </div>
+  </div>
+  <hr>
+  <div class="row justify-content-center">
+    <span>Footer Content</span>
+  </div>

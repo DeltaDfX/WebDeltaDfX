@@ -132,4 +132,11 @@ export class SurveyService {
       catchError(this.handleError<boolean>(`Create survey`))
     );
   }
+
+  getResult(construct: string, country: string, industry: string): Observable<any> {
+    return this.http.post<any>(this.constantService.GET_RESULT, { construct, country, industry}).pipe(
+      tap(_ => console.log(`Get results`)),
+      catchError(this.handleError<any>(`Get results`))
+    );
+  }
 }

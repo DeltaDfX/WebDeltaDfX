@@ -32,6 +32,7 @@ export class ConstantService {
     UPDATE_SURVEY: string;
     ADMIN_AUTHENTICATE: string;
     GET_INDUSTRIES: string;
+    GET_RESULT: string;
 
     // Contructor
     constructor() {
@@ -66,5 +67,6 @@ export class ConstantService {
         this.UPDATE_SURVEY = this.API_ENDPOINT + 'api/update-survey';
         this.ADMIN_AUTHENTICATE = this.API_ENDPOINT + 'admin-login';
         this.GET_INDUSTRIES = this.API_ENDPOINT + 'api/getIndustries';
+        this.GET_RESULT = this.API_ENDPOINT + 'api/getResult';
     }
 }
