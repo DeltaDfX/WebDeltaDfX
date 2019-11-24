@@ -22,15 +22,18 @@
   </div>
   <div class="row justify-content-center">
     <div class="form-check form-check-inline px-5">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radarChart" value="radar" [(ngModel)]="chartType">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radarChart" value="radar"
+             [(ngModel)]="chartType">
       <label class="form-check-label" for="radarChart">Radar Chart</label>
     </div>
     <div class="form-check form-check-inline px-5">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="barChart" value="bar" [(ngModel)]="chartType">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="barChart" value="bar"
+             [(ngModel)]="chartType">
       <label class="form-check-label" for="barChart">Bar Chart</label>
     </div>
     <div class="form-check form-check-inline px-5">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="pieChart" value="pie" [(ngModel)]="chartType">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="pieChart" value="pie"
+             [(ngModel)]="chartType">
       <label class="form-check-label" for="pieChart">Pie Chart</label>
     </div>
   </div>
@@ -39,18 +42,18 @@
   </div>
   <hr>
   <div class="row justify-content-center">
-      <div class="col-md-8" *ngIf="dataSet.length > 0">
-        <canvas mdbChart
-                [chartType]="chartType"
-                [datasets]="dataSet"
-                [labels]="labels"
-                [colors]="barColors"
-                [options]="chartOptions"
-                [legend]="true"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)">
-        </canvas>
-      </div>
+    <div class="col-md-8" *ngIf="dataSet.length > 0">
+      <canvas mdbChart
+              [chartType]="chartType"
+              [datasets]="dataSet"
+              [labels]="labels"
+              [colors]="barColors"
+              [options]="chartOptions"
+              [legend]="true"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
   </div>
   <div class="row mt-4" *ngFor="let question of questions">
     <div class="d-inline-block">
@@ -60,5 +63,171 @@
   </div>
   <hr>
   <div class="row justify-content-center">
-    <span>Footer Content</span>
-  </div>
+    <div class="col">
+      <div class="row justify-content-center">
+        <img src="/assets/images/innovativeness-header.png" width="100%" height="auto"/></div>
+      <div class="row py-3">
+        <div id="score-detail">
+          <h3 class="title-h3">Your scores in detail:</h3>
+          <div id="item-1">
+            <p class="tezt-bold">A high rate of new product/service introductions, compared to our competitors
+              (including new features and improvements).</p>
+            <img src="/assets/images/innovativeness-body-1.png" height="auto" width="60%"/></div>
+          <div id="item-2">
+            <p class="tezt-bold">An emphasis on continuous improvement in methods of production and/or service
+              delivery.</p>
+            <img src="/assets/images/innovativeness-body-2.png" height="auto" width="60%"/></div>
+          <div id="item-3">
+            <p class="tezt-bold">Seeking of unusual, novel solutions by senior executives to problems via the use of
+              "idea people", Brainstorming, etc.</p>
+            <img src="/assets/images/innovativeness-body-3.png" height="auto" width="60%"/></div>
+          <div id="item-4">
+            <p class="tezt-bold">Rapid growth as the dominant goal.</p>
+            <img src="/assets/images/innovativeness-body-4.png" height="auto" width="60%"/></div>
+          <div>
+            <p class="tezt-bold">Your low scores on innovativeness within your business indicates:</p>
+            <ul>
+              <li>Your business focuses on existing practices and processes, without having an active consideration of
+                what is happening in your industry.
+              </li>
+              <li>our business is potentially becoming inefficient or uncompetitive through this internal focus and lack
+                of willingness to change.
+              </li>
+              <li>Your business will have issues with:</li>
+              <ul>
+                <li>Bringing in new technology or innovations to improve the product or process</li>
+                <li>Becoming more efficient and cost effective in your production processes</li>
+                <li>Identifying new innovations and technology within your industry that make your competitors more
+                  competitive.
+                </li>
+              </ul>
+              <li>Your business needs to consider an open innovation strategy to examine both internal and external
+                opportunities to improve how you undertake your business and innovation activities.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="divDefine">
+          <h3 class="title-h3">What ‘INNOVATIVENESS’ really means??</h3>
+          <p>Innovativeness forms a critical element of innovation and entrepreneurship and relates to the search and
+            development of “creative, unusual or novel solutions to problems and needs”<sup>i</sup>. This can relate to
+            the
+            introduction of new processes, technologies, products or services, driven by the business or the individual
+            employee<sup>ii</sup>.</p>
+          <p>The level of innovativeness is obviously determined by the extent to which the business emphasizes the
+            search and development of these new solutions. This may be driven from external pressures, such as the
+            introduction of a new disruptive technology (i.e. the shared economy and peer-to-peer sharing for the
+            transportation and hospitality sector), the intensified international competition brought about by
+            globalisation, or even government (de)regulation. Internally, it may also emerge from cost pressures for
+            improved profitability, or the adoption of new strategies emphasizing diversification or growth from
+            existing product lines.</p>
+          <p>Whatever the origin, embracing innovativeness within the business and at individual employee level is
+            critical for driving change and competitiveness. The possibilities to emerge from higher levels of
+            innovativeness range from the introduction of new products or services to existing customers; new processes
+            to achieve existing tasks or business functions more efficiently and effectively; the expansion into new
+            international markets that have not been exploited by your business; or, even through to changing the
+            fundamental business model of the business redefining the entire market offering<sup>iii</sup>.</p>
+          <p>A range of important business characteristics play a role in increasing innovativeness,
+            including<sup>iv</sup>:</p>
+          <ul>
+            <li>Having CEOs who were heavily involved in fostering innovation</li>
+            <li>Defining innovation as critical to long-term company success</li>
+            <li>Attaching great importance to the concept of managing change</li>
+            <li>Having the words innovation and creativity in the mission statement</li>
+            <li>Demonstrating an openness to outside ideas</li>
+            <li>Having formal programs for idea generation and problem solving</li>
+            <li>Placing strong emphasis on cross-functional communications</li>
+          </ul>
+          <p>When considering developing the innovativeness at the employee level, a range of characteristics should be
+            encouraged<sup>v</sup>, including:</p>
+          <ul>
+            <li>Work behaviours that lead to idea generation, introduction and use</li>
+            <li>Clear rewards for individuals and teams that are innovating within the business</li>
+            <li>Providing resources to employees to dedicate time and money to generating new ideas</li>
+            <li>Individual performance metrices that are linked with the generation and exploitation of new ideas</li>
+          </ul>
+          <p>The most innovative businesses have been shown to be customer- and employee-centered, with focus on new
+            product strategies, and see innovation as an activity based in discipline-specific rules and procedures.</p>
+        </div>
+        <div id="training-div">
+          <h3 class="title-h3">What training is needed to support your innovativeness?</h3>
+          <div class="col">
+            <div class="row justify-content-center">
+              <img src="/assets/images/innovativeness-training/Untitled-1_02.png" height="172" width="657"/>
+            </div>
+            <div class="row justify-content-center">
+              <div class="row p-0">
+                <div class="col p-0">
+                  <a href="https://deltadfx.talentlms.com/shared/start/key:LZSIDNHR"><img
+                    src="/assets/images/innovativeness-training/Untitled-1_04.gif" height="32" width="120"/></a>
+                </div>
+                <div class="col mr-auto p-0">
+                  <img src="/assets/images/innovativeness-training/Untitled-1_05.gif" height="32" width="537"/>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="row p-0">
+                <div class="col p-0">
+                  <img src="/assets/images/innovativeness-training/Untitled-1_06.gif" height="34"
+                       width="120"/></div>
+                <div class="col p-0">
+                  <img src="/assets/images/innovativeness-training/Untitled-1_07.gif" height="34"
+                       width="118"/></div>
+                <div class="col p-0">
+                  <img src="/assets/images/innovativeness-training/Untitled-1_08.gif" height="34"
+                       width="419"/></div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="row p-0">
+                <div class="col p-0">
+                  <img src="/assets/images/innovativeness-training/Untitled-1_09.gif" height="33"
+                       width="238"/></div>
+                <div class="col p-0">
+                  <img src="/assets/images/innovativeness-training/Untitled-1_10.gif" height="33"
+                       width="119"/></div>
+                <div class="col p-0">
+                  <img src="/assets/images/innovativeness-training/Untitled-1_11.gif" height="33"
+                       width="300"/></div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="row p-0">
+                <div class="col p-0">
+                  <img src="/assets/images/innovativeness-training/Untitled-1_12.gif" height="33"
+                       width="357"/></div>
+                <div class="col p-0">
+                  <img src="/assets/images/innovativeness-training/Untitled-1_13.gif" height="33"
+                       width="118"/></div>
+                <div class="col p-0">
+                  <img src="/assets/images/innovativeness-training/Untitled-1_14.gif" height="33"
+                       width="182"/></div>
+              </div>
+            </div>
+            <div class="row justify-content-center p-0">
+              <div class="row p-0">
+                <div class="col p-0 fit-content">
+                  <img src="/assets/images/innovativeness-training/Untitled-1_15.gif" height="20"
+                       width="475"/></div>
+                <div class="col p-0 fit-content">
+                  <img src="/assets/images/innovativeness-training/Untitled-1_16.gif" height="20"
+                       width="118"/></div>
+                <div class="col p-0 fit-content">
+                  <img src="/assets/images/innovativeness-training/Untitled-1_17.gif" height="20"
+                       width="64"/></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <hr>
+          <p><sup>i</sup> Morris et al., 2011, p. 359</p>
+          <p><sup>ii</sup> Antoncic and Hisrich, 2003; Morris et al., 2011</p>
+          <p><sup>ii</sup> Morris et al., 2011; Covin et al., 2006; Rauch et al., 2009; Okpara, 2009; 2. Pirrala, 2012;
+            Jalali, 2012, Shavari et al 2015</p>
+          <p><sup>iv</sup> Morris et al., 2011, pg. 63</p>
+          <p><sup>v</sup> Gawke et al., 2019</p>
+        </div>
+      </div>
+    </div>

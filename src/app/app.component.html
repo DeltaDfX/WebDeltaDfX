@@ -1,6 +1,6 @@
 <div class="content-wrapper">
   <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top" *ngIf="nav.visible">
-    <a class="navbar-brand" href="/home-page" aria-label="Space">
+    <a class="navbar-brand" routerLink="home-page" aria-label="Space">
       <img class="logoBrand u-header__navbar-brand-default" src="assets/Delta_Dfx_White_Logo_With_Slogan.png"
            alt="Logo">
     </a>
@@ -13,7 +13,7 @@
           <a routerLink="management" class="nav-link" routerLinkActive="active">
             <div class="d-flex align-items-center">
               <img src="assets/icon/icon-data-management.png"
-                   height="20px" class="mr-1">Data Management
+                   height="20px" class="mr-1">Send Surveys
             </div>
           </a>
         </li>
@@ -22,6 +22,14 @@
             <div class="d-flex align-items-center">
               <img src="assets/icon/company-dashboard-homepage-button.png"
                    height="20px" class="mr-1">Company Dashboards
+            </div>
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="isLogon">
+          <a routerLink="company-training" class="nav-link flex-center" routerLinkActive="active">
+            <div class="d-flex align-items-center">
+              <img src="assets/icon/company-training-icon.png"
+                   height="20px" class="mr-1">Company Training
             </div>
           </a>
         </li>

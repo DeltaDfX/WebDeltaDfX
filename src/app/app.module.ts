@@ -56,6 +56,7 @@ import { CoporateSnapshotComponent } from './main-pages/dashboard/coporate-snaps
 import { OrganisationalDriversComponent } from './main-pages/dashboard/organisational-drivers/organisational-drivers.component';
 import { SentSurveyListStakeholdersComponent } from './modal-views/sent-survey-list-stakeholders/sent-survey-list-stakeholders.component';
 import { ResultContentViewComponent } from './main-pages/dashboard/result-content-view/result-content-view.component';
+import { CompanyTrainingComponent } from './main-pages/company-training/company-training.component';
 
 export function setUpI18nCountrySelect(service: I18nCountrySelectService) {
   return () => service.use(['en']);
@@ -75,6 +76,7 @@ const appRoutes: Routes = [
   {path: 'index', component: AppComponent},
   {path: 'admin', component: AdminMainComponent, canActivate: [NeedAuthGuard]},
   {path: 'admin/login', component: AdminLoginComponent},
+  {path: 'company-training', component: CompanyTrainingComponent, canActivate: [NeedAuthGuard]},
   {path: '', redirectTo: 'home-page', pathMatch: 'full'}
 ];
 
@@ -116,7 +118,8 @@ const appRoutes: Routes = [
     CoporateSnapshotComponent,
     OrganisationalDriversComponent,
     SentSurveyListStakeholdersComponent,
-    ResultContentViewComponent
+    ResultContentViewComponent,
+    CompanyTrainingComponent
   ],
   imports: [
     BrowserModule,

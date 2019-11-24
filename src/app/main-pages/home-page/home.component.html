@@ -22,29 +22,13 @@
         <div class="row">
           <div class="col-4 align-items-center p-4">
             <div class="row justify-content-center">
-              <a type="button" class="border-0" href="/register">
+              <a type="button" class="border-0" [routerLink]="['/management', contentViewOfManagementEnum.SendSurvey]">
                 <img src="assets/icon/register-homepage-button.png" height="150" width="150"/>
               </a>
             </div>
             <div class="row justify-content-center mt-2">
-              <h4 class="text-center" style="font-family: 'Source Sans Pro', sans-serif;">1. Register
-                participants</h4>
-              <h6 class="text-center">Register participants to be involved – Who do you want the surveys to
-                be sent
-                to?</h6>
-            </div>
-          </div>
-          <div class="col-4 align-items-center p-4">
-            <div class="row justify-content-center">
-              <a type="button" class="border-0" [routerLink]="['/management', contentViewOfManagementEnum.SendSurvey]">
-                <img src="assets/icon/send-survey-homepage-button.png" height="150" width="150"/>
-              </a>
-            </div>
-            <div class="row justify-content-center mt-2">
-              <h4 class="text-center" style="font-family: 'Source Sans Pro', sans-serif;">2. Send
-                survey</h4>
-              <h6 class="text-center">Confirm participants and send surveys – begin collecting the
-                information you need
+              <h4 class="text-center" style="font-family: 'Source Sans Pro', sans-serif;">1. Send surveys</h4>
+              <h6 class="text-center">Register participants and send surveys – begin collecting the information you need
                 to make decisions!</h6>
             </div>
           </div>
@@ -55,11 +39,20 @@
               </a>
             </div>
             <div class="row justify-content-center mt-2">
-              <h4 class="text-center" style="font-family: 'Source Sans Pro', sans-serif;">3. Company
-                Dashboard</h4>
-              <h6 class="text-center">See the results from your surveys – What is your current performance
-                and where do you need to focus?
-              </h6>
+              <h4 class="text-center" style="font-family: 'Source Sans Pro', sans-serif;">2. Company Dashboard</h4>
+              <h6 class="text-center">See the results from your surveys – What is your current performance and where do
+                you need to focus?</h6>
+            </div>
+          </div>
+          <div class="col-4 align-items-center p-4">
+            <div class="row justify-content-center">
+              <a type="button" class="border-0" [routerLink]="['/company-training']">
+                <img src="assets/icon/company-training-icon.png" height="150" width="150"/>
+              </a>
+            </div>
+            <div class="row justify-content-center mt-2">
+              <h4 class="text-center" style="font-family: 'Source Sans Pro', sans-serif;">3. Company training</h4>
+              <h6 class="text-center">Now you know your performance gaps – What training can you do to improve?</h6>
             </div>
           </div>
         </div>
