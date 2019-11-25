@@ -70,4 +70,8 @@ export class LoginPageComponent implements OnInit {
   openRegister() {
     const modalRef = this.modalService.open(RegisterComponent);
   }
+
+  goBackHome() {
+    this.router.navigate(['home-page']);
+  }
 }
